@@ -1,0 +1,52 @@
+<resources>
+
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+
+    <!-- 宽度、高度等 -->
+    <dimen name="address_height">44dp</dimen>
+    <dimen name="divider_padding1">13dp</dimen>
+    <dimen name="divider_padding">10dp</dimen>
+    <dimen name="divider_padding2">5dp</dimen>
+    <dimen name="divider_line">1dp</dimen>
+    <dimen name="divider_line1">0.5dp</dimen>
+    <dimen name="padding12">12dp</dimen>
+    <dimen name="padding25">25dp</dimen>
+    <dimen name="attr_padding">5dp</dimen>
+
+    <!-- 返回键大小 -->
+    <dimen name="back_width">30dp</dimen>
+    <dimen name="back_height">30dp</dimen>
+    <dimen name="back_padding_left">12dp</dimen>
+    <dimen name="back_padding_right">10dp</dimen>
+
+    <!-- 字体大小 -->
+    <dimen name="txt_size_large">30sp</dimen>
+    <dimen name="txt_size_big">20sp</dimen>
+    <dimen name="txt_size_normal">16sp</dimen>
+    <dimen name="txt_size_small">14sp</dimen>
+    <dimen name="txt_size_minus">13sp</dimen>
+    <dimen name="txt_size_12">12sp</dimen>
+    <dimen name="txt_size_9">9sp</dimen>
+    <dimen name="txt_size_10">10sp</dimen>
+    <dimen name="txt_size_11">11sp</dimen>
+    <dimen name="txt_size_14">14sp</dimen>
+    <dimen name="txt_size_15">15sp</dimen>
+    <dimen name="txt_size_25">25sp</dimen>
+
+    <!-- 列表下拉 -->
+    <dimen name="indicator_right_padding">10dp</dimen>
+    <dimen name="indicator_corner_radius">12dp</dimen>
+    <dimen name="indicator_internal_padding">4dp</dimen>
+    <dimen name="header_footer_left_right_padding">25dp</dimen>
+    <dimen name="header_footer_top_bottom_padding">10dp</dimen>
+    <dimen name="header_footer_internal_padding">20dp</dimen>
+
+    <!-- circleImageView -->
+    <dimen name="base_padding">5dp</dimen>
+    
+    
+     <dimen name="dimen_150">120dp</dimen>
+
+</resources>

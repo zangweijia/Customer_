@@ -1,0 +1,235 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="47dp"
+        android:gravity="center"
+        android:paddingLeft="@dimen/back_padding_left" >
+
+        <TextView
+            android:id="@+id/btn_return"
+            android:layout_width="@dimen/back_width"
+            android:layout_height="@dimen/back_height"
+            android:layout_centerVertical="true"
+            android:background="@drawable/ic_back" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="9"
+            android:gravity="center"
+            android:text="供应商合作"
+            android:textColor="@color/findpass_title"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/btn_save"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="5dp"
+            android:textColor="@color/findpass_title" />
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="@color/bg_bgline" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:paddingLeft="12dp"
+        android:paddingRight="12dp" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/address_height" >
+
+            <TextView
+                style="@style/_add_address_text"
+                android:text="申请人" />
+
+            <EditText
+                android:id="@+id/edt_contact"
+                style="@style/_add_address_edit"
+                android:gravity="right|center_vertical"
+                android:hint="@string/txt_join_contact_hint" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="@color/bg_divider_line" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/address_height" >
+
+            <TextView
+                style="@style/_add_address_text"
+                android:text="联系方式" />
+
+            <EditText
+                android:id="@+id/edt_mobile"
+                style="@style/_add_address_edit"
+                android:gravity="right|center_vertical"
+                android:hint="@string/txt_join_phone_hint"
+                android:inputType="number" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="@color/bg_divider_line_minus" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/address_height"
+            android:paddingTop="5dp" >
+
+            <TextView
+                style="@style/_add_address_text"
+                android:text="所在地区" />
+
+            <Spinner
+                android:id="@+id/edt_store_province"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_margin="5dp"
+                android:layout_weight="1"
+                android:background="@null"
+                android:gravity="center"
+                android:prompt="@string/cmm_prompt_province"
+                android:textColor="@color/txt_black"
+                android:textSize="@dimen/txt_size_normal" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.3"
+                android:gravity="center"
+                android:text="@string/cmm_txt_contact"
+                android:textColor="@color/txt_black"
+                android:textSize="@dimen/txt_size_normal" />
+
+            <Spinner
+                android:id="@+id/edt_store_city"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_margin="5dp"
+                android:layout_weight="1"
+                android:background="@null"
+                android:gravity="center"
+                android:prompt="@string/cmm_prompt_city"
+                android:textColor="@color/txt_black"
+                android:textSize="@dimen/txt_size_normal" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.3"
+                android:gravity="center"
+                android:text="@string/cmm_txt_contact"
+                android:textColor="@color/txt_black"
+                android:textSize="@dimen/txt_size_normal" />
+
+            <Spinner
+                android:id="@+id/edt_store_district"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_margin="5dp"
+                android:layout_weight="1"
+                android:background="@null"
+                android:gravity="center"
+                android:prompt="@string/cmm_prompt_county"
+                android:textColor="@color/txt_black"
+                android:textSize="@dimen/txt_size_normal" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="@color/bg_bgline" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/address_height" >
+
+            <TextView
+                style="@style/_add_address_text"
+                android:text="@string/txt_join_address" />
+
+            <EditText
+                android:id="@+id/edt_address"
+                style="@style/_add_address_edit"
+                android:gravity="right|center_vertical"
+                android:hint="@string/txt_join_address_hint" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="@color/bg_bgline" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/address_height" >
+
+            <TextView
+                style="@style/_add_address_text"
+                android:text="商品类别" />
+
+            <EditText
+                android:id="@+id/edt_business_type"
+                style="@style/_add_address_edit"
+                android:gravity="right|center_vertical"
+                android:hint="请填写要供应商品类别" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="@color/bg_bgline" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/address_height" >
+
+            <TextView
+                style="@style/_add_address_text"
+                android:text="商品品牌" />
+
+            <EditText
+                android:id="@+id/edt_business_band"
+                style="@style/_add_address_edit"
+                android:gravity="right|center_vertical"
+                android:hint="请填写要供应商品品牌" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="@color/bg_bgline" />
+
+        <TextView
+            android:id="@+id/btn_submit"
+            android:layout_width="200dp"
+            android:layout_height="35dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="34dp"
+            android:background="@drawable/tijiao"
+            android:gravity="center"
+            android:text="提交申请"
+            android:textColor="@android:color/white"
+            android:textSize="15sp" />
+    </LinearLayout>
+
+</LinearLayout>

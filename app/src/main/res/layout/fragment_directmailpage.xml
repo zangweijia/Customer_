@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <com.bopinjia.customer.view.MyScrollView
+        android:id="@+id/scrollview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="none" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical" >
+
+            <RelativeLayout
+                android:id="@+id/rl"
+                android:layout_width="match_parent"
+                android:layout_height="180dp" >
+
+                <android.support.v4.view.ViewPager
+                    android:id="@+id/_pager"
+                    android:layout_width="fill_parent"
+                    android:layout_height="match_parent" />
+
+                <com.viewpagerindicator.CirclePageIndicator
+                    android:id="@+id/_indicator"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginBottom="20dp"
+                    app:fillColor="@color/main_color"
+                    app:pageColor="@color/bg_bgline" />
+            </RelativeLayout>
+
+            <com.bopinjia.customer.view.NoScrollGridView
+                android:id="@+id/category_gridview"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/ll_head"
+                android:gravity="center"
+                android:horizontalSpacing="2dp"
+                android:listSelector="@null"
+                android:numColumns="5"
+                android:scrollbars="none"
+                android:verticalSpacing="2dp" >
+            </com.bopinjia.customer.view.NoScrollGridView>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="5dp"
+                android:background="@color/bg_bgline" />
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:scaleType="fitXY"
+                android:src="@drawable/main_hd" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="5dp"
+                android:background="@color/bg_bgline" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="175dp"
+                android:background="@color/bg_ffffff" >
+
+                <LinearLayout
+                    android:id="@+id/ll_head"
+                    android:layout_width="match_parent"
+                    android:layout_height="31dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal" >
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+                        android:src="@drawable/ic_miaosha" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="5dp"
+                        android:gravity="center"
+                        android:text="8点专场"
+                        android:textColor="@color/bg_0000"
+                        android:textSize="@dimen/txt_size_12" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginRight="5dp"
+                        android:gravity="center"
+                        android:text="更多 >"
+                        android:textColor="@color/bg_0000"
+                        android:textSize="@dimen/txt_size_12" />
+                </LinearLayout>
+
+                <HorizontalScrollView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_below="@+id/ll_head"
+                    android:scrollbars="none" >
+
+                    <LinearLayout
+                        android:id="@+id/ll_hlist"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal" >
+                    </LinearLayout>
+                </HorizontalScrollView>
+            </RelativeLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:background="#ebebeb"
+                android:gravity="center"
+                android:text="精品推荐"
+                android:textColor="#ff5400"
+                android:textSize="@dimen/txt_size_14" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/bg_bgbg" >
+
+                <com.bopinjia.customer.view.NoScrollGridView
+                    android:id="@+id/bottom_gridview"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/ll_head"
+                    android:horizontalSpacing="2dp"
+                    android:listSelector="@null"
+                    android:numColumns="2"
+                    android:scrollbars="none"
+                    android:verticalSpacing="2dp" >
+                </com.bopinjia.customer.view.NoScrollGridView>
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/tvmore"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:paddingBottom="10dp"
+                android:paddingTop="10dp" />
+        </LinearLayout>
+    </com.bopinjia.customer.view.MyScrollView>
+
+    <LinearLayout
+        android:id="@+id/ll_title"
+        android:layout_width="match_parent"
+        android:layout_height="44dp"
+        android:background="@color/main_color1"
+        android:gravity="center"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp" >
+
+        <ImageView
+            android:id="@+id/_zhiyou_classify"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_marginRight="8dp"
+            android:src="@drawable/ic_fenlei_" />
+
+        <LinearLayout
+            android:id="@+id/_zhiyou_search"
+            android:layout_width="0dp"
+            android:layout_height="30dp"
+            android:layout_weight="1"
+            android:background="@drawable/bg_search_"
+            android:gravity="center"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableLeft="@drawable/ic_search_"
+                android:drawablePadding="3dp"
+                android:text="输入商品、商家的名称"
+                android:textColor="@color/bg_ffffff" />
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/_zhiyou_scan"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_marginLeft="8dp"
+            android:background="@drawable/ic_scan_" />
+    </LinearLayout>
+
+</RelativeLayout>

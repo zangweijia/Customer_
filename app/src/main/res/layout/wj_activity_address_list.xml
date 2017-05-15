@@ -1,0 +1,103 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="vertical" >
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="47dp"
+            android:gravity="center"
+            android:paddingLeft="@dimen/back_padding_left" >
+
+            <TextView
+                android:id="@+id/tv_back"
+                android:layout_width="@dimen/back_width"
+                android:layout_height="@dimen/back_height"
+                android:layout_centerVertical="true"
+                android:background="@drawable/ic_back" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true"
+                android:layout_weight="9"
+                android:gravity="center"
+                android:text="通关信息"
+                android:textColor="@color/findpass_title"
+                android:textSize="20sp" />
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="@color/bg_bgline" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="10"
+            android:background="@color/bg_bgline"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/txt_empty"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="@string/txt_address_empty"
+                android:textColor="@color/txt_deep_gray"
+                android:textSize="@dimen/txt_size_big"
+                android:visibility="gone" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" >
+
+                <ListView
+                    android:id="@+id/list"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:divider="@color/bg_bgbg"
+                    android:dividerHeight="@dimen/divider_padding2"
+                    android:listSelector="#00000000" >
+                </ListView>
+
+                <ProgressBar
+                    android:id="@+id/probar"
+                    style="android:attr/progressBarStyleLarge"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:visibility="gone" />
+            </RelativeLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/address_height"
+        android:layout_alignParentBottom="true"
+        android:background="@android:color/white"
+        android:gravity="center" >
+
+        <TextView
+            android:id="@+id/tv_add_address"
+            android:layout_width="200dp"
+            android:layout_height="36dp"
+            android:background="@drawable/bg_add_address"
+            android:gravity="center"
+            android:text="@string/txt_address_add"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/txt_size_15" />
+    </LinearLayout>
+
+</LinearLayout>

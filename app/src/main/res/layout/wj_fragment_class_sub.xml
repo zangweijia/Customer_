@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_bgline"
+    android:orientation="vertical" >
+
+    <com.andview.refreshview.XRefreshView
+        android:id="@+id/custom_view_grid"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+
+        <GridView
+            android:id="@+id/grid"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:horizontalSpacing="2dp"
+            android:listSelector="@null"
+            android:numColumns="2"
+            android:scrollbars="none"
+            android:verticalSpacing="2dp" >
+        </GridView>
+    </com.andview.refreshview.XRefreshView>
+
+    <com.andview.refreshview.XRefreshView
+        android:id="@+id/custom_view_list"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone" >
+
+        <ListView
+            android:id="@+id/list"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:divider="@color/bg_bgline"
+            android:dividerHeight="0.5dp"
+            android:scrollbars="none" >
+        </ListView>
+    </com.andview.refreshview.XRefreshView>
+
+</LinearLayout>

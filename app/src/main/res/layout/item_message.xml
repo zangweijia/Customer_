@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginBottom="5dp"
+    android:background="@color/txt_white" >
+
+    <View
+        android:layout_width="@dimen/divider_padding"
+        android:layout_height="match_parent" />
+
+    <CheckBox
+        android:id="@+id/chk_edit"
+        style="@style/custom_checkbox"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:visibility="gone" />
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="10"
+        android:paddingLeft="@dimen/divider_padding" >
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="9"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/txt_msg_date"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:gravity="left|center_vertical"
+                android:textColor="@color/txt_gray"
+                android:textSize="@dimen/txt_size_normal" />
+
+            <TextView
+                android:id="@+id/txt_msg"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:gravity="left|center_vertical"
+                android:textColor="@color/txt_black" 
+                android:textSize="@dimen/txt_size_normal"
+                android:ellipsize="end"
+                android:lineSpacingMultiplier="1.0"
+				android:lines="2"/>
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/txt_go"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="@string/cmm_goto_btn"
+            android:textColor="@color/txt_black" />
+    </LinearLayout>
+
+    <View
+        android:layout_width="@dimen/divider_padding"
+        android:layout_height="match_parent" />
+
+</LinearLayout>

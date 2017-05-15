@@ -1,0 +1,72 @@
+apply plugin: 'com.android.application'
+
+
+android {
+    signingConfigs {
+        config {
+            keyAlias 'bopinjia'
+            keyPassword 'bopinjia2016'
+            storeFile file('G:/01-android初始文档/key/bopinjia.keystore')
+            storePassword 'bopinjia2016'
+            // v1SigningEnabled false
+            v2SigningEnabled false
+        }
+        debug {
+            keyAlias 'androiddebugkey'
+            keyPassword 'android'
+            storeFile file('D:/bopinjia.keystore')
+            storePassword 'android'
+        }
+    }
+    compileSdkVersion 25
+    buildToolsVersion "25.0.2"
+    defaultConfig {
+        applicationId "com.bopinjia.customer"
+        minSdkVersion 15
+        targetSdkVersion 22
+        versionCode 20170508
+        versionName "2.1.1"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+        ndk {
+            abiFilters "armeabi", "armeabi-v7a", "x86", "mips"
+        }
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            multiDexEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+        debug {
+            signingConfig signingConfigs.debug
+        }
+    }
+    lintOptions {
+        checkReleaseBuilds false
+        abortOnError false
+    }
+    dexOptions {
+        incremental true
+        javaMaxHeapSize "2048m"
+        jumboMode true
+        preDexLibraries = false
+    }
+}
+
+dependencies {
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+    compile 'com.android.support:appcompat-v7:25.3.0' exclude module: 'support-v4'
+    compile 'com.android.support:recyclerview-v7:25.3.0'
+    compile 'com.android.support.constraint:constraint-layout:1.0.2'
+    compile 'com.android.support:design:25.3.0'
+    testCompile 'junit:junit:4.12'
+    compile 'com.huxq17.xrefreshview:xrefreshview:3.5.1'
+    compile 'com.astuetz:pagerslidingtabstrip:1.0.1'
+    compile 'com.github.JakeWharton:ViewPagerIndicator:2.4.1'
+    compile 'net.simonvt.menudrawer:menudrawer:3.0.+@aar'
+    compile 'com.android.support:multidex:1.0.0'
+}

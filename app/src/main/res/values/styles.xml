@@ -1,0 +1,207 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+
+
+    <!-- Radio自定义样式 -->
+    <style name="custom_checkbox" parent="@android:style/Widget.CompoundButton.CheckBox">
+        <item name="android:button">@drawable/ic_checkbox</item>
+    </style>
+
+    <!-- 底部弹出动画 -->
+    <style name="popFromBottom" parent="android:Animation">
+        <item name="android:windowEnterAnimation">@anim/bottom_in</item>
+        <item name="android:windowExitAnimation">@anim/bottom_out</item>
+    </style>
+
+    <!-- 星级评价 -->
+    <style name="comment_star" parent="@android:style/Widget.RatingBar">
+        <item name="android:progressDrawable">@drawable/bg_rating_yellow</item>
+        <item name="android:minHeight">15dip</item>
+        <item name="android:maxHeight">15dip</item>
+    </style>
+    <!--&lt;!&ndash; 退出提示框样式 &ndash;&gt;-->
+    <!--<style name="customDialog" parent="@android:Theme.Dialog">-->
+        <!--<item name="android:windowFrame">@null</item>-->
+        <!--<item name="android:windowNoTitle">true</item>-->
+        <!--<item name="android:windowIsFloating">true</item>-->
+        <!--<item name="android:windowContentOverlay">@null</item>-->
+    <!--</style>-->
+
+    <!-- radiobutton 样式 -->
+    <style name="_bottom_tab">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:background">@null</item>
+        <item name="android:button">@null</item>
+        <item name="android:textSize">11sp</item>
+        <item name="android:drawablePadding">2dp</item>
+        <item name="android:gravity">center_horizontal</item>
+        <item name="android:textColor">@drawable/text_change</item>
+    </style>
+    <!-- Login Style -->
+    <style name="Theme.HalfTranslucent" parent="@android:style/Theme.Translucent">
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+    </style>
+
+    <style name="_mydialog" parent="@android:style/Theme.Dialog">
+        <item name="android:windowFrame">@null</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:backgroundDimEnabled">false</item>
+    </style>
+
+    <!-- 新增地址text -->
+    <style name="_add_address_text">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_weight">2</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:textColor">@android:color/black</item>
+        <item name="android:textSize">@dimen/txt_size_minus</item>
+        <item name="android:gravity">center_vertical</item>
+    </style>
+    <!-- 新增地址edittext -->
+    <style name="_add_address_edit">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_weight">8</item>
+        <item name="android:background">@null</item>
+        <item name="android:textSize">@dimen/txt_size_minus</item>
+        <item name="android:textColor">@android:color/black</item>
+        <item name="android:paddingLeft">10dp</item>
+    </style>
+
+    <!-- 我的界面 -->
+    <style name="_me_list">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">40dp</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:drawablePadding">10dp</item>
+        <item name="android:textSize">@dimen/txt_size_12</item>
+        <item name="android:textColor">@color/txt_333333</item>
+        <item name="android:layout_marginLeft">11dp</item>
+        <item name="android:gravity">center_vertical</item>
+    </style>
+
+    <!-- 订单详情 状态 按钮 -->
+    <style name="_me_order_state">
+        <item name="android:layout_width">75dp</item>
+        <item name="android:layout_height">29dp</item>
+        <item name="android:layout_margin">@dimen/padding12</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textSize">@dimen/txt_size_small</item>
+    </style>
+
+    <!-- 选中状态 -->
+    <style name="CheckboxTheme" parent="@android:style/Widget.CompoundButton.CheckBox">
+        <item name="android:button">@drawable/favorite_checkbox</item>
+    </style>
+
+    <!-- dialog -->
+    <style name="Dialog" parent="android:style/Theme.Dialog">
+        <item name="android:background">#00000000</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowIsFloating">true</item>
+    </style>
+
+    <style name="text_18_ffffff">
+        <item name="android:textSize">18.0dip</item>
+        <item name="android:textColor">#ffffffff</item>
+    </style>
+
+    <style name="text_16_666666">
+        <item name="android:textSize">16.0dip</item>
+        <item name="android:textColor">#ff666666</item>
+    </style>
+
+    <style name="sdw_white">
+        <item name="android:shadowColor">#7fffffff</item>
+        <item name="android:shadowDx">0.0</item>
+        <item name="android:shadowDy">0.65</item>
+        <item name="android:shadowRadius">1.0</item>
+    </style>
+
+    <style name="sdw_79351b">
+        <item name="android:shadowColor">#ff79351b</item>
+        <item name="android:shadowDx">0.0</item>
+        <item name="android:shadowDy">1.0</item>
+        <item name="android:shadowRadius">1.0</item>
+    </style>
+
+    <style name="text_15_ffffff_sdw" parent="@style/sdw_79351b">
+        <item name="android:textSize">15.0dip</item>
+        <item name="android:textColor">#ffffffff</item>
+    </style>
+
+    <style name="text_15_666666_sdw" parent="@style/sdw_white">
+        <item name="android:textSize">15.0dip</item>
+        <item name="android:textColor">#ff666666</item>
+    </style>
+
+    <!-- dialog end -->
+
+
+    <!-- 去掉dialog开头的样式 -->
+    <style name="CustomDialogTheme" parent="android:Theme.Dialog">
+        <item name="android:windowFrame">@null</item>
+        <!-- 去掉dialog标题 -->
+        <item name="android:windowNoTitle">true</item>
+
+        <!-- 设置是否悬浮 -->
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+    </style>
+
+    <!-- 购物车去结算 -->
+    <style name="style0">
+        <item name="android:textSize">16sp</item>
+    </style>
+
+    <style name="style1">
+        <item name="android:textSize">10sp</item>
+    </style>
+
+    <!-- alterdialog -->
+    <style name="SampleTheme.Light" parent="android:Theme.Holo.Light.DarkActionBar">
+        <item name="android:windowNoTitle">true</item>
+    </style>
+
+    <!-- pop动画 -->
+    <style name="AnimBottom" parent="@android:style/Animation">
+        <item name="android:windowEnterAnimation">@anim/push_bottom_in</item>
+        <item name="android:windowExitAnimation">@anim/push_bottom_out</item>
+    </style>
+
+    <!-- 淡入浅出动画 -->
+    <style name="animSimplyfade" parent="@android:style/Animation">
+        <item name="android:windowEnterAnimation">@anim/enteralpha</item>
+        <item name="android:windowExitAnimation">@anim/exitalpha</item>
+    </style>
+
+    <!--&lt;!&ndash; 下载框样式 &ndash;&gt;-->
+    <!--<style name="Theme_Transparent" parent="@android:Theme_DeviceDefault_Dialog">-->
+        <!--<item name="android:windowIsTranslucent">true</item>-->
+        <!--<item name="android:windowBackground">@android:color/transparent</item>-->
+        <!--<item name="android:windowContentOverlay">@null</item>-->
+        <!--<item name="android:windowNoTitle">true</item>-->
+    <!--</style>-->
+
+    <style name="mainpage_category">
+        <item name="android:textSize">@dimen/txt_size_11</item>
+        <item name="android:textColor">@color/bg_666666</item>
+        <item name="android:paddingTop">5dp</item>
+        <item name="android:gravity">center</item>
+    </style>
+
+</resources>

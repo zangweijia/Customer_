@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+    
+    <TextView 
+        android:id="@+id/btn_camera"
+        android:layout_width="match_parent"
+    	android:layout_height="wrap_content"
+    	android:padding="10dp"
+    	android:textColor="@color/txt_black"
+    	android:textSize="@dimen/txt_size_big"
+    	android:gravity="center"
+    	android:text="@string/cmm_btn_camera"
+    	android:background="@color/bg_white" />
+
+    <TextView 
+        android:id="@+id/btn_gallery"
+        android:layout_width="match_parent"
+    	android:layout_height="wrap_content"
+    	android:padding="10dp"
+    	android:textColor="@color/txt_black"
+    	android:textSize="@dimen/txt_size_big"
+    	android:gravity="center"
+    	android:text="@string/cmm_btn_gallery"
+    	android:background="@color/bg_white" />
+    
+    <View 
+        android:layout_width="match_parent"
+    	android:layout_height="10dp"
+    	android:background="@color/bg_transparent"/>
+    
+    <TextView 
+        android:id="@+id/btn_cancel"
+        android:layout_width="match_parent"
+    	android:layout_height="wrap_content"
+    	android:padding="10dp"
+    	android:textColor="@color/txt_black"
+    	android:textSize="@dimen/txt_size_big"
+    	android:gravity="center"
+    	android:text="@string/cmm_btn_cancel"
+    	android:background="@color/bg_white" />
+</LinearLayout>

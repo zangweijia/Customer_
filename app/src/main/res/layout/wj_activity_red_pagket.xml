@@ -1,0 +1,140 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:ptr="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:id="@+id/t"
+        android:layout_width="match_parent"
+        android:layout_height="47dp"
+        android:gravity="center"
+        android:paddingLeft="@dimen/back_padding_left" >
+
+        <TextView
+            android:id="@+id/btn_return"
+            android:layout_width="@dimen/back_width"
+            android:layout_height="@dimen/back_height"
+            android:layout_centerVertical="true"
+            android:background="@drawable/ic_back" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="9"
+            android:gravity="center"
+            android:text="我的红包"
+            android:textColor="@color/findpass_title"
+            android:textSize="20sp" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:layout_alignParentBottom="true"
+            android:background="@color/bg_bgline" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/address_height" >
+
+        <LinearLayout
+            android:id="@+id/ll_unuse"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/tv_unuse"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="未使用"
+                android:textColor="@color/main_color"
+                android:textSize="@dimen/txt_size_14" />
+
+            <View
+                android:id="@+id/v_unuse"
+                android:layout_width="40dp"
+                android:layout_height="1dp"
+                android:layout_marginTop="5dp"
+                android:background="@color/main_color" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_use"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/tv_use"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="已使用"
+                android:textColor="@color/findpass_title"
+                android:textSize="@dimen/txt_size_14" />
+
+            <View
+                android:id="@+id/v_use"
+                android:layout_width="40dp"
+                android:layout_height="1dp"
+                android:layout_marginTop="5dp"
+                android:background="@color/main_color"
+                android:visibility="invisible" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_expired"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/tv_expired"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="已过期"
+                android:textColor="@color/findpass_title"
+                android:textSize="@dimen/txt_size_14" />
+
+            <View
+                android:id="@+id/v_expired"
+                android:layout_width="40dp"
+                android:layout_height="1dp"
+                android:layout_marginTop="5dp"
+                android:background="@color/main_color"
+                android:visibility="invisible" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/bg_bgline" />
+
+    <com.andview.refreshview.XRefreshView
+        android:id="@+id/custom_view"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" >
+
+        <ListView
+            android:id="@+id/lv_drop_red"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:divider="@color/bg_bgline"
+            android:dividerHeight="1dp"
+            android:scrollbars="none" >
+        </ListView>
+    </com.andview.refreshview.XRefreshView>
+
+</LinearLayout>

@@ -1,0 +1,298 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/bg_white"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginBottom="5dp"
+        android:layout_marginLeft="12dp"
+        android:layout_marginRight="12dp"
+        android:layout_marginTop="5dp"
+        android:layout_weight="1" >
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1.3"
+            android:gravity="left|center_vertical"
+            android:paddingLeft="5dp"
+            android:text="@string/txt_order_no"
+            android:textColor="@color/txt_black"
+            android:textSize="@dimen/txt_size_small" />
+
+        <TextView
+            android:id="@+id/txt_order_no"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="3"
+            android:gravity="left|center_vertical"
+            android:textColor="@color/bg_666666"
+            android:textSize="@dimen/txt_size_small" />
+
+        <TextView
+            android:id="@+id/txt_status"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.7"
+            android:gravity="center"
+            android:textColor="@color/main_color"
+            android:textSize="@dimen/txt_size_minus" />
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="@color/bg_bgline" />
+
+    <LinearLayout
+        android:id="@+id/lst_product"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/bg_divider_line_minus" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginBottom="5dp"
+        android:layout_weight="1"
+        android:paddingTop="5dp" >
+
+        <TextView
+            android:id="@+id/txt_count"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1.5"
+            android:gravity="right|center_vertical"
+            android:paddingLeft="5dp"
+            android:text="@string/txt_order_count"
+            android:textColor="@color/txt_black"
+            android:textSize="@dimen/txt_size_minus" />
+
+        <TextView
+            android:id="@+id/txt_amount"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1.5"
+            android:gravity="right|center_vertical"
+            android:textColor="@color/main_color"
+            android:textSize="@dimen/txt_size_minus" />
+
+        <TextView
+            android:id="@+id/txt_shipfee"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:gravity="left|center_vertical"
+            android:paddingLeft="5dp"
+            android:text="@string/txt_order_shipfee"
+            android:textColor="@color/txt_black"
+            android:textSize="@dimen/txt_size_minus" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_unpaid"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone" >
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1.7" />
+
+        <Button
+            android:id="@+id/btn_cancel"
+            android:layout_width="75dp"
+            android:layout_height="29dp"
+            android:layout_marginTop="@dimen/padding12"
+            android:background="@drawable/bg_order_state2"
+            android:gravity="center"
+            android:text="@string/txt_order_cancel"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/txt_size_small" />
+
+        <View
+            android:layout_width="10dp"
+            android:layout_height="match_parent" />
+
+        <Button
+            android:id="@+id/btn_pay"
+            android:layout_width="75dp"
+            android:layout_height="29dp"
+            android:layout_margin="@dimen/padding12"
+            android:background="@drawable/bg_order_state1"
+            android:gravity="center"
+            android:text="@string/txt_order_pay"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/txt_size_small" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_unship"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone" >
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1" />
+
+        <Button
+            android:id="@+id/btn_tk"
+            style="@style/_me_order_state"
+            android:background="@drawable/juse_gray"
+            android:text="申请退款"
+            android:textColor="@color/main_color" />
+
+        <View
+            android:layout_width="10dp"
+            android:layout_height="match_parent" />
+
+        <!-- 应该在这加一个  物流信息 -->
+
+        <Button
+            android:id="@+id/btn_order_status"
+            android:layout_width="75dp"
+            android:layout_height="29dp"
+            android:layout_marginTop="@dimen/padding12"
+            android:background="@drawable/juse_gray"
+            android:gravity="center"
+            android:padding="5dp"
+            android:text="@string/txt_order_status"
+            android:textColor="@color/main_color"
+            android:textSize="@dimen/txt_size_small" />
+
+        <View
+            android:layout_width="10dp"
+            android:layout_height="match_parent" />
+
+        <Button
+            android:id="@+id/btn_reminder"
+            android:layout_width="75dp"
+            android:layout_height="29dp"
+            android:layout_margin="@dimen/padding12"
+            android:background="@drawable/bg_order_state1"
+            android:gravity="center"
+            android:text="@string/txt_order_reminder"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/txt_size_small" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_complete"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone" >
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="2.7" />
+
+        <Button
+            android:id="@+id/complete_order_status"
+            android:layout_width="75dp"
+            android:layout_height="29dp"
+            android:layout_margin="@dimen/padding12"
+            android:background="@drawable/juse_gray"
+            android:gravity="center"
+            android:padding="5dp"
+            android:text="@string/txt_order_status"
+            android:textColor="@color/main_color"
+            android:textSize="@dimen/txt_size_small" />
+
+        <Button
+            android:id="@+id/bt_shouhou"
+            android:layout_width="75dp"
+            android:layout_height="29dp"
+            android:layout_marginTop="@dimen/padding12"
+            android:background="@drawable/juse_gray"
+            android:gravity="center"
+            android:padding="5dp"
+            android:text="售后"
+            android:textColor="@color/main_color"
+            android:textSize="@dimen/txt_size_small"
+            android:visibility="gone" />
+
+        <Button
+            android:id="@+id/see_reason"
+            android:layout_width="75dp"
+            android:layout_height="29dp"
+            android:layout_marginTop="@dimen/padding12"
+            android:background="@drawable/juse_gray"
+            android:gravity="center"
+            android:padding="5dp"
+            android:text="查看原因"
+            android:textColor="@color/main_color"
+            android:textSize="@dimen/txt_size_small"
+            android:visibility="gone" />
+
+        <View
+            android:layout_width="10dp"
+            android:layout_height="match_parent" />
+
+        <Button
+            android:id="@+id/btn_delete"
+            android:layout_width="75dp"
+            android:layout_height="29dp"
+            android:layout_margin="@dimen/padding12"
+            android:background="@drawable/bg_order_state2"
+            android:gravity="center"
+            android:padding="5dp"
+            android:text="@string/txt_order_delete"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/txt_size_small" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_confirmreceipt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone" >
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="2.7" />
+
+        <Button
+            android:id="@+id/confirmreceipt_order_status"
+            android:layout_width="75dp"
+            android:layout_height="29dp"
+            android:layout_marginTop="@dimen/padding12"
+            android:background="@drawable/juse_gray"
+            android:gravity="center"
+            android:padding="5dp"
+            android:text="@string/txt_order_status"
+            android:textColor="@color/main_color"
+            android:textSize="@dimen/txt_size_small" />
+
+        <View
+            android:layout_width="10dp"
+            android:layout_height="match_parent" />
+
+        <Button
+            android:id="@+id/txt_order_confirmreceipt"
+            android:layout_width="75dp"
+            android:layout_height="29dp"
+            android:layout_margin="@dimen/padding12"
+            android:background="@drawable/juse_gray"
+            android:gravity="center"
+            android:text="@string/txt_order_confirmreceipt"
+            android:textColor="@color/main_color"
+            android:textSize="@dimen/txt_size_small" />
+    </LinearLayout>
+
+</LinearLayout>

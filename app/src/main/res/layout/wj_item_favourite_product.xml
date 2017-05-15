@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="105dp"
+    android:background="@android:color/white"
+    android:orientation="horizontal" >
+
+    <CheckBox
+        android:id="@+id/checkbox"
+        style="@style/CheckboxTheme"
+        android:layout_width="25dp"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="10dp"
+        android:gravity="center"
+        android:visibility="gone" />
+
+    <RelativeLayout
+        android:layout_width="96dp"
+        android:layout_height="match_parent" >
+
+        <ImageView
+            android:id="@+id/iv_shop_thumbnails"
+            android:layout_width="72dp"
+            android:layout_height="72dp"
+            android:layout_centerInParent="true"
+            android:src="@drawable/favorite_shop_" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="72dp"
+        android:layout_gravity="center_vertical"
+        android:layout_marginLeft="10dp"
+        android:layout_weight="1"
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/txt_shop_name"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:text="通州店"
+            android:singleLine="true"
+            android:textColor="@android:color/black"
+            android:textSize="@dimen/txt_size_14" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1" >
+
+            <TextView
+                android:id="@+id/_tv_sale_price"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1.5"
+                android:gravity="left|center_vertical"
+                android:text="188.00"
+                android:drawableLeft="@drawable/money_"
+                android:drawablePadding="3dp"
+                android:textColor="@color/main_color"
+                android:textSize="@dimen/txt_size_small" />
+
+            <View
+                android:layout_width="3dp"
+                android:layout_height="match_parent" />
+
+            <TextView
+                android:id="@+id/_tv_market_price"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="left|center_vertical"
+                android:text="￥200.00"
+                android:textColor="@color/bg_999999"
+                android:textSize="@dimen/txt_size_12" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/txt_colletion"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:text="12000人已购买"
+            android:textColor="@color/bg_999999"
+            android:textSize="@dimen/txt_size_9" />
+    </LinearLayout>
+
+</LinearLayout>

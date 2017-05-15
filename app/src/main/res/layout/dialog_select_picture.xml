@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <TextView
+        android:id="@+id/btn_camera"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/bg_white"
+        android:gravity="center"
+        android:padding="10dp"
+        android:text="@string/cmm_btn_camera"
+        android:textColor="@color/txt_black"
+        android:textSize="@dimen/txt_size_normal" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="@color/bg_bgline" />
+
+    <TextView
+        android:id="@+id/btn_gallery"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/bg_white"
+        android:gravity="center"
+        android:padding="10dp"
+        android:text="@string/cmm_btn_gallery"
+        android:textColor="@color/txt_black"
+        android:textSize="@dimen/txt_size_normal" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="5dp"
+        android:background="@color/bg_bgline" />
+
+    <TextView
+        android:id="@+id/btn_cancel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/bg_white"
+        android:gravity="center"
+        android:padding="10dp"
+        android:text="@string/cmm_btn_cancel"
+        android:textColor="@color/txt_black"
+        android:textSize="@dimen/txt_size_normal" />
+
+</LinearLayout>

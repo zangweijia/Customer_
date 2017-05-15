@@ -1,0 +1,413 @@
+<resources>
+    <string name="app_name">舶品家</string>
+
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+
+    <!-- LISTVIEW脚部控件显示文本 -->
+    <string name="txt_footer_more">加载更多</string>
+    <string name="txt_footer_loading">加载中。。。</string>
+    <string name="txt_footer_no_more">木有更多了~</string>
+
+    <!-- 提示消息 -->
+    <string name="msg_info_add_to_cart">该商品已添加至购物车！</string>
+    <string name="msg_err_system">预料之外的异常发生，请与客服联系，或者稍后再试。</string>
+    <string name="msg_err_image_loading_failed">图片加载失败!</string>
+    <string name="msg_err_scan_result_invalid">亲~您扫的不是有效的二维码哦！~</string>
+    <string name="msg_err_sdcard_invalid">亲~您的SD卡不可用哦！~</string>
+    <string name="msg_err_no_binding_shop">亲～请先扫描店铺码在扫描商品哦！</string>
+    <string name="msg_err_no_product">亲~您扫描的商品不存在哦！~</string>
+
+    <!-- 提示消息:登录 -->
+    <string name="msg_err_empty">{0}没有输入哦，亲！</string>
+    <string name="msg_err_not_exsist">这个{0}不存在哦，亲！</string>
+    <!-- 提示消息:修改密码 -->
+    <string name="msg_err_oldpass_required">旧密码未填写！</string>
+    <string name="msg_err_newpass_required">新密码未填写！</string>
+    <string name="msg_err_confirm_required">确认密码未填写！</string>
+    <string name="msg_err_confirm">确认密码填写不正确！</string>
+    <string name="msg_err_invalid">{0}含有数字、字母、下划线以外的字符哦，亲！</string>
+    <!-- 提示消息:验证码 -->
+    <string name="msg_info_verify">{0}（动态验证码）</string>
+    <string name="msg_info_phone_changed">您已成功更换注册手机号码，原手机号码将不能登录，如有疑问，请致电客服：400&#8211;997&#8211;8757</string>
+    <string name="msg_info_regist_success">感谢您注册舶品家会员，请牢记账户及密码，祝您购物愉快！如有疑问，请致电客服：400&#8211;997&#8211;8757或联系购物所在店铺的相关人员</string>
+    <string name="msg_info_verify_sended">验证短信已发送，请注意查收！</string>
+    <string name="msg_err_verify_unrequest">请先申请验证码！</string>
+    <string name="msg_err_verify_wrong">验证码填写错误！</string>
+    <string name="msg_info_return_req_success">您已成功完成退货申请。请耐心等待退货，如有疑问，请致电客服： 400&#8211;997&#8211;8757</string>
+    <string name="msg_info_join_req_success">感谢您提交（家门口的免税店&#8211;&#8211;加盟申请），3个工作日内客服人员会与您取得联系，请耐心等待。</string>
+
+    <!-- 共通文本 -->
+    <string name="cmm_back_symbol">〈</string>
+    <string name="cmm_back_btn">〈返回</string>
+    <string name="cmm_goto_btn">〉</string>
+    <string name="cmm_tab_btn_home">首页</string>
+    <string name="cmm_tab_btn_cate">分类</string>
+    <string name="cmm_tab_btn_cart">购物车</string>
+    <string name="cmm_tab_btn_mine">我的</string>
+    <string name="cmm_btn_delete">删除</string>
+    <string name="cmm_btn_edit">编辑</string>
+    <string name="cmm_btn_cancel">取消</string>
+    <string name="cmm_btn_wancheng">完成</string>
+    <string name="cmm_btn_select_all">全部选择</string>
+    <string name="cmm_btn_delete_all">全部清空</string>
+    <string name="cmm_btn_delete_all1">清空</string>
+    <string name="cmm_btn_next">下一步</string>
+    <string name="cmm_btn_camera">拍照</string>
+    <string name="cmm_btn_gallery">从手机相册选择</string>
+    <string name="cmm_btn_save">保存</string>
+    <string name="cmm_btn_update">修改</string>
+    <string name="cmm_prompt_province">请选择省</string>
+    <string name="cmm_prompt_city">请选择市</string>
+    <string name="cmm_prompt_county">请选择区</string>
+    <string name="cmm_txt_contact">&#8211;</string>
+    <string name="cmm_btn_reduce">&#8211;</string>
+    <string name="cmm_btn_add">+</string>
+    <string name="cmm_txt_currency">元</string>
+    <string name="cmm_txt_up">∧</string>
+    <string name="cmm_txt_down">∨</string>
+    <string name="cmm_btn_ok">确定</string>
+    <string name="cmm_symbol_selected">√</string>
+    <string name="cmm_txt_all">全部</string>
+
+    <!-- 各页面标题 -->
+    <string name="txt_title_scan_qrcode">扫描二维码</string>
+    <string name="txt_title_shops">家门口的免税店</string>
+    <string name="txt_title_mine">我的舶品家</string>
+    <string name="txt_title_message_center">消息中心</string>
+    <string name="txt_title_message_detail">消息详情</string>
+    <string name="txt_title_login">登录</string>
+    <string name="txt_title_recover_pass">密码找回</string>
+    <string name="txt_title_security">输入验证码</string>
+    <string name="txt_title_set_newpass">设置新密码</string>
+    <string name="txt_title_registration">注册</string>
+    <string name="txt_title_set_password">设置密码</string>
+    <string name="txt_title_forget_password">忘记密码</string>
+    <string name="txt_title_change_password">修改密码</string>
+    <string name="txt_title_change_phone">更换手机号</string>
+    <string name="txt_title_settings">设置</string>
+    <string name="txt_title_request_join">加盟申请</string>
+    <string name="txt_title_verify">实名认证</string>
+    <string name="txt_title_address">收货地址</string>
+    <string name="txt_title_address_detail">收货地址</string>
+    <string name="txt_title_add_address_detail">新增通关信息</string>
+    <string name="txt_title_my_track">我的足迹</string>
+    <string name="txt_title_join">加盟申请</string>
+    <string name="txt_title_all_order">我的订单</string>
+    <string name="txt_title_order_detail">订单详情</string>
+    <string name="txt_title_Logistice_detail">订单状态</string>
+    <string name="txt_title_retract_request">申请售后服务</string>
+    <string name="txt_title_retract_list">售后</string>
+    <string name="txt_title_retract_list2">退换售后</string>
+    <string name="txt_title_retract_detail">退款详情</string>
+    <string name="txt_title_cart">购物车</string>
+    <string name="txt_title_filter">筛选</string>
+    <string name="txt_title_brand">品牌</string>
+    <string name="txt_title_price">价格</string>
+    <string name="txt_title_product_detail">商品详情</string>
+    <string name="txt_title_attr_select">属性选择</string>
+    <string name="txt_title_pay">确认订单</string>
+
+    <!-- 页面：首页 -->
+    <string name="txt_home_btn_shops">寻找家门口的免税店</string>
+    <string name="txt_home_btn_scan">扫码直达</string>
+
+    <!-- 页面：扫码 -->
+    <string name="txt_scan_caption">对准条码到框内即可扫描</string>
+
+    <!-- 页面：家门口的免税店 -->
+    <string name="txt_shops_default_name">这家店叫你猜呀~</string>
+
+    <!-- 页面：商品分类 -->
+    <string name="txt_category_search_hint">搜索</string>
+    <string name="txt_category_shop_bonded">直邮区</string>
+    <string name="txt_category_shop_convenience">现货区</string>
+
+    <!-- 页面：我的 -->
+    <string name="txt_mine_menu_all">全部订单</string>
+    <string name="txt_mine_menu_unpaid">待付款</string>
+    <string name="txt_mine_menu_unshipping">待发货</string>
+    <string name="txt_mine_menu_unreceiving">待收货</string>
+    <string name="txt_mine_menu_after">退换/售后</string>
+    <string name="txt_mine_verify">实名认证</string>
+    <string name="txt_mine_unverify">未认证</string>
+    <string name="txt_mine_verified">已认证</string>
+    <string name="txt_mine_address">收货地址</string>
+    <string name="txt_mine_scan">扫码直达</string>
+    <string name="txt_mine_shops_nearby">家门口的免税店</string>
+    <string name="txt_mine_join">我要加盟</string>
+    <string name="txt_mine_settings">设置</string>
+
+    <!-- 页面： 未登录 -->
+    <string name="txt_nologged_login">已有帐号，立刻登录</string>
+    <string name="txt_nologged_registration">我要注册</string>
+    <string name="txt_nologged_shopping">先逛再说&gt;</string>
+
+    <!-- 页面：消息 -->
+    <string name="txt_message_msg_reg">注册成功</string>
+    <string name="txt_message_msginfo_reg">您已成功注册为舶品家会员</string>
+    <string name="txt_message_msg_binding">新手机号绑定成功</string>
+    <string name="txt_message_msg_pass">密码已修改</string>
+    <string name="txt_message_err_back">亲，您已错过了申请售后的时间段\n（交易完成7天内），如有问题\n请致电400&#8211;997&#8211;8757</string>
+    <string name="txt_message_msg_rtn_req">申请退货已提交</string>
+    <string name="txt_message_msginfo_rtn_req">请等待舶品家客服与您联系确认退货信息</string>
+    <string name="txt_message_msg_req">申请已提交</string>
+    <string name="txt_message_msginfo_req">请耐心等待舶品家客服与您联系\n如有问题，请致电400&#8211;997&#8211;8757</string>
+    <string name="txt_message_msg_paid">支付成功</string>
+    <string name="txt_message_msginfo_paid">等待跳转回舶品家APP&#8230;&#8230;&#8230;</string>
+    <string name="txt_message_msginfo_join">亲，您已经提交了申请，请耐心等待舶品家的回复。</string>
+
+    <!-- 页面： 登录 -->
+    <string name="txt_login_btn">登录</string>
+    <string name="txt_login_id">帐号：</string>
+    <string name="txt_login_id_hint">请输入手机号</string>
+    <string name="txt_login_password">密码：</string>
+    <string name="txt_login_password_hint">请输入密码</string>
+    <string name="txt_login_forget_password">忘记密码？</string>
+
+    <!-- 页面： 密码找回 -->
+    <string name="txt_recover_phone_hint">请输入您的手机号</string>
+    <string name="txt_recover_security">验证码：</string>
+    <string name="txt_recover_security_hint">请输入您收到的短信验证码</string>
+    <string name="txt_recover_security_info">秒后 重新获取验证码</string>
+    <string name="txt_recover_set_newpass">设置新密码：</string>
+    <string name="txt_recover_set_newpass_hint">请设置6位数以上密码</string>
+    <string name="txt_recover_confirm_newpass">确认新密码：</string>
+    <string name="txt_recover_confirm_newpass_hint">请再次输入新密码</string>
+
+    <!-- 页面： 注册 -->
+    <string name="txt_registration">继续注册表示已经阅读并同意</string>
+    <string name="txt_registration_service">《舶品家服务条款》</string>
+    <string name="txt_registration_pass">密码：</string>
+    <string name="txt_registration_pass_hint">请设置6位数以上密码</string>
+    <string name="txt_registration_btn">注册</string>
+
+    <!-- 页面： 更换手机号 -->
+    <string name="txt_change_phone">已发送验证码短信到</string>
+    <string name="txt_change_phone_resend">收不到验证码？重新获取</string>
+
+    <!-- 页面： 设置 -->
+    <string name="txt_settings_account">帐号设置</string>
+    <string name="txt_settings_support">支持</string>
+    <string name="txt_settings_head_portrait">更换头像</string>
+    <string name="txt_settings_password">修改密码</string>
+    <string name="txt_settings_phone">手机绑定</string>
+    <string name="txt_settings_about">关于舶品家</string>
+    <string name="txt_settings_qualification">我们的资质</string>
+    <string name="txt_settings_history">舶品家历程</string>
+    <string name="txt_settings_contact">联系我们</string>
+    <string name="txt_settings_join">加盟舶品家</string>
+    <string name="txt_settings_btn_logout">退出登录</string>
+
+    <!-- 页面： 实名认证 -->
+    <string name="txt_verify_name">真实姓名:</string>
+    <string name="txt_verify_name_hint">请输入真实姓名</string>
+    <string name="txt_verify_idcard">身份证号</string>
+    <string name="txt_verify_idcard_hint">请输入18位身份证号</string>
+    <string name="txt_verify_upload_img">上传证件照</string>
+    <string name="txt_verify_img_front">上传证件照\n（正面）</string>
+    <string name="txt_verify_img_back">上传证件照\n（背面）</string>
+    <string name="txt_verify_content">根据海关总署要求，请上传收货人真实的身份证信息，商家将使用您提交的信息办理个人物品清关手续，谢谢配合！</string>
+    <string name="txt_verify_info">1.由于免税商品需要办理入境申报，请您配合进行实名认证；\n2.舶品家承诺所传身份证明只用于办理免税商品的情关手续不作其他用途，其他任何人均无法查看！</string>
+
+    <!-- 页面： 收货地址 -->
+    <string name="txt_address_add">新建通关信息</string>
+    <string name="txt_address_add_can">还可添加{0}个地址</string>
+    <string name="txt_address_empty">您还没有收货地址</string>
+    <string name="txt_address_name">收货人</string>
+    <string name="txt_address_name_hint">请输入收货人姓名</string>
+    <string name="txt_address_phone">手机号码</string>
+    <string name="txt_address_phone_hint">请输入收货人的手机号</string>
+    <string name="txt_address_county">收货地址</string>
+    <string name="txt_address_detail">详细地址</string>
+    <string name="txt_address_detail_hint">请输入详细收货地址</string>
+    <string name="txt_address_real_name">真实姓名</string>
+    <string name="txt_address_real_name_hint">请输入收货人真实姓名</string>
+    <string name="txt_address_idcard">身份证 </string>
+    <string name="txt_address_privace">省市区</string>
+    <string name="txt_address_idcard_hint">请输入收货人真实身份证号</string>
+    <string name="txt_address_info">1.由于免税商品需要办理入境申报，请您配合进行实名认证；\n2.舶品家承诺所传身份证明只用于办理免税商品的情关手续不作其他用途，其他任何人均无法查看！</string>
+    <string name="txt_address_delete">删除收货地址</string>
+    <string name="txt_address_set_default">设为默认收货地址</string>
+    <string name="txt_address_info1">海关需要对海外购物查验身份证，请填写正确的身份证信息。\n身份证会加密报关，舶品家将确保您的信息安全。</string>
+
+    <!-- 页面： 加盟申请 -->
+    <string name="txt_join_county">店铺所在地区</string>
+    <string name="txt_join_contact">店铺负责人</string>
+    <string name="txt_join_contact_hint">姓名</string>
+    <string name="txt_join_phone">店铺联系方式</string>
+    <string name="txt_join_address">详细地址</string>
+    <string name="txt_join_address_hint">请填写详细地址</string>
+    <string name="txt_join_phone_hint">请填写11位手机号</string>
+    <string name="txt_join_business_mode">经营模式</string>
+    <string name="txt_join_business_mode_hint">选择您店铺的经营模式</string>
+    <string name="txt_join_main_business">主营业务</string>
+    <string name="txt_join_main_business_hint">请填写店铺主营业务</string>
+    <string name="txt_join_store_count">店铺数量</string>
+    <string name="txt_join_store_count_hint">请填写您拥有的店铺数量</string>
+    <string name="txt_join_annual_turnover">年营业额</string>
+    <string name="txt_join_submit">提交申请</string>
+
+    <!-- 页面：订单 -->
+    <string name="txt_order_number">订单号：</string>
+    <string name="txt_order_plance_order_time">下单时间：</string>
+    <string name="txt_order_customer_service">申请售后</string>
+    <string name="txt_order_no">交易单号：</string>
+    <string name="txt_order_cancel">取消订单</string>
+    <string name="txt_order_pay">立即支付</string>
+    <string name="txt_order_reminder">催单</string>
+    <string name="txt_order_status">订单状态</string>
+    <string name="txt_order_delete">删除订单</string>
+    <string name="txt_order_count">共{0}件</string>
+    <string name="txt_order_shipfee">(含运费¥{0})</string>
+    <string name="txt_order_shipfe">¥{0}</string>
+    <string name="txt_order_red1">-¥{0}</string>
+    <string name="txt_order_red">¥-{0}</string>
+    <string name="txt_order_all">全部</string>
+    <string name="txt_order_unpaid">待付款</string>
+    <string name="txt_order_unshipping">待发货</string>
+    <string name="txt_order_unreceiving">待收货</string>
+    <string name="txt_order_confirmreceipt">确认收货</string>
+    <string name="txt_order_complete">已完成</string>
+    <string name="txt_order_canceled">已取消</string>
+    <string name="txt_order_daishenhe">待审核</string>
+    <string name="txt_order_daituikuan">待退款</string>
+    <string name="txt_order_close">已关闭</string>
+    <string name="txt_order_consignee">收货人:</string>
+    <string name="txt_order_address">收货人地址</string>
+    <string name="txt_order_payby">支付方式</string>
+    <string name="txt_order_ship_comp">承运物流</string>
+    <string name="txt_order_ship_sn">运单编号</string>
+
+    <!-- 页面：售后 -->
+    <string name="txt_retract_price">价格： ¥{0}</string>
+    <string name="txt_retract_count">购买数量： {0}件</string>
+    <string name="txt_retract_req_count">申请数量</string>
+    <string name="txt_retract_req_count_max">您最多可提交数量为{0}个</string>
+    <string name="txt_retract_problem">问题描述</string>
+    <string name="txt_retract_problem_hint">请您在此描述详细问题</string>
+    <string name="txt_retract_success">退款成功</string>
+    <string name="txt_retract_req_amount">交易金额：</string>
+    <string name="txt_retract_amount">退款金额：</string>
+    <string name="txt_retract_reviewing">待审核</string>
+    <string name="txt_retract_pending">待付款</string>
+    <string name="txt_retract_req_time">申请时间：</string>
+    <string name="txt_retract_time">退款时间：</string>
+    <string name="txt_retract_instruction">退款说明</string>
+
+    <!-- 页面：购物车 -->
+    <string name="txt_cart_edit">编辑</string>
+    <string name="txt_cart_empty_info">亲，您还没有挑选商品哟~</string>
+    <string name="txt_cart_go_shopping">去逛逛~</string>
+    <string name="txt_cart_parcel_tax">舶品家所有商品包税，请放心购物！</string>
+    <string name="txt_cart_count">已选{0}件商品</string>
+    <string name="txt_cart_product_tax">税金：  ￥{0}</string>
+    <string name="txt_cart_amount">商品总额：</string>
+    <string name="txt_cart_tax">总税金：</string>
+    <string name="txt_cart_shipfee">运费：</string>
+    <string name="txt_cart_total">合计：</string>
+    <string name="txt_cart_pay">去结算</string>
+
+    <!-- 页面：商品 -->
+    <string name="txt_product_composite_sort">综合排序</string>
+    <string name="txt_product_composite">综合</string>
+    <string name="txt_product_new">新品</string>
+    <string name="txt_product_sales">销量</string>
+    <string name="txt_product_price">价格</string>
+    <string name="txt_product_filter">筛选</string>
+    <string name="txt_product_count">已售出{0}件</string>
+    <string name="txt_product_brand">品牌</string>
+    <string name="txt_product_all">全部</string>
+    <string name="txt_product_genuine">100%正品</string>
+    <string name="txt_product_flash_ship">闪电发货</string>
+    <string name="txt_product_detail">图文详情</string>
+    <string name="txt_product_comment">查看评论</string>
+    <string name="txt_product_cart">购物车</string>
+    <string name="txt_product_add_cart">加入购物车</string>
+    <string name="txt_product_attr">颜色属性</string>
+    <string name="txt_product_buy_count">购买数量</string>
+    <string name="txt_product_about_ship">发货：</string>
+    <string name="txt_product_ship_info">现货专区支持店内自提</string>
+    <string name="txt_product_about_tax">关税：</string>
+    <string name="txt_product_tax_info">商品税率{0}%</string>
+    <string name="txt_product_selected">国家  ：</string>
+    <string name="txt_product_must_buy_number">( 本商品最低购买数量为{0} )</string>
+
+    <!-- 页面：搜索 -->
+    <string name="txt_search_hot">热门搜索</string>
+    <string name="txt_search_latest">搜索历史</string>
+
+    <!-- 页面：支付 -->
+    <string name="txt_pay_mode">选择支付方式</string>
+    <string name="txt_pay_ali">支付宝</string>
+    <string name="txt_pay_ali_info">推荐支付宝用户使用</string>
+    <string name="txt_pay_weixin">微信支付</string>
+    <string name="txt_pay_weixin_info">推荐安装最新版本使用</string>
+    <string name="txt_pay_ship_mode">配送方式</string>
+    <string name="txt_pay_ship_since">上门自提</string>
+    <string name="txt_pay_ship_since_info">您将从旗舰店提取现货物品</string>
+    <string name="txt_pay_ship">商家配送(直邮10元，现货5元)</string>
+    <string name="txt_pay_ship_info">将由舶品家选择合作快递为您服务</string>
+    <string name="txt_pay_amount">商品金额：</string>
+    <string name="txt_pay_shipfee">运费：</string>
+    <string name="txt_pay_total_amount">支付金额：{0}</string>
+    <string name="txt_pay_go">确认订单</string>
+    <string name="txt_submit_order">提交订单</string>
+    <string name="txt_pay_success">支付成功</string>
+    <string name="txt_pay_warning">正在确认支付，请稍后在订单列表确认</string>
+    <string name="txt_pay_error">支付失败，请在订单列表确认</string>
+    <string name="txt_pay_success_message">等待跳转回舶品家APP&#8230;&#8230;&#8230;</string>
+
+    <!-- 页面：修改密码 -->
+    <string name="txt_change_pass_old">请输入原密码</string>
+    <string name="txt_change_pass_new">请输入新密码</string>
+    <string name="txt_change_pass_new_confirm">请确认新密码</string>
+
+    <!-- 下拉刷新控件 -->
+    <string name="pull_to_refresh_pull_label">下拉刷新</string>
+    <string name="pull_to_refresh_release_label">松开刷新</string>
+    <string name="pull_to_refresh_refreshing_label">加载中。。。</string>
+    <string name="pull_to_refresh_from_bottom_pull_label">上拉加载更多</string>
+    <string name="pull_to_refresh_from_bottom_release_label">松开刷新</string>
+    <string name="pull_to_refresh_from_bottom_refreshing_label">加载中。。。</string>
+    <string name="title_activity_customer_logistics_detail_activiy">CustomerLogisticsDetailActiviy</string>
+    <string name="have_new_order_pay_success">有新的订单已支付成功，请查看！</string>
+    <string name="welcome_into_store">欢迎进入舶品家旗舰店 ！</string>
+    <string name="net_is_error">网络连接错误，请联系客服！</string>
+
+    <!-- 页面   设置密码 -->
+    <string name="txt_set_newpassword">请设置新密码，并妥善保存</string>
+    <string name="txt_enter">确定</string>
+    <string name="title_activity_activity_confirm_order">ActivityConfirmOrder</string>
+
+    <!-- 购物车页面 -->
+    <string name="txt_shopping_time">24小时结算时间后，商品会自动清空，请尽快结算</string>
+    <string name="my_myself_title">个人资料</string>
+    <string name="title_activity_activity_order_state_list">ActivityOrderStateList</string>
+    <string name="title_activity_activity_duanxin_login">ActivityDuanxinLogin</string>
+    <string name="title_activity_activitytext">Activitytext</string>
+    <string name="title_activity_activity_select_ship">ActivitySelectShip</string>
+
+    <!-- dialog -->
+    <string name="title_alert">提示信息</string>
+    <string name="ok">确定</string>
+    <string name="cancel">取消</string>
+    <string name="six">性别</string>
+
+    <!-- 分销管理 -->
+    <string name="fxgl_gyj">高佣金商品</string>
+    <string name="fxgl_bkcx">爆款促销区</string>
+    <string name="fxgl_hbsz">红包设置</string>
+    <string name="fxgl_ddgl">订单管理</string>
+    <string name="fxgl_khgl">客户管理</string>
+    <string name="fxgl_dpgl">店铺管理</string>
+    <string name="fxgl_jqqd">敬请期待</string>
+    <string name="title_activity_activity_product_details">ActivityProductDetails</string>
+    <string name="title_activity_activity_class_subs">ActivityClassSubs</string>
+    <string name="title_activity_activity_product_list_new">ActivityProductListNew</string>
+    <string name="title_activity_activity_product_list_ne">ActivityProductListNe</string>
+    <string name="title_activity_activity_product_details_new">ActivityProductDetailsNew</string>
+    <string name="title_activity_activity_web_view">ActivityWebView</string>
+    <string name="title_activity_activity_personal_care">ActivityPersonalCare</string>
+</resources>

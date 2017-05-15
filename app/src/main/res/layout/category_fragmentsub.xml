@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal" >
+
+    <ListView
+        android:id="@+id/lst_main_category"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:background="#F6F6F6"
+        android:divider="@color/bg_bgline"
+        android:dividerHeight="0.5dp"
+        android:fadeScrollbars="false"
+        android:scrollbars="none" />
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="3"
+        android:background="@color/bg_white" >
+
+        <View
+            android:layout_width="4dp"
+            android:layout_height="fill_parent" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="3"
+            android:background="@color/bg_white"
+            android:orientation="vertical" >
+
+            <com.bopinjia.customer.stickygridheaders.StickyGridHeadersGridView
+                android:id="@+id/lst_sub_category"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="8"
+                android:background="@color/bg_white"
+                android:clipToPadding="false"
+                android:horizontalSpacing="3dp"
+                android:numColumns="3"
+                android:verticalSpacing="3dp" />
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="100dp"
+    android:layout_height="140dp"
+    android:background="@color/bg_ffffff"
+    android:orientation="vertical"
+    android:padding="3dp" >
+
+    <ImageView
+        android:id="@+id/iv"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:src="@drawable/ic_default_image" />
+
+    <TextView
+        android:id="@+id/txt_sell_price"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:textColor="@color/main_color"
+        android:textSize="@dimen/txt_size_12" />
+
+    <TextView
+        android:id="@+id/txt_market_price"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:textColor="@color/bg_999999"
+        android:textSize="@dimen/txt_size_10" />
+
+</LinearLayout>

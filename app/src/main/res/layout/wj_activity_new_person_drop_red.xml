@@ -1,0 +1,59 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#6710B7" >
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scrollbars="none" >
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" >
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="240dp"
+                android:src="@drawable/bg_day_drop_red" />
+
+            <RelativeLayout
+                android:id="@+id/rl"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginLeft="55dp"
+                android:layout_marginRight="55dp"
+                android:layout_marginTop="170dp"
+                android:background="@drawable/bg_red_pakge" >
+
+                <com.bopinjia.customer.view.NoScrollListview
+                    android:id="@+id/red_list"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:divider="@null"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:dividerHeight="1dp"
+                    android:layout_marginTop="80dp"
+                    android:scrollbars="none" />
+                 
+            </RelativeLayout>
+
+            <TextView
+                android:id="@+id/tv_next"
+                android:layout_width="150dp"
+                android:layout_height="43dp"
+                android:background="@drawable/bg_envelopes"
+                android:gravity="center"
+                android:textColor="@android:color/white"
+                android:textSize="@dimen/txt_size_14"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="10dp"
+                android:layout_below="@+id/rl"
+                android:text="确认领取" />
+        </RelativeLayout>
+    </ScrollView>
+
+</RelativeLayout>

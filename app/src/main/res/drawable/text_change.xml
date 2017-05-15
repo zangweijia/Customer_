@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--底部导航栏字体颜色改变-->
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:state_checked="true"  android:color="@color/main_color"/>
+    <!-- not selected -->
+    <item android:color="@color/text_normal"/>
+
+</selector>

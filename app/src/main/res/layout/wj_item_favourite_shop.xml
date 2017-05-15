@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="94dp"
+    android:background="@android:color/white"
+    android:orientation="horizontal" >
+
+    <CheckBox
+        android:id="@+id/checkbox"
+        style="@style/CheckboxTheme"
+        android:layout_width="25dp"
+        android:visibility="gone"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="10dp"
+        android:gravity="center" />
+
+    <RelativeLayout
+        android:layout_width="96dp"
+        android:layout_height="match_parent" >
+
+        <ImageView
+            android:id="@+id/iv_shop_thumbnails"
+            android:layout_width="72dp"
+            android:layout_height="72dp"
+            android:layout_centerInParent="true"
+            android:src="@drawable/favorite_shop_" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="72dp"
+        android:layout_gravity="center_vertical"
+        android:layout_marginLeft="10dp"
+        android:layout_weight="1"
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/txt_shop_name"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:text="通州店"
+            android:textColor="@android:color/black"
+            android:textSize="@dimen/txt_size_14" />
+
+        <TextView
+            android:id="@+id/txt_colletion"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:text="12000人收藏"
+            android:textColor="@color/bg_999999"
+            android:textSize="@dimen/txt_size_9" />
+    </LinearLayout>
+
+</LinearLayout>

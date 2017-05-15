@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="110dp"
+    android:background="@android:color/white"
+    android:orientation="horizontal" >
+
+    <CheckBox
+        android:id="@+id/product_checkbox"
+        android:layout_width="30dp"
+        android:layout_height="match_parent"
+        android:layout_marginRight="5dp"
+        android:button="@null"
+        android:drawableLeft="@drawable/favorite_checkbox"
+        android:paddingLeft="10dp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal" >
+
+        <RelativeLayout
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_gravity="center"
+            android:background="@drawable/bg_cart_product" >
+
+            <ImageView
+                android:id="@+id/_iv_list_thumbnails"
+                android:layout_width="match_parent"
+                android:padding="1dp"
+                android:layout_height="match_parent"
+                android:src="@drawable/favorite_shop_" />
+
+            <TextView
+                android:id="@+id/tv_surplus_num"
+                android:layout_width="match_parent"
+                android:layout_height="20dp"
+                android:layout_alignParentBottom="true"
+                android:background="#40000000"
+                android:gravity="center"
+                android:textColor="@color/bg_ffffff"
+                android:visibility="gone" />
+
+            <ImageView
+                android:id="@+id/iv_no_product"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:src="@drawable/no_product"
+                android:visibility="gone" />
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="3.5"
+            android:orientation="vertical"
+            android:padding="10dp" >
+
+            <TextView
+                android:id="@+id/_tv_list_name"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="2"
+                android:ellipsize="end"
+                android:gravity="left|center_vertical"
+                android:lines="2"
+                android:text="@string/txt_shops_default_name"
+                android:textColor="@color/txt_333333"
+                android:textSize="@dimen/txt_size_minus" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginBottom="5dp"
+                android:layout_weight="1" >
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1" >
+
+                    <TextView
+                        android:id="@+id/_tv_list_sale_price"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="3"
+                        android:gravity="center_vertical"
+                        android:text="￥188.00"
+                        android:textColor="@color/main_color"
+                        android:textSize="@dimen/txt_size_minus" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:paddingRight="10dp" >
+
+                    <TextView
+                        android:id="@+id/tv_reduce"
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        android:background="@drawable/shopping_jian" />
+
+                    <TextView
+                        android:id="@+id/tv_product_count"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:text="2"
+                        android:textColor="#bfbfbf"
+                        android:textSize="@dimen/txt_size_14" />
+
+                    <TextView
+                        android:id="@+id/tv_add"
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        android:background="@drawable/shopping_add" />
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>

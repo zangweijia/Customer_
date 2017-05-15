@@ -1,0 +1,36 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="190dp"
+    android:layout_height="140dp"
+    android:background="#FFFFFF"
+    android:gravity="center"
+    android:alpha="50" >
+
+    <LinearLayout
+        android:layout_width="190dp"
+        android:layout_height="140dp"
+        android:layout_centerInParent="true"
+        android:background="@drawable/yuanjiao"
+        android:gravity="center"
+        android:orientation="vertical" >
+
+        <ImageView
+            android:id="@+id/iv"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:layout_marginTop="32dp"
+            android:src="@drawable/ic_success"
+             />
+
+        <TextView
+            android:id="@+id/txt"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="2"
+            android:gravity="center"
+            android:textColor="#0c0c0c"
+            android:text="注册成功"
+            android:textSize="18sp" />
+    </LinearLayout>
+
+</RelativeLayout>

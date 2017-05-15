@@ -1,0 +1,312 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="47dp"
+        android:gravity="center"
+        android:paddingLeft="@dimen/back_padding_left" >
+
+        <TextView
+            android:id="@+id/btn_return"
+            android:layout_width="@dimen/back_width"
+            android:layout_height="@dimen/back_height"
+            android:layout_centerVertical="true"
+            android:background="@drawable/ic_back" />
+
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="9"
+            android:gravity="center"
+            android:text="@string/txt_title_add_address_detail"
+            android:textColor="@color/findpass_title"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/btn_save"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:paddingRight="15dp"
+            android:text="@string/cmm_btn_save"
+            android:textColor="@color/findpass_title" />
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="@color/bg_bgline" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/address_height"
+            android:paddingLeft="12dp"
+            android:paddingRight="12dp"
+            android:paddingTop="5dp"
+            android:visibility="gone" >
+
+            <TextView
+                style="@style/_add_address_text"
+                android:text="@string/txt_address_name" />
+
+            <EditText
+                android:id="@+id/et_real_name"
+                style="@style/_add_address_edit"
+                android:hint="@string/txt_address_name_hint" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="@color/bg_bgline"
+            android:visibility="gone" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/address_height"
+            android:paddingLeft="12dp"
+            android:paddingRight="12dp"
+            android:paddingTop="5dp" >
+
+            <TextView
+                style="@style/_add_address_text"
+                android:text="收货人" />
+
+            <EditText
+                android:id="@+id/edt_receiver_name"
+                style="@style/_add_address_edit"
+                android:hint="收货人必须与身份证真实姓名保持一致" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="@color/bg_bgline" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/address_height"
+            android:paddingLeft="12dp"
+            android:paddingRight="12dp"
+            android:paddingTop="5dp" >
+
+            <TextView
+                style="@style/_add_address_text"
+                android:text="@string/txt_address_phone" />
+
+            <EditText
+                android:id="@+id/edt_phone"
+                style="@style/_add_address_edit"
+                android:hint="@string/txt_address_phone_hint" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="@color/bg_bgline" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/address_height"
+            android:paddingLeft="12dp"
+            android:paddingRight="12dp"
+            android:paddingTop="5dp" >
+
+            <TextView
+                style="@style/_add_address_text"
+                android:text="@string/txt_address_idcard" />
+
+            <EditText
+                android:id="@+id/et_idcard"
+                style="@style/_add_address_edit"
+                android:hint="身份证号必须与收货人保持一致" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="@color/bg_bgline" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/address_height"
+            android:background="#ffeae0"
+            android:orientation="vertical" >
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="left|center_vertical"
+                android:paddingLeft="10dp"
+                android:text="@string/txt_address_info1"
+                android:textColor="#ff5400"
+                android:textSize="11sp" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="@color/bg_bgline" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/address_height"
+            android:paddingLeft="12dp"
+            android:paddingRight="12dp"
+            android:paddingTop="5dp" >
+
+            <TextView
+                style="@style/_add_address_text"
+                android:layout_weight="1"
+                android:text="@string/txt_address_privace" />
+
+            <Spinner
+                android:id="@+id/edt_province"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@null"
+                android:gravity="center"
+                android:prompt="@string/cmm_prompt_province"
+                android:textColor="@color/txt_black"
+                android:textSize="@dimen/txt_size_minus" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.3"
+                android:gravity="center"
+                android:text="@string/cmm_txt_contact"
+                android:textColor="@color/txt_black"
+                android:textSize="@dimen/txt_size_normal" />
+
+            <Spinner
+                android:id="@+id/edt_city"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_margin="5dp"
+                android:layout_weight="1"
+                android:background="@null"
+                android:gravity="center"
+                android:prompt="@string/cmm_prompt_city"
+                android:textColor="@color/txt_black"
+                android:textSize="@dimen/txt_size_minus" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.3"
+                android:gravity="center"
+                android:text="@string/cmm_txt_contact"
+                android:textColor="@color/txt_black"
+                android:textSize="@dimen/txt_size_minus" />
+
+            <Spinner
+                android:id="@+id/edt_district"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@null"
+                android:gravity="center"
+                android:prompt="@string/cmm_prompt_county"
+                android:textColor="@color/txt_black"
+                android:textSize="@dimen/txt_size_normal" />
+            
+            
+            <TextView 
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"/>
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="@color/bg_bgline" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/address_height"
+            android:paddingLeft="12dp"
+            android:paddingRight="12dp"
+            android:paddingTop="5dp" >
+
+            <TextView
+                style="@style/_add_address_text"
+                android:text="@string/txt_address_detail" />
+
+            <EditText
+                android:id="@+id/edt_address"
+                style="@style/_add_address_edit" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="@color/bg_bgline" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/address_height"
+            android:paddingLeft="12dp"
+            android:paddingRight="12dp"
+            android:paddingTop="5dp" >
+
+            <TextView
+                style="@style/_add_address_text"
+                android:text="@string/txt_address_set_default" />
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1" />
+
+            <ToggleButton
+                android:id="@+id/mTogBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
+                android:button="@drawable/address_oped_close"
+                android:checked="false"
+                android:textOff=""
+                android:textOn="" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="@color/bg_bgline" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/address_height"
+        android:layout_marginTop="50dp"
+        android:background="@android:color/white"
+        android:gravity="center" >
+
+        <TextView
+            android:id="@+id/tv_delete_address"
+            android:layout_width="200dp"
+            android:layout_height="30dp"
+            android:background="@drawable/bg_add_address"
+            android:gravity="center"
+            android:text="删除通关信息"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/txt_size_15"
+            android:visibility="gone" />
+    </LinearLayout>
+
+</LinearLayout>

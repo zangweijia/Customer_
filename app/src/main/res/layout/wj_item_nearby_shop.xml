@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="94dp"
+    android:background="@android:color/white" >
+
+    <RelativeLayout
+        android:layout_width="96dp"
+        android:layout_height="match_parent" >
+
+        <ImageView
+            android:id="@+id/iv_jiaobiao"
+            android:layout_width="22dp"
+            android:layout_height="22dp"
+            android:src="@drawable/shop_list_tuijian" />
+
+        <ImageView
+            android:id="@+id/iv_shop_thumbnails"
+            android:layout_width="72dp"
+            android:layout_height="72dp"
+            android:layout_centerInParent="true"
+            android:src="@drawable/ic_defult_shop" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="72dp"
+        android:layout_gravity="center_vertical"
+        android:layout_weight="1"
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/txt_shop_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="通州店"
+            android:textColor="@android:color/black"
+            android:textSize="@dimen/txt_size_14" />
+
+        <TextView
+            android:id="@+id/txt_shop_location"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:drawableLeft="@drawable/shop_dingwei"
+            android:gravity="center_vertical"
+            android:text="1212121km"
+            android:textColor="@color/bg_999999"
+            android:textSize="@dimen/txt_size_9" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:drawableLeft="@drawable/shop_person"
+                android:drawablePadding="3dp"
+                android:gravity="center_vertical"
+                android:text="店长:"
+                android:textColor="@android:color/black"
+                android:textSize="@dimen/txt_size_12" />
+
+            <TextView
+                android:id="@+id/txt_shop_contact"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="5dp"
+                android:layout_weight="1"
+                android:gravity="center_vertical"
+                android:text="通州店"
+                android:textColor="@android:color/black"
+                android:textSize="@dimen/txt_size_12" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:drawableLeft="@drawable/ic_shop_dianhua"
+                android:drawablePadding="3dp"
+                android:gravity="center_vertical"
+                android:text="联系电话:"
+                android:textColor="@android:color/black"
+                android:textSize="@dimen/txt_size_12" />
+
+            <TextView
+                android:id="@+id/txt_shop_mobile"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="5dp"
+                android:layout_weight="1"
+                android:gravity="center_vertical"
+                android:textColor="#45a7f3"
+                android:textSize="@dimen/txt_size_12" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_gravity="center_vertical"
+        android:background="@drawable/me_2" />
+
+</LinearLayout>

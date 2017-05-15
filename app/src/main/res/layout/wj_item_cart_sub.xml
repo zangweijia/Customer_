@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:id="@+id/ll_cartmain_sub"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="@color/bg_bgline" />
+
+    <LinearLayout
+        android:id="@+id/ll_yc"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/address_height"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp" >
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1" />
+
+        <TextView
+            android:id="@+id/tv_housename"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:text="1号仓库发货"
+            android:textSize="@dimen/txt_size_12" />
+
+        <TextView
+            android:id="@+id/tv_spze"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="10dp"
+            android:gravity="center_vertical"
+            android:text="商品总额:"
+            android:textColor="@android:color/black"
+            android:textSize="@dimen/txt_size_14" />
+
+        <TextView
+            
+            android:layout_marginLeft="5dp"
+            android:id="@+id/txt_sell_price"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:text="123.00"
+            android:textColor="@color/main_color"
+            android:textSize="@dimen/txt_size_14" />
+    </LinearLayout>
+
+</LinearLayout>

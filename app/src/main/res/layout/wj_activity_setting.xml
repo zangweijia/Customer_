@@ -1,0 +1,389 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white" >
+
+    <RelativeLayout
+        android:id="@+id/t"
+        android:layout_width="match_parent"
+        android:layout_height="47dp"
+        android:layout_alignParentTop="true"
+        android:gravity="center"
+        android:paddingLeft="@dimen/back_padding_left" >
+
+        <TextView
+            android:id="@+id/btn_return"
+            android:layout_width="@dimen/back_width"
+            android:layout_height="@dimen/back_height"
+            android:layout_centerVertical="true"
+            android:background="@drawable/ic_back" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="9"
+            android:gravity="center"
+            android:text="设置"
+            android:textColor="@color/findpass_title"
+            android:textSize="20sp" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:layout_alignParentBottom="true"
+            android:background="@color/bg_bgline" />
+    </RelativeLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/t"
+        android:scrollbars="none" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="10dp"
+                android:background="@color/bg_bgline" />
+
+            <LinearLayout
+                android:id="@+id/ll_setting_gerenzil"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:paddingLeft="6dp"
+                android:paddingRight="7dp" >
+
+                <TextView
+                    style="@style/_me_list"
+                    android:drawableLeft="@drawable/gerenzil"
+                    android:text="个人资料" />
+
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_gravity="center_vertical"
+                    android:src="@drawable/me_2" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:layout_marginLeft="22dp"
+                android:background="@color/bg_bgline" />
+
+            <LinearLayout
+                android:id="@+id/ll_setting_anquan"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:paddingLeft="6dp"
+                android:paddingRight="7dp" >
+
+                <TextView
+                    style="@style/_me_list"
+                    android:drawableLeft="@drawable/zhanghuyuanquan"
+                    android:text="账户安全" />
+
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_gravity="center_vertical"
+                    android:src="@drawable/me_2" />
+            </LinearLayout>
+            
+             <View
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:layout_marginLeft="22dp"
+                android:background="@color/bg_bgline" />
+
+            <LinearLayout
+                android:id="@+id/ll_setting_binding"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:paddingLeft="6dp"
+                android:paddingRight="7dp" >
+
+                <TextView
+                    style="@style/_me_list"
+                    android:drawableLeft="@drawable/binding"
+                    android:text="账号绑定" />
+
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_gravity="center_vertical"
+                    android:src="@drawable/me_2" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:layout_marginLeft="22dp"
+                android:background="@color/bg_bgline" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="10dp"
+                android:background="@color/bg_bgline" />
+
+            <LinearLayout
+                android:id="@+id/ll_setting_qingli"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:paddingLeft="6dp"
+                android:paddingRight="7dp" >
+
+                <TextView
+                    style="@style/_me_list"
+                    android:drawableLeft="@drawable/qinglihuancun"
+                    android:text="清理缓存" />
+
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_gravity="center_vertical"
+                    android:src="@drawable/me_2" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:layout_marginLeft="22dp"
+                android:background="@color/bg_bgline" />
+
+            <LinearLayout
+                android:id="@+id/ll_setting_guanyu"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:paddingLeft="6dp"
+                android:paddingRight="7dp" >
+
+                <TextView
+                    style="@style/_me_list"
+                    android:drawableLeft="@drawable/guanyubopinjia"
+                    android:text="关于舶品家" />
+
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_gravity="center_vertical"
+                    android:src="@drawable/me_2" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:layout_marginLeft="22dp"
+                android:background="@color/bg_bgline" />
+
+            <LinearLayout
+                android:id="@+id/ll_setting_tiaokuan"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:paddingLeft="6dp"
+                android:paddingRight="7dp" >
+
+                <TextView
+                    style="@style/_me_list"
+                    android:drawableLeft="@drawable/popinjiafuwutiaokuan"
+                    android:text="舶品家服务条款" />
+
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_gravity="center_vertical"
+                    android:src="@drawable/me_2" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:layout_marginLeft="22dp"
+                android:background="@color/bg_bgline" />
+
+            <LinearLayout
+                android:id="@+id/ll_setting_zizhi"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:paddingLeft="6dp"
+                android:paddingRight="7dp"
+                android:visibility="gone" >
+
+                <TextView
+                    style="@style/_me_list"
+                    android:drawableLeft="@drawable/womendezizhi"
+                    android:text="我们的资质" />
+
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_gravity="center_vertical"
+                    android:src="@drawable/me_2" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:layout_marginLeft="22dp"
+                android:background="@color/bg_bgline"
+                android:visibility="gone" />
+
+            <LinearLayout
+                android:id="@+id/ll_setting_licheng"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:paddingLeft="6dp"
+                android:paddingRight="7dp" >
+
+                <TextView
+                    style="@style/_me_list"
+                    android:drawableLeft="@drawable/bopinjialicheng"
+                    android:text="舶品家历程" />
+
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_gravity="center_vertical"
+                    android:src="@drawable/me_2" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:layout_marginLeft="22dp"
+                android:background="@color/bg_bgline" />
+
+            <LinearLayout
+                android:id="@+id/ll_setting_lianxiwomen"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:paddingLeft="6dp"
+                android:paddingRight="7dp" >
+
+                <TextView
+                    style="@style/_me_list"
+                    android:drawableLeft="@drawable/lianxiwomen"
+                    android:text="联系我们" />
+
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_gravity="center_vertical"
+                    android:src="@drawable/me_2" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:layout_marginLeft="22dp"
+                android:background="@color/bg_bgline" />
+
+            <LinearLayout
+                android:id="@+id/ll_setting_join"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:paddingLeft="6dp"
+                android:paddingRight="7dp" >
+
+                <TextView
+                    style="@style/_me_list"
+                    android:drawableLeft="@drawable/jiamengbopinjia"
+                    android:text="加盟舶品家" />
+
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_gravity="center_vertical"
+                    android:src="@drawable/me_2" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:layout_marginLeft="22dp"
+                android:background="@color/bg_bgline" />
+
+            <LinearLayout
+                android:id="@+id/ll_setting_gongyingshanghezuo"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:paddingLeft="6dp"
+                android:paddingRight="7dp" >
+
+                <TextView
+                    style="@style/_me_list"
+                    android:drawableLeft="@drawable/gongyingshanghezuo"
+                    android:text="供应商合作" />
+
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_gravity="center_vertical"
+                    android:src="@drawable/me_2" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:layout_marginLeft="22dp"
+                android:background="@color/bg_bgline" />
+
+            <LinearLayout
+                android:id="@+id/ll_setting_person_join"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:paddingLeft="6dp"
+                android:paddingRight="7dp" >
+
+                <TextView
+                    style="@style/_me_list"
+                    android:drawableLeft="@drawable/personjoin"
+                    android:text="个人申请加盟" />
+
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_gravity="center_vertical"
+                    android:src="@drawable/me_2" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:layout_marginLeft="22dp"
+                android:background="@color/bg_bgline" />
+        </LinearLayout>
+    </ScrollView>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:layout_above="@+id/bottom_bar"
+        android:background="@color/bg_bgline" />
+
+    <LinearLayout
+        android:id="@+id/bottom_bar"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/address_height"
+        android:layout_alignParentBottom="true"
+        android:background="@android:color/white"
+        android:gravity="center"
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/btn_exit"
+            android:layout_width="200dp"
+            android:layout_height="36dp"
+            android:background="@drawable/bg_add_address"
+            android:gravity="center"
+            android:text="退出当前账号"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/txt_size_15" />
+    </LinearLayout>
+
+</RelativeLayout>
