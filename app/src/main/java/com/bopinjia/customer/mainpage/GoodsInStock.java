@@ -17,23 +17,38 @@ import com.astuetz.PagerSlidingTabStrip;
 import com.bopinjia.customer.R;
 import com.bopinjia.customer.activity.ActivityCategory;
 import com.bopinjia.customer.activity.ActivitySearch;
+import com.bopinjia.customer.activity.BaseActivity;
+import com.bopinjia.customer.constants.Constants;
 import com.bopinjia.customer.fragment.ShopAllProducts;
 import com.bopinjia.customer.fragment.ShopMainFragment;
 import com.bopinjia.customer.qrcode.CaptureActivity;
+import com.bopinjia.customer.util.MD5;
 import com.bopinjia.customer.view.MyScrollView;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+import org.xutils.common.Callback;
+import org.xutils.http.RequestParams;
 import org.xutils.view.annotation.ContentView;
 import org.xutils.view.annotation.ViewInject;
 import org.xutils.x;
 
 import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import java.util.TreeMap;
 
 @ContentView(R.layout.fragment_goods_in_stock)
 public class GoodsInStock extends Fragment implements View.OnClickListener {
 
     @ViewInject(R.id.iv_shop_head)
     private ImageView mShopHead;
+    @ViewInject(R.id.iv_bg_shop_info)
+    private ImageView mBgShop;
+
 
     @ViewInject(R.id.tv_shop_name)
     private TextView mShopName;
@@ -68,6 +83,7 @@ public class GoodsInStock extends Fragment implements View.OnClickListener {
             // onResume
             LinearLayout mTitle = (LinearLayout) getActivity().findViewById(R.id.title);
             mTitle.setVisibility(View.VISIBLE);
+            getMDInfo();
         } else {
             // onPase
         }
@@ -79,6 +95,7 @@ public class GoodsInStock extends Fragment implements View.OnClickListener {
         LinearLayout mTitle = (LinearLayout) getActivity().findViewById(R.id.title);
         mTitle.setVisibility(View.VISIBLE);
         initClick();
+        getMDInfo();
         Fragment main = new ShopMainFragment();
         Fragment AllProduct = new ShopAllProducts();
         Fragment main1 = new ShopMainFragment();
@@ -100,8 +117,6 @@ public class GoodsInStock extends Fragment implements View.OnClickListener {
         mClassify.setOnClickListener(this);
         mSearch.setOnClickListener(this);
         mScan.setOnClickListener(this);
-
-
     }
 
 
@@ -156,5 +171,69 @@ public class GoodsInStock extends Fragment implements View.OnClickListener {
 
     }
 
+
+    /**
+     * 获取门店现货区首页信息
+     */
+    private void getMDInfo() {
+        String Ts = MD5.getTimeStamp();
+        String Mid=((BaseActivity)getActivity()).getBindingShop();
+        String Gdsid =((BaseActivity)getActivity()).getBopinjiaSharedPreference(Constants.KEY_PREFERENCE_BINDING_GDSUSERID);
+        Map<String, String> map = new TreeMap<String, String>(new Comparator<String>() {
+            public int compare(String obj1, String obj2) {
+                return obj1.compareTo(obj2);
+            }
+        });
+        map.put("MDUserId", Mid);
+        map.put("GDSUserId", Gdsid);
+        map.put("Key", Constants.WEBAPI_KEY);
+        map.put("Ts", Ts);
+        StringBuffer stringBuffer = new StringBuffer();
+        Set<String> keySet = map.keySet();
+        Iterator<String> iter = keySet.iterator();
+        while (iter.hasNext()) {
+            String key = iter.next();
+            stringBuffer.append(key).append("=").append(map.get(key)).append("&");
+        }
+        stringBuffer.deleteCharAt(stringBuffer.length() - 1);
+        String Sign = MD5.Md5(stringBuffer.toString());
+        String url = Constants.WEBAPI_ADDRESS + "api/Store/InfoXh?MDUserId=" + Mid + "&GDSUserId="+Gdsid + "&Sign=" + Sign + "&Ts=" + Ts;
+
+        RequestParams params = new RequestParams(url);
+        x.http().get(params, new Callback.CommonCallback<String>() {
+
+            @Override
+
+            public void onSuccess(String result) {
+                try {
+                    JSONObject jo = new JSONObject(result);
+                    String jsonresult = jo.getString("Result");
+                    if (jsonresult.equals("1")) {
+
+                        ((BaseActivity)getActivity()).setImageURl(mShopHead,jo.getJSONObject("Data").getString("MXhLogo"));
+
+                        ((BaseActivity)getActivity()).setImageURl(mBgShop,jo.getJSONObject("Data").getString("MXhBanner"));
+
+                        mShopName .setText(jo.getJSONObject("Data").getString("MXhShopName"));
+                        mIntorduce.setText(jo.getJSONObject("Data").getString("MXhShopMark"));
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+
+            @Override
+            public void onError(Throwable ex, boolean isOnCallback) {
+            }
+
+            @Override
+            public void onCancelled(Callback.CancelledException cex) {
+            }
+
+            @Override
+            public void onFinished() {
+            }
+        });
+    }
 
 }

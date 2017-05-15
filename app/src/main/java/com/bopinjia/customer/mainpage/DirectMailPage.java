@@ -132,7 +132,7 @@ public class DirectMailPage extends Fragment {
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         mTitle.getBackground().setAlpha(0);
-        getProductList(0, "0");
+        getProductList(0);
         initScrollviewListener();
         init();
         viewSetOnClick();
@@ -159,7 +159,6 @@ public class DirectMailPage extends Fragment {
 
             @Override
             public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
-
                 Intent intent = new Intent();
                 intent.putExtra("type", 1);
                 intent.putExtra("code", lista.get(arg2).getCcode());
@@ -167,39 +166,10 @@ public class DirectMailPage extends Fragment {
                 intent.putExtra("id", lista.get(arg2).getIndex());
                 intent.setClass(getActivity(), ActivityPersonalCare.class);
                 startActivity(intent);
-
-
-//                if (lista.get(arg2).getIndex().equals("5")) {
-//                    // 超级会员
-//                    if (isLogged) {
-//                        getIsDistribution();
-//                    } else {
-//                        ((BaseActivity) getActivity()).forward(ActivityLogin.class);
-//                    }
-//
-//                } else {
-//                    Intent intent = new Intent();
-//                    intent.putExtra("type", 1);
-//                    // type == 0 原生分类 type==1 H5 活动界面
-//                    if (lista.get(arg2).getApp_type().equals("0")) {
-//                        // 原生分类
-//                        // code值
-//                        intent.putExtra("code", lista.get(arg2).getCcode());
-//                        intent.putExtra("titlename", lista.get(arg2).getName());
-//                        intent.putExtra("id", lista.get(arg2).getIndex());
-//                        intent.setClass(getActivity(), ActivityPersonalCare.class);
-//                        startActivity(intent);
-//                    } else if (lista.get(arg2).getApp_type().equals("1")) {
-//                        // 活动界面
-//                        Toast.makeText(getActivity(), lista.get(arg2).getCcode(), Toast.LENGTH_SHORT).show();
-//                    }
-//                }
             }
         });
-
         mCategoryGridView.setFocusable(false);
         mBottomGridView.setFocusable(false);
-
     }
 
     private void viewSetOnClick() {
@@ -207,7 +177,6 @@ public class DirectMailPage extends Fragment {
 
             @Override
             public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
-
                 Intent i = new Intent();
                 i.putExtra("IsFreeShipping", "1");
                 i.putExtra("ProductSKUId", mList.get(arg2).getId());
@@ -349,9 +318,8 @@ public class DirectMailPage extends Fragment {
      * 获取底部商品列表
      *
      * @param id
-     * @param OrderBy
      */
-    private void getProductList(final int id, String OrderBy) {
+    private void getProductList(final int id) {
         String Ts = MD5.getTimeStamp();
         Map<String, String> map = new TreeMap<String, String>(new Comparator<String>() {
             public int compare(String obj1, String obj2) {
@@ -507,7 +475,7 @@ public class DirectMailPage extends Fragment {
                 if (isBottom) {
                     if (PageIndex < Integer.parseInt(mAllPages)) {
                         PageIndex += 1;
-                        getProductList(1, "0");
+                        getProductList(1);
                         tvmore.setText("加载更多");
                     } else if (PageIndex >= Integer.parseInt(mAllPages)) {
                         tvmore.setText("没有更多了");

@@ -1,7 +1,18 @@
 package com.bopinjia.customer.mainpage;
 
-import org.xutils.x;
-import org.xutils.view.annotation.ContentView;
+import android.content.Intent;
+import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.View.OnLongClickListener;
+import android.view.ViewGroup;
+import android.webkit.JavascriptInterface;
+import android.webkit.WebSettings;
+import android.webkit.WebView;
+import android.webkit.WebViewClient;
+import android.widget.LinearLayout;
 
 import com.bopinjia.customer.R;
 import com.bopinjia.customer.activity.ActivityCategory;
@@ -15,19 +26,8 @@ import com.bopinjia.customer.constants.Constants;
 import com.bopinjia.customer.qrcode.CaptureActivity;
 import com.bopinjia.customer.util.StatusBarUtils;
 
-import android.content.Intent;
-import android.os.Bundle;
-import android.support.v4.app.Fragment;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.view.View.OnClickListener;
-import android.view.View.OnLongClickListener;
-import android.webkit.JavascriptInterface;
-import android.webkit.WebSettings;
-import android.webkit.WebView;
-import android.webkit.WebViewClient;
-import android.widget.LinearLayout;
+import org.xutils.view.annotation.ContentView;
+import org.xutils.x;
 
 @ContentView(R.layout.fragment_activity_main_zhiyou)
 public class MainZYFragment extends Fragment implements OnClickListener {

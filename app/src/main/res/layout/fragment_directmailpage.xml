@@ -126,7 +126,7 @@
                 android:layout_height="40dp"
                 android:background="#ebebeb"
                 android:gravity="center"
-                android:text="精品推荐"
+                android:text="精 品 热 卖"
                 android:textColor="#ff5400"
                 android:textSize="@dimen/txt_size_14" />
 

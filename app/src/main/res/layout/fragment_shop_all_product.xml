@@ -3,11 +3,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical" >
-    
 
+    <android.support.v4.widget.NestedScrollView
+        android:id="@+id/main_scrollview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
     <TextView 
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="10000dp"
         android:text="全部商品"/>
-    
+    </android.support.v4.widget.NestedScrollView>
 </LinearLayout>

@@ -35,7 +35,7 @@
                         android:src="@mipmap/ic_goods_in_stock_tj" />
                 </LinearLayout>
 
-                <RelativeLayout
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="350dp"
                     android:background="#fddac3"
@@ -45,17 +45,17 @@
                     <android.support.v4.view.ViewPager
                         android:id="@+id/viewpager"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent" />
+                        android:layout_height="0dp"
+                        android:layout_weight="1" />
 
                     <com.viewpagerindicator.CirclePageIndicator
                         android:id="@+id/_indicator"
                         android:layout_width="match_parent"
                         android:layout_height="20dp"
                         android:layout_alignParentBottom="true"
-                        android:layout_marginBottom="20dp"
                         app:fillColor="@color/main_color"
                         app:pageColor="@color/bg_bgline" />
-                </RelativeLayout>
+                </LinearLayout>
 
                 <TextView
                     android:layout_width="match_parent"
@@ -97,11 +97,9 @@
                         android:numColumns="2"
                         android:scrollbars="none"
                         android:verticalSpacing="2dp"></com.bopinjia.customer.view.NoScrollGridView>
+
                 </LinearLayout>
-
             </LinearLayout>
-
-
         </LinearLayout>
     </android.support.v4.widget.NestedScrollView>
 
