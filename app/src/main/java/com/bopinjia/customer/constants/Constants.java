@@ -103,7 +103,9 @@ public class Constants {
 	// public static final String WEBSERVICE_ADDRESS = "192.168.2.120:8012";
 
 	/** WebAPI 地址 */
-	public static final String WEBAPI_ADDRESS = "http://newapi.bopinwang.com/";
+//	public static final String WEBAPI_ADDRESS = "http://newapi.bopinwang.com/";
+	public static final String WEBAPI_ADDRESS ="http://testapi.bopinwang.com/";
+
 	/** WebAPI 地址 */
 	public static final String WEBAPI_BOPINWANG = "http://newapi.bopinwang.com/";
 	/** WEBAPI KEY */

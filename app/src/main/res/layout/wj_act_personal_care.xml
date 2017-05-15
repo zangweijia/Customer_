@@ -67,7 +67,8 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/bg_ffffff" >
+                android:background="@color/bg_ffffff"
+                android:visibility="gone">
 
                 <LinearLayout
                     android:id="@+id/ll_head"

@@ -13,13 +13,11 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.bopinjia.customer.R;
 import com.bopinjia.customer.activity.ActivityCategory;
 import com.bopinjia.customer.activity.ActivityFXGL;
 import com.bopinjia.customer.activity.ActivityFXIntroduce;
-import com.bopinjia.customer.activity.ActivityLogin;
 import com.bopinjia.customer.activity.ActivityProductDetailsNew;
 import com.bopinjia.customer.activity.ActivitySearch;
 import com.bopinjia.customer.activity.BaseActivity;
@@ -162,31 +160,40 @@ public class DirectMailPage extends Fragment {
             @Override
             public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
 
-                if (lista.get(arg2).getIndex().equals("5")) {
-                    // 超级会员
-                    if (isLogged) {
-                        getIsDistribution();
-                    } else {
-                        ((BaseActivity) getActivity()).forward(ActivityLogin.class);
-                    }
+                Intent intent = new Intent();
+                intent.putExtra("type", 1);
+                intent.putExtra("code", lista.get(arg2).getCcode());
+                intent.putExtra("titlename", lista.get(arg2).getName());
+                intent.putExtra("id", lista.get(arg2).getIndex());
+                intent.setClass(getActivity(), ActivityPersonalCare.class);
+                startActivity(intent);
 
-                } else {
-                    Intent intent = new Intent();
-                    intent.putExtra("type", 1);
-                    // type == 0 原生分类 type==1 H5 活动界面
-                    if (lista.get(arg2).getApp_type().equals("0")) {
-                        // 原生分类
-                        // code值
-                        intent.putExtra("code", lista.get(arg2).getCcode());
-                        intent.putExtra("titlename", lista.get(arg2).getName());
-                        intent.putExtra("id", lista.get(arg2).getIndex());
-                        intent.setClass(getActivity(), ActivityPersonalCare.class);
-                        startActivity(intent);
-                    } else if (lista.get(arg2).getApp_type().equals("1")) {
-                        // 活动界面
-                        Toast.makeText(getActivity(), lista.get(arg2).getCcode(), Toast.LENGTH_SHORT).show();
-                    }
-                }
+
+//                if (lista.get(arg2).getIndex().equals("5")) {
+//                    // 超级会员
+//                    if (isLogged) {
+//                        getIsDistribution();
+//                    } else {
+//                        ((BaseActivity) getActivity()).forward(ActivityLogin.class);
+//                    }
+//
+//                } else {
+//                    Intent intent = new Intent();
+//                    intent.putExtra("type", 1);
+//                    // type == 0 原生分类 type==1 H5 活动界面
+//                    if (lista.get(arg2).getApp_type().equals("0")) {
+//                        // 原生分类
+//                        // code值
+//                        intent.putExtra("code", lista.get(arg2).getCcode());
+//                        intent.putExtra("titlename", lista.get(arg2).getName());
+//                        intent.putExtra("id", lista.get(arg2).getIndex());
+//                        intent.setClass(getActivity(), ActivityPersonalCare.class);
+//                        startActivity(intent);
+//                    } else if (lista.get(arg2).getApp_type().equals("1")) {
+//                        // 活动界面
+//                        Toast.makeText(getActivity(), lista.get(arg2).getCcode(), Toast.LENGTH_SHORT).show();
+//                    }
+//                }
             }
         });
 

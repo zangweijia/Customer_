@@ -77,8 +77,8 @@ public class ActivityHome extends BaseActivity {
 		mCart = ((TextView) findViewById(R.id.tv_cart));
 		remind();
 		fmap.clear();
-		 fmap.put(R.id._tab_zhiyou, new MainZYFragment());
-//		fmap.put(R.id._tab_zhiyou, new DirectMailPage());
+		// fmap.put(R.id._tab_zhiyou, new MainZYFragment());
+		fmap.put(R.id._tab_zhiyou, new DirectMailPage());
 		// fmap.put(R.id._tab_xianhuo, new MainXHFragment());
 		fmap.put(R.id._tab_xianhuo, new GoodsInStock());
 		fmap.put(R.id._tab_cart, new MainCartFragment());
