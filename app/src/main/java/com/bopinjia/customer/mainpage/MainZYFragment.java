@@ -167,6 +167,9 @@ public class MainZYFragment extends Fragment implements OnClickListener {
 	public void onResume() {
 		super.onResume();
 		webView.resumeTimers();
+		//			隐藏HomeActivity 顶部
+		LinearLayout mTitle = (LinearLayout) getActivity().findViewById(R.id.title);
+		mTitle.setVisibility(View.GONE);
 	}
 
 	/**

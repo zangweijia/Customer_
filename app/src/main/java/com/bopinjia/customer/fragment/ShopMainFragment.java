@@ -5,13 +5,12 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.NestedScrollView;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.GridView;
-import android.widget.LinearLayout;
-import android.widget.Toast;
 
 import com.bopinjia.customer.R;
 import com.bopinjia.customer.activity.ActivityProductDetailsNew;
@@ -22,7 +21,9 @@ import com.bopinjia.customer.constants.Constants;
 import com.bopinjia.customer.fragment.shopmainClassify.GridViewAdapter;
 import com.bopinjia.customer.fragment.shopmainClassify.Model;
 import com.bopinjia.customer.fragment.shopmainClassify.ViewPagerAdapter;
+import com.bopinjia.customer.net.XutilsHttp;
 import com.bopinjia.customer.util.MD5;
+import com.bopinjia.customer.util.NetUtils;
 import com.viewpagerindicator.CirclePageIndicator;
 
 import org.json.JSONArray;
@@ -35,6 +36,7 @@ import org.xutils.x;
 
 import java.util.ArrayList;
 import java.util.Comparator;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
@@ -59,11 +61,9 @@ public class ShopMainFragment extends LazyFragment {
      * 一共多少页
      */
     private String mAllPages;
-
     private ViewPager viewpager;
     private List<View> mPagerList;
-    private List<Model> mDatas;
-    private LinearLayout mLlDot;
+    private List<Model> mDatas = new ArrayList<>();
     private LayoutInflater inflater;
     /**
      * 总的页数
@@ -78,6 +78,8 @@ public class ShopMainFragment extends LazyFragment {
      */
     private int curIndex = 0;
     NestedScrollView scroller;
+    List<ProductGridviewClassSubBean> dataList;
+    private SwipeRefreshLayout mSwipeRefreshLayout;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -96,7 +98,7 @@ public class ShopMainFragment extends LazyFragment {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 Intent intent = new Intent();
-                intent.putExtra("IsFreeShipping", "1");
+                intent.putExtra("IsFreeShipping", "0");
                 intent.putExtra("ProductSKUId", mList.get(i).getId());
                 intent.setClass(getActivity(), ActivityProductDetailsNew.class);
                 startActivity(intent);
@@ -121,6 +123,17 @@ public class ShopMainFragment extends LazyFragment {
                 }
             }
         });
+
+        mSwipeRefreshLayout = (SwipeRefreshLayout) getActivity().findViewById(R.id.swipe_layout);
+        mSwipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                init();
+                mSwipeRefreshLayout.setRefreshing(false);
+            }
+        });
+        //设置样式刷新显示的位置
+        mSwipeRefreshLayout.setProgressViewOffset(true, -20, 100);
     }
 
     private void initView(View view) {
@@ -136,10 +149,17 @@ public class ShopMainFragment extends LazyFragment {
         if (!isPrepared || !isVisible) {
             return;
         } else {
-            initDatas();
-            getProductList(0);
-            getSubCategoryNext();
+            init();
         }
+    }
+
+    /**
+     * 加载数据
+     */
+    private void init() {
+        mDatas.clear();
+        getGridViewData();
+        getProductList(0);
     }
 
     private void getSubCategoryNext() {
@@ -157,7 +177,11 @@ public class ShopMainFragment extends LazyFragment {
                 @Override
                 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                     int pos = position + curIndex * pageSize;
-                    Toast.makeText(getActivity(), mDatas.get(pos).getName(), Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent();
+                    intent.putExtra("IsFreeShipping", "0");
+                    intent.putExtra("ProductSKUId", mDatas.get(pos).getId());
+                    intent.setClass(getActivity(), ActivityProductDetailsNew.class);
+                    startActivity(intent);
                 }
             });
         }
@@ -178,23 +202,6 @@ public class ShopMainFragment extends LazyFragment {
 
     }
 
-    private String[] titles = {"美食", "电影", "酒店住宿", "休闲娱乐", "外卖", "自助餐", "KTV", "机票/火车票", "周边游", "美甲美睫",
-            "火锅", "生日蛋糕", "甜品饮品", "水上乐园", "汽车服务", "美发", "丽人", "景点", "足疗按摩", "运动健身", "健身", "超市", "买菜",
-            "今日新单", "小吃快餐", "面膜", "洗浴/汗蒸", "母婴亲子", "生活服务", "婚纱摄影", "学习培训", "家装", "结婚", "全部分配"};
-
-    /**
-     * 初始化数据源
-     */
-    private void initDatas() {
-        mDatas = new ArrayList<Model>();
-        for (int i = 0; i < titles.length; i++) {
-            //动态获取资源ID，第一个参数是资源名，第二个参数是资源类型例如drawable，string等，第三个参数包名
-            int imageId = R.mipmap.ic_launcher_round;
-            mDatas.add(new Model(titles[i], imageId));
-        }
-    }
-
-    List<ProductGridviewClassSubBean> dataList;
 
     /**
      * 获取底部商品列表
@@ -276,11 +283,9 @@ public class ShopMainFragment extends LazyFragment {
             mAllPages = Paging.getString("Pages");
             if (dataArray != null && dataArray.length() > 0) {
                 dataList = new ArrayList<ProductGridviewClassSubBean>();
-
                 for (int i = 0; i < dataArray.length(); i++) {
                     JSONObject data = dataArray.getJSONObject(i);
                     ProductGridviewClassSubBean m = new ProductGridviewClassSubBean();
-
                     m.setImg(data.getString("ProductThumbnail"));
                     m.setMarketprice(data.getString("MarketPrice"));
                     m.setIsshiping("1");
@@ -305,7 +310,6 @@ public class ShopMainFragment extends LazyFragment {
                             mAdapter.notifyDataSetChanged();
                         }
                         break;
-
                     default:
                         break;
                 }
@@ -313,10 +317,59 @@ public class ShopMainFragment extends LazyFragment {
             } else {
             }
         } catch (Exception e) {
-
         }
-
     }
 
+
+    /**
+     * 获取店长推荐GridView 数据
+     */
+    private void getGridViewData() {
+        String Mid = ((BaseActivity) getActivity()).getBindingShop();
+        Map<String, String> map = new HashMap<String, String>();
+
+        String Ts = MD5.getTimeStamp();
+        map.put("UserId", Mid);
+        map.put("ZY", "0");
+        map.put("PageIndex", "1");
+        map.put("pageSize", "24");
+
+        map.put("Key", Constants.WEBAPI_KEY);
+        map.put("Ts", Ts);
+        String url = Constants.WEBAPI_ADDRESS + "api/Product/GetMDtopProductlist?UserId=" + Mid + "&ZY=0&PageIndex=1&pageSize=24" + "&Sign="
+                + NetUtils.getSign(map) + "&Ts=" + Ts;
+        XutilsHttp.getInstance().get(url, null, new getGridViewDataCallBack(), getActivity());
+    }
+
+    class getGridViewDataCallBack implements XutilsHttp.XCallBack {
+
+        @Override
+        public void onResponse(String result) {
+            try {
+                JSONObject jo = new JSONObject(result);
+                String jsonresult = jo.getString("Result");
+                if (jsonresult.equals("1")) {
+
+                    JSONArray dataArray = jo.getJSONObject("Data").getJSONArray("Records");
+
+                    if (dataArray != null && dataArray.length() > 0) {
+                        for (int i = 0; i < dataArray.length(); i++) {
+                            JSONObject data = dataArray.getJSONObject(i);
+                            Model m = new Model();
+                            m.setIconRes(data.getString("ProductThumbnail"));
+                            m.setName(data.getString("ProductSKUName"));
+                            m.setPrice("¥" + data.getString("ScanPrice"));
+                            m.setId(data.getString("ProductSKUId"));
+                            mDatas.add(m);
+                        }
+                        getSubCategoryNext();
+
+                    }
+                }
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
+    }
 
 }

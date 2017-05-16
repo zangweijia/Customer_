@@ -103,7 +103,7 @@ public class ActivityFXGL extends BaseActivity {
 
     }
 
-    @Event(value = {R.id.btn_return, R.id.tv_xf, R.id.tv_hyzx, R.id.tv_tixian, R.id.ll_shop_info})
+    @Event(value = {R.id.btn_return, R.id.tv_xf, R.id.tv_hyzx, R.id.tv_tixian, R.id.tv_endtime, R.id.iv_img,R.id.tv_shopname})
     private void getEvent(View view) {
         switch (view.getId()) {
             case R.id.btn_return:
@@ -118,11 +118,13 @@ public class ActivityFXGL extends BaseActivity {
                 i.putExtra("name", typename);
                 forward(ActivityFXDisPay.class, i);
                 break;
-            case R.id.tv_hyzx:
-                forward(ActivityFXSPersonalCenter.class);
-                break;
-            case R.id.ll_shop_info:
+            case R.id.iv_img:
                 forward(ActivityFXSStoreInfo.class);
+                break;
+            case R.id.tv_hyzx:
+            case R.id.tv_shopname:
+            case R.id.tv_endtime:
+                forward(ActivityFXSPersonalCenter.class);
                 break;
             case R.id.tv_tixian:
                 Intent ii = new Intent();

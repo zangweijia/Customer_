@@ -1,106 +1,116 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v4.widget.SwipeRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/swipe_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:addStatesFromChildren="true"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-    <android.support.v4.widget.NestedScrollView
-        android:id="@+id/main_scrollview"
+
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-        <LinearLayout
+        <android.support.v4.widget.NestedScrollView
+            android:id="@+id/main_scrollview"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:layout_height="match_parent">
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:orientation="vertical">
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@color/bg_ffffff"
-                    android:gravity="center"
                     android:orientation="vertical">
 
-                    <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="5dp"
-                        android:layout_marginTop="5dp"
-                        android:src="@mipmap/ic_goods_in_stock_tj" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="350dp"
-                    android:background="#fddac3"
-                    android:gravity="center"
-                    android:orientation="vertical">
-
-                    <android.support.v4.view.ViewPager
-                        android:id="@+id/viewpager"
+                    <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="0dp"
-                        android:layout_weight="1" />
-
-                    <com.viewpagerindicator.CirclePageIndicator
-                        android:id="@+id/_indicator"
-                        android:layout_width="match_parent"
-                        android:layout_height="20dp"
-                        android:layout_alignParentBottom="true"
-                        app:fillColor="@color/main_color"
-                        app:pageColor="@color/bg_bgline" />
-                </LinearLayout>
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="10dp"
-                    android:background="@color/bg_bgline" />
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@color/bg_ffffff"
-                    android:gravity="center"
-                    android:orientation="vertical">
-
-                    <ImageView
-                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginBottom="5dp"
-                        android:layout_marginTop="5dp"
-                        android:src="@mipmap/ic_goods_in_stock_jptj" />
+                        android:background="@color/bg_ffffff"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="5dp"
+                            android:layout_marginTop="5dp"
+                            android:src="@mipmap/ic_goods_in_stock_tj" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="350dp"
+                        android:background="#fddac3"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <android.support.v4.view.ViewPager
+                            android:id="@+id/viewpager"
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:layout_margin="5dp"
+                            android:layout_weight="1" />
+
+                        <com.viewpagerindicator.CirclePageIndicator
+                            android:id="@+id/_indicator"
+                            android:layout_width="match_parent"
+                            android:layout_height="20dp"
+                            android:layout_alignParentBottom="true"
+                            app:fillColor="@color/main_color"
+                            app:pageColor="@color/bg_bgline" />
+                    </LinearLayout>
 
                     <TextView
                         android:layout_width="match_parent"
-                        android:layout_height="5dp"
+                        android:layout_height="10dp"
                         android:background="@color/bg_bgline" />
-                </LinearLayout>
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@color/bg_bgline">
-
-                    <com.bopinjia.customer.view.NoScrollGridView
-                        android:id="@+id/gridview"
+                    <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:background="@color/bg_ffffff"
                         android:gravity="center"
-                        android:horizontalSpacing="2dp"
-                        android:listSelector="@null"
-                        android:numColumns="2"
-                        android:scrollbars="none"
-                        android:verticalSpacing="2dp"></com.bopinjia.customer.view.NoScrollGridView>
+                        android:orientation="vertical">
 
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="5dp"
+                            android:layout_marginTop="5dp"
+                            android:src="@mipmap/ic_goods_in_stock_jptj" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="5dp"
+                            android:background="@color/bg_bgline" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/bg_bgline">
+
+                        <com.bopinjia.customer.view.NoScrollGridView
+                            android:id="@+id/gridview"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:horizontalSpacing="2dp"
+                            android:listSelector="@null"
+                            android:numColumns="2"
+                            android:scrollbars="none"
+                            android:verticalSpacing="2dp"></com.bopinjia.customer.view.NoScrollGridView>
+
+                    </LinearLayout>
                 </LinearLayout>
             </LinearLayout>
-        </LinearLayout>
-    </android.support.v4.widget.NestedScrollView>
+        </android.support.v4.widget.NestedScrollView>
 
-</LinearLayout>
+    </LinearLayout>
+</android.support.v4.widget.SwipeRefreshLayout>

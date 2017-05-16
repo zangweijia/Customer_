@@ -69,6 +69,8 @@ public class GoodsInStock extends Fragment implements View.OnClickListener {
     private List<Fragment> fragments = new ArrayList<Fragment>();
     private View view;
 
+
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         return x.view().inject(this, inflater, container);
@@ -90,10 +92,23 @@ public class GoodsInStock extends Fragment implements View.OnClickListener {
     }
 
     @Override
+    public void onResume() {
+        super.onResume();
+        LinearLayout mTitle = (LinearLayout) getActivity().findViewById(R.id.title);
+        mTitle.setVisibility(View.VISIBLE);
+        getMDInfo();
+    }
+
+    @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         LinearLayout mTitle = (LinearLayout) getActivity().findViewById(R.id.title);
         mTitle.setVisibility(View.VISIBLE);
+        init();
+    }
+
+
+    private void init() {
         initClick();
         getMDInfo();
         Fragment main = new ShopMainFragment();
@@ -146,7 +161,7 @@ public class GoodsInStock extends Fragment implements View.OnClickListener {
 
     class mAdapter extends FragmentPagerAdapter {
 
-        String[] titles = new String[]{"店铺首页", "全部商品", "店铺首页", "全部商品"};
+        String[] titles = new String[]{"店铺首页", "全部商品", "店长推荐", "新品推荐"};
         private List<Fragment> fragments;
 
         public mAdapter(FragmentManager fm, List<Fragment> fragments) {
@@ -177,8 +192,8 @@ public class GoodsInStock extends Fragment implements View.OnClickListener {
      */
     private void getMDInfo() {
         String Ts = MD5.getTimeStamp();
-        String Mid=((BaseActivity)getActivity()).getBindingShop();
-        String Gdsid =((BaseActivity)getActivity()).getBopinjiaSharedPreference(Constants.KEY_PREFERENCE_BINDING_GDSUSERID);
+        String Mid = ((BaseActivity) getActivity()).getBindingShop();
+        String Gdsid = ((BaseActivity) getActivity()).getBopinjiaSharedPreference(Constants.KEY_PREFERENCE_BINDING_GDSUSERID);
         Map<String, String> map = new TreeMap<String, String>(new Comparator<String>() {
             public int compare(String obj1, String obj2) {
                 return obj1.compareTo(obj2);
@@ -197,7 +212,7 @@ public class GoodsInStock extends Fragment implements View.OnClickListener {
         }
         stringBuffer.deleteCharAt(stringBuffer.length() - 1);
         String Sign = MD5.Md5(stringBuffer.toString());
-        String url = Constants.WEBAPI_ADDRESS + "api/Store/InfoXh?MDUserId=" + Mid + "&GDSUserId="+Gdsid + "&Sign=" + Sign + "&Ts=" + Ts;
+        String url = Constants.WEBAPI_ADDRESS + "api/Store/InfoXh?MDUserId=" + Mid + "&GDSUserId=" + Gdsid + "&Sign=" + Sign + "&Ts=" + Ts;
 
         RequestParams params = new RequestParams(url);
         x.http().get(params, new Callback.CommonCallback<String>() {
@@ -210,11 +225,11 @@ public class GoodsInStock extends Fragment implements View.OnClickListener {
                     String jsonresult = jo.getString("Result");
                     if (jsonresult.equals("1")) {
 
-                        ((BaseActivity)getActivity()).setImageURl(mShopHead,jo.getJSONObject("Data").getString("MXhLogo"));
+                        ((BaseActivity) getActivity()).setImageURl(mShopHead, jo.getJSONObject("Data").getString("MXhLogo"));
 
-                        ((BaseActivity)getActivity()).setImageURl(mBgShop,jo.getJSONObject("Data").getString("MXhBanner"));
+                        ((BaseActivity) getActivity()).setImageURl(mBgShop, jo.getJSONObject("Data").getString("MXhBanner"));
 
-                        mShopName .setText(jo.getJSONObject("Data").getString("MXhShopName"));
+                        mShopName.setText(jo.getJSONObject("Data").getString("MXhShopName"));
                         mIntorduce.setText(jo.getJSONObject("Data").getString("MXhShopMark"));
                     }
                 } catch (JSONException e) {

@@ -6,11 +6,16 @@ package com.bopinjia.customer.fragment.shopmainClassify;
 
 public class Model {
     public String name;
-    public int iconRes;
+    public String iconRes;
+    public String price;
+    private String id;
 
-    public Model(String name, int iconRes) {
-        this.name = name;
-        this.iconRes = iconRes;
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
     public String getName() {
@@ -21,11 +26,19 @@ public class Model {
         this.name = name;
     }
 
-    public int getIconRes() {
+    public String getIconRes() {
         return iconRes;
     }
 
-    public void setIconRes(int iconRes) {
+    public void setIconRes(String iconRes) {
         this.iconRes = iconRes;
+    }
+
+    public String getPrice() {
+        return price;
+    }
+
+    public void setPrice(String price) {
+        this.price = price;
     }
 }

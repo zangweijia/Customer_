@@ -11,6 +11,9 @@ import android.widget.TextView;
 
 import com.bopinjia.customer.R;
 
+import org.xutils.image.ImageOptions;
+import org.xutils.x;
+
 import java.util.List;
 /**
  * Created by ZWJ on 2017/5/15.
@@ -61,6 +64,7 @@ public class GridViewAdapter extends BaseAdapter {
             convertView = inflater.inflate(R.layout.item_gridview, parent, false);
             viewHolder = new ViewHolder();
             viewHolder.tv = (TextView) convertView.findViewById(R.id.textView);
+            viewHolder.price = (TextView) convertView.findViewById(R.id.tv_price);
             viewHolder.iv = (ImageView) convertView.findViewById(R.id.imageView);
             convertView.setTag(viewHolder);
         } else {
@@ -71,13 +75,18 @@ public class GridViewAdapter extends BaseAdapter {
          */
         int pos = position + curIndex * pageSize;
         viewHolder.tv.setText(mDatas.get(pos).name);
-        viewHolder.iv.setImageResource(mDatas.get(pos).iconRes);
+        viewHolder.price.setText(mDatas.get(pos).getPrice());
+        ImageOptions imageOptions = new ImageOptions.Builder().setImageScaleType(ImageView.ScaleType.CENTER_CROP)
+                .setCircular(true).setCrop(true).build();
+        x.image().bind(viewHolder.iv, mDatas.get(pos).getIconRes());
+
         return convertView;
     }
 
 
     class ViewHolder {
         public TextView tv;
+        public TextView price;
         public ImageView iv;
     }
 }

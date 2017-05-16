@@ -66,6 +66,7 @@ public class XutilsHttp {
 			}
 		}
 		final CustomProgressDialog dialog = new CustomProgressDialog(context, "正在加载中", R.anim.frame);
+//		final ProgressDialog dialog = new ProgressDialog(context);
 		dialog.setCanceledOnTouchOutside(false);
 		dialog.show();
 

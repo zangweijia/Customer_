@@ -120,7 +120,6 @@ public class DirectMailPage extends Fragment {
     @Override
     public void onHiddenChanged(boolean hidden) {
         if (!hidden) {
-            // onResume
 //			隐藏HomeActivity 顶部
             LinearLayout mTitle = (LinearLayout) getActivity().findViewById(R.id.title);
             mTitle.setVisibility(View.GONE);
@@ -129,19 +128,41 @@ public class DirectMailPage extends Fragment {
     }
 
     @Override
+    public void onResume() {
+        super.onResume();
+        //			隐藏HomeActivity 顶部
+        LinearLayout mTitle = (LinearLayout) getActivity().findViewById(R.id.title);
+        mTitle.setVisibility(View.GONE);
+
+    }
+//    private SwipeRefreshLayout mSwipeRefreshLayout;
+    @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         mTitle.getBackground().setAlpha(0);
-        getProductList(0);
-        initScrollviewListener();
         init();
-        viewSetOnClick();
+        initScrollviewListener();
+
+//        mSwipeRefreshLayout = (SwipeRefreshLayout) getActivity().findViewById(R.id.swipe_layout);
+//        mSwipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+//            @Override
+//            public void onRefresh() {
+//                init();
+//                mSwipeRefreshLayout.setRefreshing(false);
+//            }
+//        });
+//        //设置样式刷新显示的位置
+//        mSwipeRefreshLayout.setProgressViewOffset(true, -20, 100);
     }
+
+
+
 
     /**
      * 初始化数据
      */
     private void init() {
+        getProductList(0);
         ProductList();
         isLogged = ((BaseActivity) getActivity()).isLogged();
         List<HorizontallistViewBean> list = new ArrayList<HorizontallistViewBean>();
@@ -170,9 +191,6 @@ public class DirectMailPage extends Fragment {
         });
         mCategoryGridView.setFocusable(false);
         mBottomGridView.setFocusable(false);
-    }
-
-    private void viewSetOnClick() {
         mBottomGridView.setOnItemClickListener(new OnItemClickListener() {
 
             @Override
@@ -184,8 +202,9 @@ public class DirectMailPage extends Fragment {
                 startActivity(i);
             }
         });
-
     }
+
+
 
     /**
      * 设置横向商品列表
@@ -256,6 +275,9 @@ public class DirectMailPage extends Fragment {
         }
     }
 
+    /**
+     * 获取轮播图
+     */
     private void ProductList() {
         String MuserId = ((BaseActivity) getActivity()).getBindingShop();
         String Ts = MD5.getTimeStamp();
