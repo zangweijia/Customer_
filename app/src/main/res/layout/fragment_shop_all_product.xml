@@ -2,15 +2,133 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical" >
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/ll_top"
+        android:layout_width="match_parent"
+        android:layout_height="44dp"
+        android:gravity="center_vertical">
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.5" />
+
+        <TextView
+            android:id="@+id/tv_comprehensive"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="综合"
+            android:textColor="@color/bg_666666" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1" />
+
+        <TextView
+            android:id="@+id/tv_sales"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="销量"
+            android:textColor="@color/bg_666666" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1" />
+
+        <TextView
+            android:id="@+id/tv_price"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:drawableRight="@drawable/ic_sort_defult"
+            android:gravity="center"
+            android:text="价格"
+            android:textColor="@color/bg_666666" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.5" />
+
+        <View
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="10dp"
+            android:background="@color/bg_bgline" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.5" />
+
+
+        <TextView
+            android:id="@+id/tv_layout"
+            android:layout_width="23dp"
+            android:layout_height="23dp"
+            android:layout_marginLeft="8dp"
+            android:background="@drawable/ic_grid" />
+
+
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.5" />
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="@color/bg_bgline"/>
 
     <android.support.v4.widget.NestedScrollView
-        android:id="@+id/main_scrollview"
+        android:id="@+id/scrollview"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-    <TextView 
-        android:layout_width="match_parent"
-        android:layout_height="10000dp"
-        android:text="全部商品"/>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+
+                <com.bopinjia.customer.view.NoScrollListview
+                    android:id="@+id/list"
+                    android:layout_width="match_parent"
+                    android:visibility="gone"
+                    android:layout_height="match_parent"></com.bopinjia.customer.view.NoScrollListview>
+
+                <LinearLayout
+                    android:id="@+id/ll_grid"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/bg_bgline">
+
+                    <com.bopinjia.customer.view.NoScrollGridView
+                        android:id="@+id/grid"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:horizontalSpacing="2dp"
+                        android:listSelector="@null"
+                        android:numColumns="2"
+                        android:scrollbars="none"
+                        android:verticalSpacing="2dp"></com.bopinjia.customer.view.NoScrollGridView>
+                </LinearLayout>
+
+            </LinearLayout>
+        </RelativeLayout>
     </android.support.v4.widget.NestedScrollView>
 </LinearLayout>

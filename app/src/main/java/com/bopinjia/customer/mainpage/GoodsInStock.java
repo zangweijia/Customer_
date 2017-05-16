@@ -19,8 +19,10 @@ import com.bopinjia.customer.activity.ActivityCategory;
 import com.bopinjia.customer.activity.ActivitySearch;
 import com.bopinjia.customer.activity.BaseActivity;
 import com.bopinjia.customer.constants.Constants;
-import com.bopinjia.customer.fragment.ShopAllProducts;
-import com.bopinjia.customer.fragment.ShopMainFragment;
+import com.bopinjia.customer.fragment.goodsInStockFragment.ManagerRecommended;
+import com.bopinjia.customer.fragment.goodsInStockFragment.NewProductRecommended;
+import com.bopinjia.customer.fragment.goodsInStockFragment.ShopAllProducts;
+import com.bopinjia.customer.fragment.goodsInStockFragment.ShopMainFragment;
 import com.bopinjia.customer.qrcode.CaptureActivity;
 import com.bopinjia.customer.util.MD5;
 import com.bopinjia.customer.view.MyScrollView;
@@ -70,7 +72,6 @@ public class GoodsInStock extends Fragment implements View.OnClickListener {
     private View view;
 
 
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         return x.view().inject(this, inflater, container);
@@ -111,15 +112,15 @@ public class GoodsInStock extends Fragment implements View.OnClickListener {
     private void init() {
         initClick();
         getMDInfo();
-        Fragment main = new ShopMainFragment();
-        Fragment AllProduct = new ShopAllProducts();
-        Fragment main1 = new ShopMainFragment();
-        Fragment AllProduct1 = new ShopAllProducts();
+        Fragment shopMainFragment = new ShopMainFragment();
+        Fragment shopAllProducts = new ShopAllProducts();
+        Fragment managerRecommended = new ManagerRecommended();
+        Fragment newProductRecommended = new NewProductRecommended();
 
-        fragments.add(main);
-        fragments.add(AllProduct);
-        fragments.add(main1);
-        fragments.add(AllProduct1);
+        fragments.add(shopMainFragment);
+        fragments.add(shopAllProducts);
+        fragments.add(managerRecommended);
+        fragments.add(newProductRecommended);
 
         mViewpager.setAdapter(new mAdapter(getChildFragmentManager(), fragments));
         mTabs.setViewPager(mViewpager);

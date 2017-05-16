@@ -1,4 +1,4 @@
-package com.bopinjia.customer.fragment;
+package com.bopinjia.customer.fragment.goodsInStockFragment;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -18,6 +18,7 @@ import com.bopinjia.customer.activity.BaseActivity;
 import com.bopinjia.customer.adapter.AdapterProductGridViewClassSub;
 import com.bopinjia.customer.bean.ProductGridviewClassSubBean;
 import com.bopinjia.customer.constants.Constants;
+import com.bopinjia.customer.fragment.LazyFragment;
 import com.bopinjia.customer.fragment.shopmainClassify.GridViewAdapter;
 import com.bopinjia.customer.fragment.shopmainClassify.Model;
 import com.bopinjia.customer.fragment.shopmainClassify.ViewPagerAdapter;
@@ -157,6 +158,7 @@ public class ShopMainFragment extends LazyFragment {
      * 加载数据
      */
     private void init() {
+        curIndex = 0;
         mDatas.clear();
         getGridViewData();
         getProductList(0);

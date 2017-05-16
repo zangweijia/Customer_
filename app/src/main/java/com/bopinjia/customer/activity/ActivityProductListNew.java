@@ -556,11 +556,8 @@ public class ActivityProductListNew extends BaseActivity {
 					m.setImg(data.getString("ProductThumbnail"));
 					m.setMarketprice(data.getString("MarketPrice"));
 					m.setIsshiping("1");
-					
 					//起订量
 					m.setNumber(data.getString("CustomerInitiaQuantity"));
-					
-					
 					m.setName(data.getString("ProductSKUName"));
 					m.setPrice(data.getString("ScanPrice"));
 					m.setId(data.getString("ProductSKUId"));
