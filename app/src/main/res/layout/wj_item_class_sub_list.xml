@@ -2,11 +2,11 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="120dp"
-    android:background="@android:color/white" >
+    android:background="@android:color/white">
 
     <RelativeLayout
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" >
+        android:layout_height="wrap_content">
 
         <ImageView
             android:id="@+id/iv_product_thumbnails"
@@ -32,11 +32,11 @@
         android:layout_marginTop="12dp"
         android:layout_weight="1"
         android:orientation="vertical"
-        android:paddingBottom="10dp" >
+        android:paddingBottom="10dp">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" >
+            android:layout_height="wrap_content">
 
             <ImageView
                 android:id="@+id/iv_country"
@@ -71,37 +71,98 @@
             android:layout_weight="1" />
 
         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="3dp" >
-
-            <TextView
-                android:id="@+id/txt_sell_price"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:gravity="bottom"
-                android:text="¥200.00"
-                android:textColor="@color/main_color"
-                android:textSize="@dimen/txt_size_14" />
-
-            <TextView
-                android:id="@+id/txt_market_price"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:text="￥200.00"
-                android:textColor="@color/bg_999999"
-                android:textSize="10sp" />
-        </LinearLayout>
-
-        <TextView
-            android:id="@+id/txt_buy_number"
+            android:id="@+id/ll_default"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="3dp"
-            android:text="2000人已购买"
-            android:textSize="@dimen/txt_size_10" />
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/txt_sell_price"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="bottom"
+                    android:text="¥200.00"
+                    android:textColor="@color/main_color"
+                    android:textSize="@dimen/txt_size_14" />
+
+                <TextView
+                    android:id="@+id/txt_market_price"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="￥200.00"
+                    android:textColor="@color/bg_999999"
+                    android:textSize="10sp" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/txt_buy_number"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="3dp"
+                android:text="起订量：1"
+                android:textSize="@dimen/txt_size_10" />
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:id="@+id/ll_commissiom"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+            <TextView
+                android:id="@+id/txt_commission"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="3dp"
+                android:layout_marginTop="3dp"
+                android:ellipsize="end"
+                android:gravity="left|center_vertical"
+                android:lines="1"
+                android:padding="2dp"
+                android:text="金牌佣金：￥5"
+                android:textColor="@color/main_color"
+                android:textSize="@dimen/txt_size_14" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/txt_commission_product_price"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="left|bottom"
+                    android:text="售价：￥188.00"
+                    android:textSize="10sp" />
+
+                <View
+                    android:layout_width="3dp"
+                    android:layout_height="match_parent" />
+
+                <TextView
+                    android:id="@+id/txt_commission_number"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="起订量：1"
+                    android:textColor="@color/bg_999999"
+                    android:textSize="10sp" />
+            </LinearLayout>
+
+
+        </LinearLayout>
+
     </LinearLayout>
 
 </LinearLayout>

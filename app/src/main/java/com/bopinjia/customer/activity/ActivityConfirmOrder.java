@@ -579,7 +579,7 @@ public class ActivityConfirmOrder extends BaseActivity {
 					forward(ActivityPay.class, intent);
 					finish();
 				}else{
-//					showToast(jo.getString("Data"));
+ 					showToast(jo.getString("Message"));
 				}
 			} catch (JSONException e) {
 				// TODO Auto-generated catch block

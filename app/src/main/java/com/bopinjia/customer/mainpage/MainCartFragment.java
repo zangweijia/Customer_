@@ -1,36 +1,5 @@
 package com.bopinjia.customer.mainpage;
 
-import java.math.BigDecimal;
-import java.text.DecimalFormat;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-import org.xutils.x;
-import org.xutils.common.Callback;
-import org.xutils.http.RequestParams;
-import org.xutils.image.ImageOptions;
-import org.xutils.view.annotation.ContentView;
-
-import com.bopinjia.customer.R;
-import com.bopinjia.customer.activity.ActivityConfirmOrder;
-import com.bopinjia.customer.activity.ActivityHome;
-import com.bopinjia.customer.activity.ActivityLogin;
-import com.bopinjia.customer.activity.ActivityProductDetailsNew;
-import com.bopinjia.customer.activity.BaseActivity;
-import com.bopinjia.customer.adapter.CartTuiJianProductAdapter;
-import com.bopinjia.customer.adapter.ProductListModel;
-import com.bopinjia.customer.constants.Constants;
-import com.bopinjia.customer.util.MD5;
-import com.bopinjia.customer.util.NetUtils;
-import com.bopinjia.customer.util.SetPriceSize;
-import com.bopinjia.customer.view.NoScrollGridView;
-import com.bopinjia.customer.view.NoScrollListview;
-
 import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
@@ -41,8 +10,8 @@ import android.text.Spanned;
 import android.text.style.TextAppearanceSpan;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.view.View.OnClickListener;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.BaseAdapter;
@@ -51,6 +20,37 @@ import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
+import com.bopinjia.customer.R;
+import com.bopinjia.customer.activity.ActivityConfirmOrder;
+import com.bopinjia.customer.activity.ActivityHome;
+import com.bopinjia.customer.activity.ActivityLogin;
+import com.bopinjia.customer.activity.ActivityProductDetailsNew;
+import com.bopinjia.customer.activity.BaseActivity;
+import com.bopinjia.customer.adapter.AdapterProductGridViewClassSub;
+import com.bopinjia.customer.bean.ProductGridviewClassSubBean;
+import com.bopinjia.customer.constants.Constants;
+import com.bopinjia.customer.util.MD5;
+import com.bopinjia.customer.util.NetUtils;
+import com.bopinjia.customer.util.SetPriceSize;
+import com.bopinjia.customer.view.NoScrollGridView;
+import com.bopinjia.customer.view.NoScrollListview;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+import org.xutils.common.Callback;
+import org.xutils.http.RequestParams;
+import org.xutils.image.ImageOptions;
+import org.xutils.view.annotation.ContentView;
+import org.xutils.x;
+
+import java.math.BigDecimal;
+import java.text.DecimalFormat;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 @ContentView(R.layout.fragment_activity_main_gouwuche)
 public class MainCartFragment extends Fragment implements OnClickListener {
@@ -66,7 +66,7 @@ public class MainCartFragment extends Fragment implements OnClickListener {
     private List<JSONObject> dataList;
     private CartListAdapter cartListAdapter;
     private JSONArray mShopList;
-    private List<ProductListModel> list;
+    private List<ProductGridviewClassSubBean> list;
     private String userid;
     // 给支付宝传参
     private String ProductName;
@@ -98,8 +98,7 @@ public class MainCartFragment extends Fragment implements OnClickListener {
         //	 隐藏HomeActivity 顶部
         LinearLayout mTitle = (LinearLayout) getActivity().findViewById(R.id.title);
         mTitle.setVisibility(View.GONE);
-
-
+        GetDefultAddress();
         super.onResume();
     }
 
@@ -111,6 +110,7 @@ public class MainCartFragment extends Fragment implements OnClickListener {
         if (!hidden) {
             getCartContent();
             init();
+            GetDefultAddress();
         } else {
             // 相当于Fragment的onPause
             if (mCartList != null) {
@@ -215,30 +215,37 @@ public class MainCartFragment extends Fragment implements OnClickListener {
             if (jDList.length() > 0) {
 
                 if (jDList != null) {
-                    list = new ArrayList<ProductListModel>();
+                    list = new ArrayList<ProductGridviewClassSubBean>();
                     for (int i = 0; i < jDList.length(); i++) {
                         JSONObject data = jDList.getJSONObject(i);
-                        ProductListModel m = new ProductListModel();
-                        m.setMarket_price(data.getString("MarketPrice"));
+                        ProductGridviewClassSubBean m = new ProductGridviewClassSubBean();
+
+                        m.setIsfexiao(data.getString("BCP_IsFX"));
+                        m.setCommissionPrice(data.getString("CommissionPrice"));
+
+
+                        m.setImg(data.getString("ProductThumbnail"));
+                        m.setMarketprice(data.getString("MarketPrice"));
+                        m.setIsshiping("1");
+                        m.setNumber(data.getString("CustomerInitiaQuantity"));
                         m.setName(data.getString("ProductSKUName"));
-                        m.setThumbnails(data.getString("ProductThumbnail"));
-                        m.setSale_price(data.getString("ScanPrice"));
-                        m.setIsShip(data.getString("IsDirectMail"));
-                        m.setSkuid(data.getString("ProductSKUId"));
+                        m.setPrice(data.getString("ScanPrice"));
+                        m.setId(data.getString("ProductSKUId"));
+                        m.setCountry(data.getString("CountryName"));
+                        m.setCountryimg(data.getString("CountryImageUrl"));
                         m.setRealStock(data.getString("RealStock"));
                         list.add(m);
                     }
 
-                    CartTuiJianProductAdapter mCartTJ = new CartTuiJianProductAdapter(getActivity(), list,
-                            R.layout.wj_item_grid_product);
+                    AdapterProductGridViewClassSub mCartTJ = new AdapterProductGridViewClassSub(list, getActivity(), R.layout.wj_item_class_sub);
                     mGridNew.setAdapter(mCartTJ);
                     mGridNew.setOnItemClickListener(new OnItemClickListener() {
 
                         @Override
                         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                             Intent ii = new Intent();
-                            ii.putExtra("IsFreeShipping", list.get(position).getIsShip());
-                            ii.putExtra("ProductSKUId", list.get(position).getSkuid());
+                            ii.putExtra("IsFreeShipping", list.get(position).getIsshiping());
+                            ii.putExtra("ProductSKUId", list.get(position).getId());
                             ii.setClass(getActivity(), ActivityProductDetailsNew.class);
                             startActivity(ii);
 
@@ -1137,7 +1144,6 @@ public class MainCartFragment extends Fragment implements OnClickListener {
      * 删除单个
      *
      * @param scid
-     * @param userid
      * @param skuid
      */
     private void deleteOne(String scid, String skuid) {

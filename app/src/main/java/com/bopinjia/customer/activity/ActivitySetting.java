@@ -69,6 +69,7 @@ public class ActivitySetting extends BaseActivity {
 			removeSharedPreferences(Constants.KEY_PREFERENCE_USER_INFO);
 			removeSharedPreferences(Constants.KEY_PREFERENCE_PASSWORD);
 			removeSharedPreferences(Constants.KEY_PREFERENCE_USER_ID);
+			putSharedPreferences(Constants.ISFXS, "0");
 			showToast("已退出当前账号");
 			backward();
 			break;

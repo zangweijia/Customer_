@@ -207,6 +207,9 @@ public class NewProductRecommended extends LazyFragment implements View.OnClickL
                     JSONObject data = dataArray.getJSONObject(i);
                     ProductGridviewClassSubBean m = new ProductGridviewClassSubBean();
 
+                    m.setIsfexiao(data.getString("BCP_IsFX"));
+                    m.setCommissionPrice(data.getString("CommissionPrice"));
+
                     m.setImg(data.getString("ProductThumbnail"));
                     m.setMarketprice(data.getString("MarketPrice"));
                     m.setIsshiping("1");

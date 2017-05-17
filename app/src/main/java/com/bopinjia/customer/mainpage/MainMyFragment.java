@@ -35,6 +35,7 @@ import com.bopinjia.customer.constants.Constants;
 import com.bopinjia.customer.net.XutilsHttp;
 import com.bopinjia.customer.net.XutilsHttp.XCallBack;
 import com.bopinjia.customer.qrcode.CaptureActivity;
+import com.bopinjia.customer.util.BroadCastManager;
 import com.bopinjia.customer.util.MD5;
 import com.bopinjia.customer.util.NetUtils;
 import com.bopinjia.customer.view.MyBadgeView;
@@ -368,6 +369,8 @@ public class MainMyFragment extends Fragment {
 
     }
 
+    private String isFxs;
+
     /**
      * 判断是否为经销商回调
      *
@@ -392,6 +395,8 @@ public class MainMyFragment extends Fragment {
                         getActivity().findViewById(R.id.my_money).setVisibility(View.GONE);
                         // 分销管理
                         getActivity().findViewById(R.id.my_fxgl).setVisibility(View.GONE);
+                        ((BaseActivity) getActivity()).putSharedPreferences(Constants.ISFXS, "0");
+                        isFxs = "0";
 
                         mIV.setVisibility(View.GONE);
 
@@ -404,6 +409,9 @@ public class MainMyFragment extends Fragment {
                         getActivity().findViewById(R.id.my_money).setVisibility(View.VISIBLE);
                         // 分销管理
                         getActivity().findViewById(R.id.my_fxgl).setVisibility(View.VISIBLE);
+
+                        ((BaseActivity) getActivity()).putSharedPreferences(Constants.ISFXS, "1");
+                        isFxs = "1";
 
                         mIV.setVisibility(View.VISIBLE);
                         mIV.setImageResource(R.drawable.ic_my_fxgl);
@@ -421,7 +429,17 @@ public class MainMyFragment extends Fragment {
                         getActivity().findViewById(R.id.my_fxgl).setVisibility(View.GONE);
                         mIV.setVisibility(View.VISIBLE);
                         mIV.setImageResource(R.drawable.ic_my_fxsq);
+                        ((BaseActivity) getActivity()).putSharedPreferences(Constants.ISFXS, "0");
+                        isFxs = "0";
                     }
+
+
+                    if (((BaseActivity) getActivity()).getBopinjiaSharedPreference(Constants.ISFXS).equals(isFxs)) {
+                        Intent intent = new Intent();
+                        intent.setAction("fxs");
+                        BroadCastManager.getInstance().sendBroadCast(getActivity(), intent);
+                    }
+
 
                 }
 
@@ -472,7 +490,7 @@ public class MainMyFragment extends Fragment {
 
                     String mDisTypeName = Data.getString("GDSType_Name");
                     // 会员等级
-                    ((TextView) getActivity().findViewById(R.id.tv_dis_type_name)).setText("铜牌分销会员");
+                    ((TextView) getActivity().findViewById(R.id.tv_dis_type_name)).setText(Data.getString("GDSType_Name"));
                     // 分销商等级图标
                     ((BaseActivity) getActivity()).setImageURl(R.id.iv_type, Data.getString("GDSType_Img"));
 

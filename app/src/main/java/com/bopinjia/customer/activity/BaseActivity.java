@@ -248,21 +248,7 @@ public class BaseActivity extends AppCompatActivity implements OnClickListener {
 		return getBopinjiaSharedPreference(Constants.KEY_PREFERENCE_BINDING_SHOP);
 	}
 
-	/**
-	 * 获取上次浏览过的店铺
-	 * 
-	 * @return 上次浏览过的店铺
-	 */
-	public String getLastMerchantId() {
-		String merchantId = getBindingShop();
-		if (StringUtils.isNull(merchantId)) {
-			merchantId = getBopinjiaSharedPreference(Constants.KEY_PREFERENCE_TEMP_SHOP);
-			if (StringUtils.isNull(merchantId)) {
-				merchantId = Constants.BOPINJIA_DEFAULT_ID;
-			}
-		}
-		return merchantId;
-	}
+
 
 	/**
 	 * 获取当前登录用户最近的搜索内容

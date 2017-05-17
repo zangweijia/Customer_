@@ -24,8 +24,8 @@ android {
         applicationId "com.bopinjia.customer"
         minSdkVersion 15
         targetSdkVersion 22
-        versionCode 20170508
-        versionName "2.1.1"
+        versionCode 20170517
+        versionName "2.1.2"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
         ndk {
@@ -70,5 +70,5 @@ dependencies {
     compile 'com.github.JakeWharton:ViewPagerIndicator:2.4.1'
     compile 'net.simonvt.menudrawer:menudrawer:3.0.+@aar'
     compile 'com.android.support:multidex:1.0.0'
-    compile 'com.github.CymChad:BaseRecyclerViewAdapterHelper:v1.9.7'
+    compile 'com.github.CymChad:BaseRecyclerViewAdapterHelper:v2.0.0'
 }

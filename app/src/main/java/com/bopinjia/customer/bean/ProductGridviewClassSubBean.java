@@ -12,6 +12,25 @@ public class ProductGridviewClassSubBean {
 	private String countryimg;
 	private String RealStock;
 
+	public String getIsfexiao() {
+		return isfexiao;
+	}
+
+	public void setIsfexiao(String isfexiao) {
+		this.isfexiao = isfexiao;
+	}
+
+	private String isfexiao;
+	private String CommissionPrice;
+
+	public String getCommissionPrice() {
+		return CommissionPrice;
+	}
+
+	public void setCommissionPrice(String commissionPrice) {
+		CommissionPrice = commissionPrice;
+	}
+
 	public String getRealStock() {
 		return RealStock;
 	}

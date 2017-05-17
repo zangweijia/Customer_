@@ -440,10 +440,13 @@ public class ActivityPersonalCare extends BaseActivity {
                     JSONObject data = dataArray.getJSONObject(i);
                     ProductGridviewClassSubBean m = new ProductGridviewClassSubBean();
 
+                    m.setIsfexiao(data.getString("BCP_IsFX"));
+                    m.setCommissionPrice(data.getString("CommissionPrice"));
+
                     m.setImg(data.getString("ProductThumbnail"));
                     m.setMarketprice(data.getString("MarketPrice"));
                     m.setIsshiping("1");
-                    m.setNumber(data.getString("CumulativeSales"));
+                    m.setNumber(data.getString("CustomerInitiaQuantity"));
                     m.setName(data.getString("ProductSKUName"));
                     m.setPrice(data.getString("ScanPrice"));
                     m.setId(data.getString("ProductSKUId"));

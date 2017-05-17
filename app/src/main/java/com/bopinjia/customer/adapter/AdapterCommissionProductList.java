@@ -1,18 +1,17 @@
 package com.bopinjia.customer.adapter;
 
-import java.io.UnsupportedEncodingException;
-import java.net.URLEncoder;
-import java.util.List;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+import android.content.Context;
+import android.view.View;
 
 import com.bopinjia.customer.R;
 import com.bopinjia.customer.bean.CommissionProductBean;
 import com.bopinjia.customer.util.ViewHolderUtils;
 
-import android.content.Context;
-import android.view.View;
-import android.widget.EditText;
+import java.io.UnsupportedEncodingException;
+import java.text.DecimalFormat;
+import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class AdapterCommissionProductList extends CommonAdapter {
 
@@ -29,7 +28,7 @@ public class AdapterCommissionProductList extends CommonAdapter {
 
 	@Override
 	public void convert(ViewHolderUtils holder, Object t, int position) {
-
+		DecimalFormat df = new DecimalFormat("#,##0.00");
 		// 商品的国别
 		holder.setText(R.id.tv_country, list.get(position).getCountry());
 
@@ -40,13 +39,15 @@ public class AdapterCommissionProductList extends CommonAdapter {
 		holder.setText(R.id.tv_price, "¥" + list.get(position).getPrice());
 
 		// 佣金
-		holder.setText(R.id.tv_commission, list.get(position).getCommission());
+		holder.setText(R.id.tv_commission, df.format(list.get(position).getCommission()));
+
+
 
 		if (list.get(position).getGold_comission().equals("0")) {
 
 		} else {
 			// 金牌佣金
-			holder.setText(R.id.tv_gold_commission, list.get(position).getGold_comission());
+			holder.setText(R.id.tv_gold_commission, df.format(list.get(position).getGold_comission()));
 		}
 
 		if (list.get(position).getLevel().equals("3")) {

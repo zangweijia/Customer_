@@ -1,5 +1,43 @@
 package com.bopinjia.customer.activity;
 
+import android.app.Dialog;
+import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
+import android.text.SpannableString;
+import android.text.Spanned;
+import android.text.style.TextAppearanceSpan;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import android.widget.BaseAdapter;
+import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+
+import com.bopinjia.customer.R;
+import com.bopinjia.customer.adapter.AdapterProductGridViewClassSub;
+import com.bopinjia.customer.bean.ProductGridviewClassSubBean;
+import com.bopinjia.customer.constants.Constants;
+import com.bopinjia.customer.util.MD5;
+import com.bopinjia.customer.util.NetUtils;
+import com.bopinjia.customer.util.SetPriceSize;
+import com.bopinjia.customer.view.NoScrollGridView;
+import com.bopinjia.customer.view.NoScrollListview;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+import org.xutils.common.Callback;
+import org.xutils.http.RequestParams;
+import org.xutils.image.ImageOptions;
+import org.xutils.x;
+
 import java.math.BigDecimal;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
@@ -10,45 +48,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.TreeMap;
-
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-import org.xutils.x;
-import org.xutils.common.Callback;
-import org.xutils.http.RequestParams;
-import org.xutils.image.ImageOptions;
-
-import com.bopinjia.customer.R;
-import com.bopinjia.customer.adapter.CartTuiJianProductAdapter;
-import com.bopinjia.customer.adapter.ProductListModel;
-import com.bopinjia.customer.constants.Constants;
-import com.bopinjia.customer.util.MD5;
-import com.bopinjia.customer.util.NetUtils;
-import com.bopinjia.customer.util.SetPriceSize;
-
-import android.app.Dialog;
-import android.content.Context;
-import android.content.Intent;
-import android.os.Bundle;
-import android.text.SpannableString;
-import android.text.Spanned;
-import android.text.style.TextAppearanceSpan;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.view.View.OnClickListener;
-import android.widget.AdapterView;
-import android.widget.BaseAdapter;
-import android.widget.Button;
-import android.widget.CheckBox;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import android.widget.AdapterView.OnItemClickListener;
-
-import com.bopinjia.customer.view.NoScrollGridView;
-import com.bopinjia.customer.view.NoScrollListview;
 
 public class ActivityCart extends BaseActivity {
 
@@ -63,7 +62,7 @@ public class ActivityCart extends BaseActivity {
 	private List<JSONObject> dataList;
 	private CartListAdapter cartListAdapter;
 	private JSONArray mShopList;
-	private List<ProductListModel> list;
+	private List<ProductGridviewClassSubBean> list;
 	private String userid;
 	// 给支付宝传参1
 	private String ProductName;
@@ -94,6 +93,7 @@ public class ActivityCart extends BaseActivity {
 	@Override
 	protected void onResume() {
 		super.onResume();
+		GetDefultAddress();
 		init();
 		getCartContent();
 	}
@@ -191,30 +191,37 @@ public class ActivityCart extends BaseActivity {
 			if (jDList.length() > 0) {
 
 				if (jDList != null) {
-					list = new ArrayList<ProductListModel>();
+					list = new ArrayList<ProductGridviewClassSubBean>();
 					for (int i = 0; i < jDList.length(); i++) {
 						JSONObject data = jDList.getJSONObject(i);
-						ProductListModel m = new ProductListModel();
-						m.setMarket_price(data.getString("MarketPrice"));
+						ProductGridviewClassSubBean m = new ProductGridviewClassSubBean();
+
+						m.setIsfexiao(data.getString("BCP_IsFX"));
+						m.setCommissionPrice(data.getString("CommissionPrice"));
+
+
+						m.setImg(data.getString("ProductThumbnail"));
+						m.setMarketprice(data.getString("MarketPrice"));
+						m.setIsshiping("1");
+						m.setNumber(data.getString("CustomerInitiaQuantity"));
 						m.setName(data.getString("ProductSKUName"));
-						m.setThumbnails(data.getString("ProductThumbnail"));
-						m.setSale_price(data.getString("ScanPrice"));
-						m.setIsShip(data.getString("IsDirectMail"));
-						m.setSkuid(data.getString("ProductSKUId"));
+						m.setPrice(data.getString("ScanPrice"));
+						m.setId(data.getString("ProductSKUId"));
+						m.setCountry(data.getString("CountryName"));
+						m.setCountryimg(data.getString("CountryImageUrl"));
 						m.setRealStock(data.getString("RealStock"));
 						list.add(m);
 					}
 
-					CartTuiJianProductAdapter mCartTJ = new CartTuiJianProductAdapter(this, list,
-							R.layout.wj_item_grid_product);
+					AdapterProductGridViewClassSub mCartTJ = new AdapterProductGridViewClassSub(list, this, R.layout.wj_item_class_sub);
 					mGridNew.setAdapter(mCartTJ);
 					mGridNew.setOnItemClickListener(new OnItemClickListener() {
 
 						@Override
 						public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 							Intent ii = new Intent();
-							ii.putExtra("IsFreeShipping", list.get(position).getIsShip());
-							ii.putExtra("ProductSKUId", list.get(position).getSkuid());
+							ii.putExtra("IsFreeShipping", list.get(position).getIsshiping());
+							ii.putExtra("ProductSKUId", list.get(position).getId());
 							ii.setClass(ActivityCart.this, ActivityProductDetailsNew.class);
 							startActivity(ii);
 
@@ -1053,7 +1060,6 @@ public class ActivityCart extends BaseActivity {
 	 * 删除单个
 	 * 
 	 * @param scid
-	 * @param userid
 	 * @param skuid
 	 */
 	private void deleteOne(String scid, String skuid) {
@@ -1097,8 +1103,6 @@ public class ActivityCart extends BaseActivity {
 
 	/**
 	 * 根据条码搜索商品判断是否有直邮现货
-	 * 
-	 * @param userid
 	 * @param code
 	 */
 	private void search(String shopid, final String code) {

@@ -16,6 +16,7 @@ import com.bopinjia.customer.net.XutilsHttp;
 import com.bopinjia.customer.net.XutilsHttp.XCallBack;
 import com.bopinjia.customer.util.MD5;
 import com.bopinjia.customer.util.NetUtils;
+import com.bopinjia.customer.util.NumAnim;
 import com.bopinjia.customer.view.NoScrollGridView;
 
 import org.json.JSONException;
@@ -103,7 +104,7 @@ public class ActivityFXGL extends BaseActivity {
 
     }
 
-    @Event(value = {R.id.btn_return, R.id.tv_xf, R.id.tv_hyzx, R.id.tv_tixian, R.id.tv_endtime, R.id.iv_img,R.id.tv_shopname})
+    @Event(value = {R.id.btn_return, R.id.tv_xf, R.id.tv_hyzx, R.id.tv_tixian, R.id.tv_endtime, R.id.iv_img, R.id.tv_shopname})
     private void getEvent(View view) {
         switch (view.getId()) {
             case R.id.btn_return:
@@ -280,7 +281,9 @@ public class ActivityFXGL extends BaseActivity {
                     ImageFromUrl(Data.getString("MDGDSM_ShopLogo"), R.id.iv_img);
 
                     // 收入金额
-                    mAmount.setText(Data.getString("MDGDSM_ToDayMoney"));
+                    float str = Float.parseFloat(Data.getString("MDGDSM_ToDayMoney"));
+                    NumAnim.startAnim(mAmount,str , 1000);
+
                     cumulativeMoney = Data.getString("MDGDSM_CumulativeMoney");
                     mProfit.setText(cumulativeMoney);
                     // 交易额

@@ -10,6 +10,7 @@ import android.view.View.OnClickListener;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.GridView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -137,7 +138,6 @@ public class ActivityProductListNew extends BaseActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
  		setContentView(R.layout.wj_act_product_list_new);
-
 		x.view().inject(this);
 		init();
 		initgrid();
@@ -553,6 +553,9 @@ public class ActivityProductListNew extends BaseActivity {
 					JSONObject data = dataArray.getJSONObject(i);
 					ProductGridviewClassSubBean m = new ProductGridviewClassSubBean();
 
+					m.setIsfexiao(data.getString("BCP_IsFX"));
+					m.setCommissionPrice(data.getString("CommissionPrice"));
+
 					m.setImg(data.getString("ProductThumbnail"));
 					m.setMarketprice(data.getString("MarketPrice"));
 					m.setIsshiping("1");
@@ -685,8 +688,9 @@ public class ActivityProductListNew extends BaseActivity {
 			break;
 
 		case R.id.tv_sort:
-			setcolor(4);
-			mDrawerLayout.openDrawer(R.id.ll_right);
+	 		setcolor(4);
+			LinearLayout mm =(LinearLayout) findViewById(R.id.ll_right);
+			mDrawerLayout.openDrawer(mm);
 			break;
 
 		default:

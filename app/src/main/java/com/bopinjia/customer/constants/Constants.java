@@ -90,10 +90,6 @@ public class Constants {
 	public static final String ORDER_STATUS_UNRECEIVING = "3";
 	public static final String ORDER_STATUS_COMPLETE = "4";
 
-	/** 输入验证码页的状态 */
-	public static final String SECURITY_STATUS_FORGET = "1";
-	public static final String SECURITY_STATUS_CHANGE = "2";
-	public static final String SECURITY_STATUS_REGISTER = "3";
 
 	// -------------------↑此分割线以上的配置信息，勿动！----------------------//
 
@@ -124,15 +120,6 @@ public class Constants {
 	/** 验证码：倒计时读秒 */
 	public static final int MAX_INTERVAL_FOR_SECURITY = 60;
 
-	/** 每次取得的数据数量 */
-	public static final int LIST_PAGE_SIZE = 20;
-
-	/** 最低征收税金 */
-	//public static final int MIN_TAX = 50;
-
-	/** 舶品家默认店铺ID */
-	public static final String BOPINJIA_DEFAULT_ID = "2";
-
 	/** 行政区划管理文件(assets目录下) */
 	public static final String FILE_PATH_DIVISIONS = "divisions.json";
 
@@ -152,6 +139,8 @@ public class Constants {
 	public static final String KEY_FXS_NUMBER ="fenxiaoshangnumber";
 	/**分销商等级*/
 	public static final String KEY_FXS_LEVEL ="fenxiaoshangdengji";
+	/**是否是分销商 0 不是 1 是*/
+	public static final String ISFXS = "isfenxiaoshang";
 	
 	
 	////---------------

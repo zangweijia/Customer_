@@ -1,6 +1,9 @@
 package com.bopinjia.customer.mainpage;
 
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
@@ -16,8 +19,6 @@ import android.widget.TextView;
 
 import com.bopinjia.customer.R;
 import com.bopinjia.customer.activity.ActivityCategory;
-import com.bopinjia.customer.activity.ActivityFXGL;
-import com.bopinjia.customer.activity.ActivityFXIntroduce;
 import com.bopinjia.customer.activity.ActivityProductDetailsNew;
 import com.bopinjia.customer.activity.ActivitySearch;
 import com.bopinjia.customer.activity.BaseActivity;
@@ -33,6 +34,7 @@ import com.bopinjia.customer.constants.Constants;
 import com.bopinjia.customer.net.XutilsHttp;
 import com.bopinjia.customer.net.XutilsHttp.XCallBack;
 import com.bopinjia.customer.qrcode.CaptureActivity;
+import com.bopinjia.customer.util.BroadCastManager;
 import com.bopinjia.customer.util.MD5;
 import com.bopinjia.customer.util.NetUtils;
 import com.bopinjia.customer.view.MyScrollView;
@@ -120,22 +122,22 @@ public class DirectMailPage extends Fragment {
     @Override
     public void onHiddenChanged(boolean hidden) {
         if (!hidden) {
-//			隐藏HomeActivity 顶部
+            // 隐藏HomeActivity 顶部
             LinearLayout mTitle = (LinearLayout) getActivity().findViewById(R.id.title);
             mTitle.setVisibility(View.GONE);
         } else {
         }
     }
-
     @Override
     public void onResume() {
         super.onResume();
-        //			隐藏HomeActivity 顶部
+        // 隐藏HomeActivity 顶部
         LinearLayout mTitle = (LinearLayout) getActivity().findViewById(R.id.title);
         mTitle.setVisibility(View.GONE);
 
     }
-//    private SwipeRefreshLayout mSwipeRefreshLayout;
+
+    //    private SwipeRefreshLayout mSwipeRefreshLayout;
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
@@ -143,25 +145,18 @@ public class DirectMailPage extends Fragment {
         init();
         initScrollviewListener();
 
-//        mSwipeRefreshLayout = (SwipeRefreshLayout) getActivity().findViewById(R.id.swipe_layout);
-//        mSwipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
-//            @Override
-//            public void onRefresh() {
-//                init();
-//                mSwipeRefreshLayout.setRefreshing(false);
-//            }
-//        });
-//        //设置样式刷新显示的位置
-//        mSwipeRefreshLayout.setProgressViewOffset(true, -20, 100);
     }
-
-
-
 
     /**
      * 初始化数据
      */
     private void init() {
+
+        IntentFilter filter = new IntentFilter();
+        filter.addAction("fxs");
+        BroadCastManager.getInstance().registerReceiver(getActivity(), new  LocalReceiver(), filter);// 注册广播接收者
+
+
         getProductList(0);
         ProductList();
         isLogged = ((BaseActivity) getActivity()).isLogged();
@@ -203,7 +198,6 @@ public class DirectMailPage extends Fragment {
             }
         });
     }
-
 
 
     /**
@@ -421,10 +415,14 @@ public class DirectMailPage extends Fragment {
                     JSONObject data = dataArray.getJSONObject(i);
                     ProductGridviewClassSubBean m = new ProductGridviewClassSubBean();
 
+                    m.setIsfexiao(data.getString("BCP_IsFX"));
+                    m.setCommissionPrice(data.getString("CommissionPrice"));
+
+
                     m.setImg(data.getString("ProductThumbnail"));
                     m.setMarketprice(data.getString("MarketPrice"));
                     m.setIsshiping("1");
-                    m.setNumber(data.getString("CumulativeSales"));
+                    m.setNumber(data.getString("CustomerInitiaQuantity"));
                     m.setName(data.getString("ProductSKUName"));
                     m.setPrice(data.getString("ScanPrice"));
                     m.setId(data.getString("ProductSKUId"));
@@ -509,61 +507,6 @@ public class DirectMailPage extends Fragment {
 
     }
 
-    /**
-     * 判断是否为经销商
-     */
-    private void getIsDistribution() {
-        String s = ((BaseActivity) getActivity()).getLoginUserId();
-        String Ts = MD5.getTimeStamp();
-        Map<String, String> map = new HashMap<String, String>();
-        map.put("UserId", s);
-        map.put("MDUserId", ((BaseActivity) getActivity()).getBindingShop());
-
-        map.put("Key", Constants.WEBAPI_KEY);
-        map.put("Ts", Ts);
-
-        String url = Constants.WEBAPI_ADDRESS + "api/GDSUser/GDSExists?UserId=" + s + "&MDUserId="
-                + ((BaseActivity) getActivity()).getBindingShop() + "&Sign=" + NetUtils.getSign(map) + "&Ts=" + Ts;
-
-        XutilsHttp.getInstance().get(url, null, new IsDistributionCallBack(), getActivity());
-
-    }
-
-    /**
-     * 判断是否为经销商回调
-     *
-     * @author ZWJ
-     */
-    class IsDistributionCallBack implements XCallBack {
-
-        @Override
-        public void onResponse(String result) {
-            try {
-                JSONObject jo = new JSONObject(result);
-                String jsonresult = jo.getString("Result");
-                if (jsonresult.equals("1")) {
-                    String Data = jo.getString("Data");
-
-                    if (Data.equals("0")) {
-                        // 一般客户
-                        ((BaseActivity) getActivity()).forward(ActivityFXIntroduce.class);
-                    } else if (Data.equals("1")) {
-                        // 分销商
-                        ((BaseActivity) getActivity()).forward(ActivityFXGL.class);
-                    } else if (Data.equals("2")) {
-                        // 一般用户 可申请分销商
-                        ((BaseActivity) getActivity()).forward(ActivityFXIntroduce.class);
-                    }
-
-                }
-
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
-
-        }
-
-    }
 
     @Event(value = {R.id._zhiyou_classify, R.id._zhiyou_search, R.id._zhiyou_scan})
     private void getEvent(View v) {
@@ -587,14 +530,19 @@ public class DirectMailPage extends Fragment {
                 Intent toScan = new Intent(getActivity(), CaptureActivity.class);
                 startActivityForResult(toScan, 1);
                 break;
-
-            // case R.id.iv_red:
-            //
-            // ((BaseActivity) getActivity()).forward(ActivityLogin.class);
-            // break;
-
             default:
                 break;
+        }
+
+    }
+
+
+    class LocalReceiver extends BroadcastReceiver {
+
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            mList.clear();
+            getProductList(0);
         }
 
     }

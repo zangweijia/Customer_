@@ -648,8 +648,8 @@ public class ActivityOrderList extends BaseActivity {
                             .setText("¥" + product.getString("ProductPrice"));
                     ((TextView) productView.findViewById(R.id.txt_count)).setText("x" + product.getString("BuyCount"));
 
-                    setImageFromUrl(product.getString("ThumbnailsUrl"),
-                            (ImageView) productView.findViewById(R.id.iv_product_thumbnails));
+                    setImageURl(
+                            (ImageView) productView.findViewById(R.id.iv_product_thumbnails), product.getString("ThumbnailsUrl"));
 
                     LayoutParams params = new LayoutParams(LayoutParams.MATCH_PARENT, 0);
                     params.weight = 1;

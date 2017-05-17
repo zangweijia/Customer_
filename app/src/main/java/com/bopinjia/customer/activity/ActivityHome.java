@@ -1,35 +1,5 @@
 package com.bopinjia.customer.activity;
 
-import java.util.Comparator;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Set;
-import java.util.TreeMap;
-
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-import org.xutils.x;
-import org.xutils.common.Callback;
-import org.xutils.http.RequestParams;
-
-import com.bopinjia.customer.R;
-import com.bopinjia.customer.constants.Constants;
-import com.bopinjia.customer.mainpage.DirectMailPage;
-import com.bopinjia.customer.mainpage.GoodsInStock;
-import com.bopinjia.customer.mainpage.MainCartFragment;
-import com.bopinjia.customer.mainpage.MainMyFragment;
-import com.bopinjia.customer.mainpage.MainXHFragment;
-import com.bopinjia.customer.mainpage.MainZYFragment;
-import com.bopinjia.customer.net.XutilsHttp;
-import com.bopinjia.customer.net.XutilsHttp.XCallBack;
-import com.bopinjia.customer.net.XutilsHttp.XCallBackID;
-import com.bopinjia.customer.util.MD5;
-import com.bopinjia.customer.util.SecurityUtil;
-import com.bopinjia.customer.util.StringUtils;
-import com.bopinjia.customer.view.MyBadgeView;
-
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -44,6 +14,34 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.bopinjia.customer.R;
+import com.bopinjia.customer.constants.Constants;
+import com.bopinjia.customer.mainpage.DirectMailPage;
+import com.bopinjia.customer.mainpage.GoodsInStock;
+import com.bopinjia.customer.mainpage.MainCartFragment;
+import com.bopinjia.customer.mainpage.MainMyFragment;
+import com.bopinjia.customer.net.XutilsHttp;
+import com.bopinjia.customer.net.XutilsHttp.XCallBack;
+import com.bopinjia.customer.net.XutilsHttp.XCallBackID;
+import com.bopinjia.customer.util.MD5;
+import com.bopinjia.customer.util.SecurityUtil;
+import com.bopinjia.customer.util.StringUtils;
+import com.bopinjia.customer.view.MyBadgeView;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+import org.xutils.common.Callback;
+import org.xutils.http.RequestParams;
+import org.xutils.x;
+
+import java.util.Comparator;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Set;
+import java.util.TreeMap;
 
 public class ActivityHome extends BaseActivity {
 
@@ -114,8 +112,6 @@ public class ActivityHome extends BaseActivity {
 
 	/**
 	 * 购物车 数量标识
-	 * 
-	 * @param view
 	 */
 	private void remind() {
 		// BadgeView的具体使用
@@ -367,8 +363,6 @@ public class ActivityHome extends BaseActivity {
 
 	/**
 	 * 根据条码搜索商品判断是否有直邮现货
-	 * 
-	 * @param userid
 	 * @param code
 	 */
 	private void search(String shopid, final String code) {
