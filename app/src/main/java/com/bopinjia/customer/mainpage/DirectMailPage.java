@@ -129,24 +129,12 @@ public class DirectMailPage extends Fragment {
         }
     }
     @Override
-    public void onResume() {
-        super.onResume();
-        // 隐藏HomeActivity 顶部
-        LinearLayout mTitle = (LinearLayout) getActivity().findViewById(R.id.title);
-        mTitle.setVisibility(View.GONE);
-
-    }
-
-    //    private SwipeRefreshLayout mSwipeRefreshLayout;
-    @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         mTitle.getBackground().setAlpha(0);
         init();
         initScrollviewListener();
-
     }
-
     /**
      * 初始化数据
      */

@@ -68,8 +68,6 @@ public class MainZYFragment extends Fragment implements OnClickListener {
 	@Override
 	public void onHiddenChanged(boolean hidden) {
 		if (!hidden) {
-			LinearLayout mTitle = (LinearLayout)getActivity().findViewById(R.id.title);
-			mTitle.setVisibility(View.GONE);
 			uuid = ((BaseActivity) getActivity()).getIMEI1();
 			boolean isLogged = ((BaseActivity) getActivity()).isLogged();
 			if (isLogged) {
@@ -167,9 +165,6 @@ public class MainZYFragment extends Fragment implements OnClickListener {
 	public void onResume() {
 		super.onResume();
 		webView.resumeTimers();
-		//			隐藏HomeActivity 顶部
-		LinearLayout mTitle = (LinearLayout) getActivity().findViewById(R.id.title);
-		mTitle.setVisibility(View.GONE);
 	}
 
 	/**

@@ -84,6 +84,9 @@ public class ActivityFXGL extends BaseActivity {
         setTitle();
         init();
         getDistributionInfo();
+
+//        String str ="1000000000000000";
+//        showToast(time2time(Long.getLong(str) ));
     }
 
     private void setTitle() {
@@ -101,6 +104,21 @@ public class ActivityFXGL extends BaseActivity {
         if (getIntent().hasExtra("shengji")) {
 
         }
+    }
+
+    public String time2time(long t) {
+        if (t<= 0) {
+            return  "00时:00分:00秒 ";
+        }
+        long haomiao = t % 1000;
+
+        long miao = t / 1000 % 60;
+        long min = t / 1000 / 60 % 60;
+        long h = t / 1000 / 60 / 60;
+
+        return h + "时:" + min + "分:" + String.format("%02d", miao) + "秒:"
+                 ;
+
 
     }
 
@@ -198,7 +216,6 @@ public class ActivityFXGL extends BaseActivity {
         });
 
     }
-
     /**
      * SimpleAdapter数据源
      *

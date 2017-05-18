@@ -105,8 +105,11 @@ public class ActivityFXWalletList extends BaseActivity {
                 }, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH),
                         calendar.get(Calendar.DAY_OF_MONTH));
                 //设置时间范围
-//        dateDialog.getDatePicker().setMinDate(CalendarUtil.GetLastMonthDate().getTimeInMillis());
-                datePickerDialog.getDatePicker().setMinDate(calendar.getTimeInMillis());
+                Calendar calendarA = Calendar.getInstance();
+                calendarA.clear();
+                calendarA.set(1970, 0, 1);
+                datePickerDialog.getDatePicker().setMinDate(calendarA.getTimeInMillis());
+
                 datePickerDialog.show();
 
 

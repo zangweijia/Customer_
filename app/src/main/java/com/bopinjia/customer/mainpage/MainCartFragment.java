@@ -95,9 +95,6 @@ public class MainCartFragment extends Fragment implements OnClickListener {
         }
         init();
         getCartContent();
-        //	 隐藏HomeActivity 顶部
-        LinearLayout mTitle = (LinearLayout) getActivity().findViewById(R.id.title);
-        mTitle.setVisibility(View.GONE);
         GetDefultAddress();
         super.onResume();
     }

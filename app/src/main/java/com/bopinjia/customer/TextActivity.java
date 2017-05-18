@@ -51,7 +51,9 @@ public class TextActivity extends AppCompatActivity {
             }
         };
         adapter.setOnLoadMoreListener(m);
+
     }
+
 
     private int i = 0;
 

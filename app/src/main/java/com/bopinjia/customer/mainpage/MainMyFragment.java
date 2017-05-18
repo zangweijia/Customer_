@@ -95,12 +95,6 @@ public class MainMyFragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
-
-        // 隐藏HomeActivity 顶部
-        LinearLayout mTitle = (LinearLayout) getActivity().findViewById(R.id.title);
-        mTitle.setVisibility(View.GONE);
-
-
         isLogged = ((BaseActivity) getActivity()).isLogged();
         if (isLogged) {
             init();
@@ -488,6 +482,8 @@ public class MainMyFragment extends Fragment {
                     ((BaseActivity) getActivity()).putSharedPreferences(Constants.KEY_FXS_LEVEL,
                             Data.getString("GDSType_Level"));
 
+                    ((BaseActivity) getActivity()).putSharedPreferences(Constants.FXSSHOPNAME,
+                            Data.getString("MDGDSM_ShopName"));
                     String mDisTypeName = Data.getString("GDSType_Name");
                     // 会员等级
                     ((TextView) getActivity().findViewById(R.id.tv_dis_type_name)).setText(Data.getString("GDSType_Name"));

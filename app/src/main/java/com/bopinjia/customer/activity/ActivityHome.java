@@ -8,8 +8,10 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.view.Gravity;
 import android.view.KeyEvent;
+import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.ScaleAnimation;
+import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
@@ -58,6 +60,7 @@ public class ActivityHome extends BaseActivity {
 	private RadioGroup radioGroup;
 	private Map<Integer, Fragment> fmap = new HashMap<Integer, Fragment>();
 	private static int currentRadio = -1;
+	private LinearLayout mTitle;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -72,6 +75,7 @@ public class ActivityHome extends BaseActivity {
 		}
 		// -------
 		instance = this;
+		mTitle = (LinearLayout) findViewById(R.id.title);
 		mCart = ((TextView) findViewById(R.id.tv_cart));
 		remind();
 		fmap.clear();
@@ -109,6 +113,7 @@ public class ActivityHome extends BaseActivity {
 		((RadioButton) findViewById(R.id._tab_cart)).setChecked(true);
 		switchContent(fmap.get(R.id._tab_cart), R.id._tab_cart);
 	}
+
 
 	/**
 	 * 购物车 数量标识
@@ -233,16 +238,24 @@ public class ActivityHome extends BaseActivity {
 				if (temp != null) {
 					switch (i) {
 					case R.id._tab_zhiyou:
+						mTitle.setVisibility(View.GONE);
 						switchContent(temp, i);
+
 						break;
 					case R.id._tab_xianhuo:
+						mTitle.setVisibility(View.VISIBLE);
 						switchContent(temp, i);
+
 						break;
 					case R.id._tab_cart:
+						mTitle.setVisibility(View.GONE);
 						switchContent(temp, i);
+
 						break;
 					case R.id._tab_main:
+						mTitle.setVisibility(View.GONE);
 						switchContent(temp, i);
+
 						break;
 					}
 

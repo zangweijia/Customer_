@@ -84,8 +84,6 @@ public class GoodsInStock extends Fragment implements View.OnClickListener {
     public void onHiddenChanged(boolean hidden) {
         if (!hidden) {
             // onResume
-            LinearLayout mTitle = (LinearLayout) getActivity().findViewById(R.id.title);
-            mTitle.setVisibility(View.VISIBLE);
             getMDInfo();
         } else {
             // onPase
@@ -93,18 +91,8 @@ public class GoodsInStock extends Fragment implements View.OnClickListener {
     }
 
     @Override
-    public void onResume() {
-        super.onResume();
-        LinearLayout mTitle = (LinearLayout) getActivity().findViewById(R.id.title);
-        mTitle.setVisibility(View.VISIBLE);
-        getMDInfo();
-    }
-
-    @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        LinearLayout mTitle = (LinearLayout) getActivity().findViewById(R.id.title);
-        mTitle.setVisibility(View.VISIBLE);
         init();
     }
 
