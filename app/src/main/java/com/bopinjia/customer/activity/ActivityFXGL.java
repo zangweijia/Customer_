@@ -18,13 +18,17 @@ import com.bopinjia.customer.util.MD5;
 import com.bopinjia.customer.util.NetUtils;
 import com.bopinjia.customer.util.NumAnim;
 import com.bopinjia.customer.view.NoScrollGridView;
+import com.bopinjia.customer.view.TimeTextView;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.xutils.view.annotation.Event;
+import org.xutils.view.annotation.ViewInject;
 import org.xutils.x;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -76,6 +80,15 @@ public class ActivityFXGL extends BaseActivity {
      */
     private String mDGDSM_ToMyMoney;
 
+    @ViewInject(R.id.timeTextview)
+    private TimeTextView timeTextview;
+
+    @ViewInject(R.id.tv_shengji)
+    private TextView tv_shengji;
+
+    @ViewInject(R.id.gold_tv_profit)
+    private TextView gold_tv_profit;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -84,9 +97,6 @@ public class ActivityFXGL extends BaseActivity {
         setTitle();
         init();
         getDistributionInfo();
-
-//        String str ="1000000000000000";
-//        showToast(time2time(Long.getLong(str) ));
     }
 
     private void setTitle() {
@@ -106,23 +116,34 @@ public class ActivityFXGL extends BaseActivity {
         }
     }
 
-    public String time2time(long t) {
-        if (t<= 0) {
-            return  "00时:00分:00秒 ";
+    public void time2time(String endtime) {
+
+        Date now = new Date();
+        SimpleDateFormat df = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");//可以方便地修改日期格式
+        String nowtime = df.format(now);
+        try {
+            Date d1 = df.parse(endtime);
+            Date d2 = df.parse(nowtime);
+            long diff = d1.getTime() - d2.getTime();//这样得到的差值是微秒级别
+            long days = diff / (1000 * 60 * 60 * 24);
+
+            long hours = (diff - days * (1000 * 60 * 60 * 24)) / (1000 * 60 * 60);
+            long minutes = (diff - days * (1000 * 60 * 60 * 24) - hours * (1000 * 60 * 60)) / (1000 * 60);
+            long seconds = ((diff - days * (1000 * 60 * 60 * 24) - hours * (1000 * 60 * 60)) - minutes * (1000 * 60 * 60 * 60)) / 1000;
+            long[] times = {days, hours, minutes, seconds};
+            timeTextview.setTimes(times);
+            if (!timeTextview.isRun()) {
+                timeTextview.run();
+            }
+
+        } catch (Exception e) {
+
         }
-        long haomiao = t % 1000;
-
-        long miao = t / 1000 % 60;
-        long min = t / 1000 / 60 % 60;
-        long h = t / 1000 / 60 / 60;
-
-        return h + "时:" + min + "分:" + String.format("%02d", miao) + "秒:"
-                 ;
 
 
     }
 
-    @Event(value = {R.id.btn_return, R.id.tv_xf, R.id.tv_hyzx, R.id.tv_tixian, R.id.tv_endtime, R.id.iv_img, R.id.tv_shopname})
+    @Event(value = {R.id.btn_return, R.id.tv_xf, R.id.tv_hyzx, R.id.tv_tixian, R.id.tv_endtime, R.id.iv_img, R.id.tv_shopname, R.id.tv_shengji})
     private void getEvent(View view) {
         switch (view.getId()) {
             case R.id.btn_return:
@@ -149,6 +170,13 @@ public class ActivityFXGL extends BaseActivity {
                 Intent ii = new Intent();
                 ii.putExtra("reflectaccount", mDGDSM_ToMyCashMoney);
                 forward(ActivityFXReflect.class, ii);
+                break;
+            case R.id.tv_shengji:
+                Intent intent = new Intent();
+                intent.putExtra("fxslevel", level);
+                intent.putExtra("type", "3");
+                // type = 3升级进入
+                forward(ActivityFXDisLevel.class, intent);
                 break;
             default:
                 break;
@@ -216,6 +244,7 @@ public class ActivityFXGL extends BaseActivity {
         });
 
     }
+
     /**
      * SimpleAdapter数据源
      *
@@ -293,13 +322,22 @@ public class ActivityFXGL extends BaseActivity {
 
                     ((TextView) findViewById(R.id.tv_hyzx)).setText(typename);
                     ((TextView) findViewById(R.id.tv_endtime)).setText("有效期至：" + Data.getString("MDGDSR_EndDate"));
-                    setImageURl(R.id.iv_fximg, Data.getString("GDSType_Img"));
 
+                    if (level.equals("0")) {
+                        timeTextview.setVisibility(View.VISIBLE);
+                        ((TextView) findViewById(R.id.tv_endtime)).setVisibility(View.GONE);
+                        time2time(Data.getString("MDGDSR_EndDate"));
+                    } else {
+                        timeTextview.setVisibility(View.GONE);
+                        ((TextView) findViewById(R.id.tv_endtime)).setVisibility(View.VISIBLE);
+                    }
+                    gold_tv_profit.setText( Data.getString("MDGDSM_GoldCumulativeMoney"));
+                    setImageURl(R.id.iv_fximg, Data.getString("GDSType_Img"));
                     ImageFromUrl(Data.getString("MDGDSM_ShopLogo"), R.id.iv_img);
 
                     // 收入金额
                     float str = Float.parseFloat(Data.getString("MDGDSM_ToDayMoney"));
-                    NumAnim.startAnim(mAmount,str , 1000);
+                    NumAnim.startAnim(mAmount, str, 1000);
 
                     cumulativeMoney = Data.getString("MDGDSM_CumulativeMoney");
                     mProfit.setText(cumulativeMoney);

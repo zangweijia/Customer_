@@ -103,10 +103,8 @@ public class ActivityFXSPersonalCenter extends BaseActivity implements IOnSelect
 
 		case R.id.iv_sj:
 			Intent i = new Intent();
-
 			i.putExtra("fxslevel", mFXSLevel);
 			i.putExtra("type", "3");
-
 			// type = 3升级进入
 			forward(ActivityFXDisLevel.class, i);
 

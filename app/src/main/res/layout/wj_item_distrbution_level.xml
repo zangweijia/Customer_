@@ -62,17 +62,13 @@
 
     <Button
         android:id="@+id/btn_kt"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="40dp"
+        android:layout_height="30dp"
         android:layout_gravity="center_vertical"
-        android:layout_marginLeft="5dp"
         android:layout_marginRight="10dp"
         android:background="@drawable/bg_5400_6"
-        android:padding="4dp"
-        android:paddingLeft="6dp"
-        android:paddingRight="6dp"
         android:text="开 通"
         android:textColor="@android:color/white"
-        android:textSize="@dimen/txt_size_14" />
+        android:textSize="@dimen/txt_size_11" />
 
 </LinearLayout>

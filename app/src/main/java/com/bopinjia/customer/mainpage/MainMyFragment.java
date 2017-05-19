@@ -72,6 +72,9 @@ public class MainMyFragment extends Fragment {
     @ViewInject(R.id.tv_money)
     private TextView mMyMoney;
 
+    @ViewInject(R.id.tv_comission_money)
+    private TextView tv_comission_money;
+
     private String headPortrait;
 
     private boolean isLogged;
@@ -502,8 +505,8 @@ public class MainMyFragment extends Fragment {
                     // 店铺名称
                     ((TextView) getActivity().findViewById(R.id.tv_shop_name)).setText(name);
                     // 我的钱包
-                    mMyMoney.setText("我的收入：¥ " + Data.getString("MDGDSM_ToMyMoney"));
-
+                    mMyMoney.setText(" ¥ " + Data.getString("MDGDSM_ToMyMoney"));
+                    tv_comission_money .setText("金牌佣金的收入：¥ "+Data.getString("MDGDSM_GoldCumulativeMoney"));
                 }
 
             } catch (JSONException e) {

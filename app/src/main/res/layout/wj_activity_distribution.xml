@@ -3,13 +3,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@android:color/white"
-    android:orientation="vertical" >
+    android:orientation="vertical">
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="47dp"
         android:gravity="center"
-        android:paddingLeft="@dimen/back_padding_left" >
+        android:paddingLeft="@dimen/back_padding_left">
 
         <TextView
             android:id="@+id/btn_return"
@@ -52,19 +52,29 @@
 
     <LinearLayout
         android:layout_width="fill_parent"
-        android:layout_height="@dimen/address_height" 
-        android:gravity="center">
-        
-        <Button 
+        android:layout_height="@dimen/address_height"
+        android:layout_marginRight="15dp"
+        android:gravity="center_vertical">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="特大惊喜,立即开通体验会员9.9元\n一个月,按金牌会员返利"
+            android:textColor="@color/main_color" />
+
+        <Button
             android:id="@+id/btn_kthy"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="立即开通"
-            android:textColor="#7D310C"
             android:layout_gravity="center"
             android:layout_margin="3dp"
-            android:background="@drawable/bg_try_again"/>
-        
+
+            android:background="@drawable/bg_try_again"
+            android:text="立即开通"
+            android:textColor="#7D310C" />
+
     </LinearLayout>
 
 </LinearLayout>

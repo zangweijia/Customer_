@@ -68,40 +68,6 @@
                 android:textSize="@dimen/txt_size_15" />
         </LinearLayout>
 
-        <LinearLayout
-            android:id="@+id/ll_yl"
-            android:layout_width="wrap_content"
-            android:layout_height="95dp"
-            android:layout_marginTop="20dp"
-            android:background="@drawable/bg_reflect_yl"
-            android:orientation="vertical" >
-
-            <TextView
-                android:id="@+id/tv_yl_name"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="70dp"
-                android:layout_marginTop="15dp"
-                android:text="邮政储蓄"
-                android:textColor="@color/bg_ffffff"
-                android:textSize="@dimen/txt_size_big" />
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1" />
-
-            <TextView
-                android:id="@+id/tv_yl_number"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="20dp"
-                android:layout_marginLeft="30dp"
-                android:text="暂无"
-                android:textColor="@color/bg_ffffff"
-                android:textSize="@dimen/txt_size_15" />
-        </LinearLayout>
-
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -115,7 +81,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
             android:paddingLeft="20dp"
-            android:text="若有问题，请拨打客服热线：400"
+            android:text="若有问题，请拨打客服热线：400-997-8757"
             android:textColor="@color/bg_666666" />
     </LinearLayout>
 

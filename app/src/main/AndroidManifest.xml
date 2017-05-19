@@ -285,7 +285,17 @@
             android:exported="false"
             android:screenOrientation="behind"
             android:windowSoftInputMode="adjustResize|stateHidden"></activity>
-        <!--  -->
+        <!-- 支付宝未安装时跳转到网页版 -->
+
+        <!-- 支付宝-->
+        <activity
+            android:name="com.alipay.sdk.auth.AuthActivity"
+            android:configChanges="orientation|keyboardHidden|navigation"
+            android:exported="false"
+            android:screenOrientation="behind"></activity>
+        <!-- 支付宝-->
+
+
         <activity
             android:name=".activity.ActivityRefund"
             android:launchMode="singleTask"

@@ -210,65 +210,6 @@
                         android:background="@color/bg_bgline" />
                 </LinearLayout>
 
-                <LinearLayout
-                    android:id="@+id/ll_yinlian"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical" >
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="@dimen/address_height"
-                        android:gravity="center_vertical" >
-
-                        <ImageView
-                            android:layout_width="30dp"
-                            android:layout_height="30dp"
-                            android:layout_marginLeft="20dp"
-                            android:src="@drawable/ic_reflect_yinlian" />
-
-                        <LinearLayout
-                            android:layout_width="0dp"
-                            android:layout_height="match_parent"
-                            android:layout_weight="1"
-                            android:gravity="center_vertical"
-                            android:orientation="vertical"
-                            android:paddingLeft="10dp" >
-
-                            <TextView
-                                android:id="@+id/tv_bankname"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="银联"
-                                android:textColor="@color/bg_666666"
-                                android:textSize="@dimen/txt_size_12" />
-
-                            <TextView
-                                android:id="@+id/tv_yinlian_number"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="2dp"
-                                android:textColor="@color/bg_666666"
-                                android:textSize="@dimen/txt_size_12" />
-                        </LinearLayout>
-
-                        <RadioButton
-                            android:id="@+id/chk_yinlianpay"
-                            style="@style/CheckboxTheme"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center_vertical"
-                            android:layout_marginRight="5dp"
-                            android:checked="false" />
-                    </LinearLayout>
-
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="0.5dp"
-                        android:layout_marginLeft="20dp"
-                        android:background="@color/bg_bgline" />
-                </LinearLayout>
-
                 <TextView
                     android:id="@+id/tv_tixian"
                     android:layout_width="200dp"

@@ -3,8 +3,6 @@
     android:shape="rectangle" >
 
     <!-- 实体是ff5400 -->
-
-
     <!-- 矩形的圆角半径 -->
     <corners android:radius="10dp" />
 
