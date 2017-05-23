@@ -1,22 +1,26 @@
 package com.bopinjia.customer.activity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.GridView;
+import android.widget.ImageView;
 import android.widget.ScrollView;
-import android.widget.SimpleAdapter;
 import android.widget.TextView;
 
 import com.bopinjia.customer.R;
+import com.bopinjia.customer.adapter.CommonAdapter;
 import com.bopinjia.customer.constants.Constants;
 import com.bopinjia.customer.net.XutilsHttp;
 import com.bopinjia.customer.net.XutilsHttp.XCallBack;
 import com.bopinjia.customer.util.MD5;
 import com.bopinjia.customer.util.NetUtils;
 import com.bopinjia.customer.util.NumAnim;
+import com.bopinjia.customer.util.ViewHolderUtils;
+import com.bopinjia.customer.view.BadgeView;
 import com.bopinjia.customer.view.NoScrollGridView;
 import com.bopinjia.customer.view.TimeTextView;
 
@@ -30,6 +34,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class ActivityFXGL extends BaseActivity {
@@ -111,9 +116,7 @@ public class ActivityFXGL extends BaseActivity {
     protected void onResume() {
         super.onResume();
         getDistributionInfo();
-        if (getIntent().hasExtra("shengji")) {
 
-        }
     }
 
     public void time2time(String endtime) {
@@ -198,14 +201,11 @@ public class ActivityFXGL extends BaseActivity {
         // gridView
         mGrid = (NoScrollGridView) findViewById(R.id.grid);
 
-        SimpleAdapter mAdapter = new SimpleAdapter(this, getData(), R.layout.wj_itm_fxgl,
-                new String[]{"image", "name"}, new int[]{R.id.image, R.id.tv_name});
-        mGrid.setAdapter(mAdapter);
+//        SimpleAdapter mAdapter = new SimpleAdapter(this, getData(), R.layout.wj_itm_fxgl,
+//                new String[]{"image", "name"}, new int[]{R.id.image, R.id.tv_name});
 
         mGrid.post(new Runnable() {
             public void run() {
-                // sv_container.fullScroll(ScrollView.FOCUS_UP);
-                // 解决scrollview 嵌套gridview 自动到底部
                 sv_container.scrollTo(0, 0);
             }
         });
@@ -245,47 +245,47 @@ public class ActivityFXGL extends BaseActivity {
 
     }
 
-    /**
-     * SimpleAdapter数据源
-     *
-     * @return
-     */
-    private ArrayList<HashMap<String, Object>> getData() {
-        ArrayList<HashMap<String, Object>> arrayList = new ArrayList<HashMap<String, Object>>();
+    private List<model> getDatas(String ordercount, String mduserid) {
+        List<model> list = new ArrayList<>();
+        model m = new model();
+        m.setImg(R.drawable.ic_fxgl_gyj);
+        m.setNumber("0");
+        m.setName(getString(R.string.fxgl_gyj));
+        list.add(m);
 
-        HashMap<String, Object> tempHashMap = new HashMap<String, Object>();
-        tempHashMap.put("image", R.drawable.ic_fxgl_gyj);
-        tempHashMap.put("name", getString(R.string.fxgl_gyj));
-        arrayList.add(tempHashMap);
+        m = new model();
+        m.setImg(R.drawable.ic_fxgl_bkcx);
+        m.setNumber("0");
+        m.setName(getString(R.string.fxgl_bkcx));
+        list.add(m);
 
-        tempHashMap = new HashMap<String, Object>();
-        tempHashMap.put("image", R.drawable.ic_fxgl_bkcx);
-        tempHashMap.put("name", getString(R.string.fxgl_bkcx));
-        arrayList.add(tempHashMap);
+        m = new model();
+        m.setImg(R.drawable.ic_fxgl_ddgl);
+        m.setNumber(ordercount);
+        m.setName(getString(R.string.fxgl_ddgl));
+        list.add(m);
 
-        tempHashMap = new HashMap<String, Object>();
-        tempHashMap.put("image", R.drawable.ic_fxgl_ddgl);
-        tempHashMap.put("name", getString(R.string.fxgl_ddgl));
-        arrayList.add(tempHashMap);
+        m = new model();
+        m.setImg(R.drawable.ic_fxgl_khgl);
+        m.setNumber(mduserid);
+        m.setName(getString(R.string.fxgl_khgl));
+        list.add(m);
 
-        tempHashMap = new HashMap<String, Object>();
-        tempHashMap.put("image", R.drawable.ic_fxgl_khgl);
-        tempHashMap.put("name", getString(R.string.fxgl_khgl));
-        arrayList.add(tempHashMap);
+        m = new model();
+        m.setImg(R.drawable.ic_fxgl_dpgl);
+        m.setNumber("0");
+        m.setName(getString(R.string.fxgl_dpgl));
+        list.add(m);
 
-        tempHashMap = new HashMap<String, Object>();
-        tempHashMap.put("image", R.drawable.ic_fxgl_dpgl);
-        tempHashMap.put("name", getString(R.string.fxgl_dpgl));
-        arrayList.add(tempHashMap);
+        m = new model();
+        m.setImg(R.drawable.ic_more);
+        m.setNumber("0");
+        m.setName(getString(R.string.fxgl_jqqd));
+        list.add(m);
 
-        tempHashMap = new HashMap<String, Object>();
-        tempHashMap.put("image", R.drawable.ic_more);
-        tempHashMap.put("name", getString(R.string.fxgl_jqqd));
-        arrayList.add(tempHashMap);
-
-        return arrayList;
-
+        return list;
     }
+
 
     /**
      * 获取分销商信息
@@ -331,7 +331,7 @@ public class ActivityFXGL extends BaseActivity {
                         timeTextview.setVisibility(View.GONE);
                         ((TextView) findViewById(R.id.tv_endtime)).setVisibility(View.VISIBLE);
                     }
-                    gold_tv_profit.setText( Data.getString("MDGDSM_GoldCumulativeMoney"));
+                    gold_tv_profit.setText(Data.getString("MDGDSM_GoldCumulativeMoney"));
                     setImageURl(R.id.iv_fximg, Data.getString("GDSType_Img"));
                     ImageFromUrl(Data.getString("MDGDSM_ShopLogo"), R.id.iv_img);
 
@@ -351,6 +351,12 @@ public class ActivityFXGL extends BaseActivity {
 
                     putSharedPreferences(Constants.KEY_FXS_LEVEL, Data.getString("GDSType_Level"));
 
+                    /// 今日分销订单数量
+                    String mOrderCount = Data.getString("MDGDSM_OrderCount");
+                    /// 今日分销用户数量
+                    String mMDUserCount = Data.getString("MDGDSM_UserCount");
+                    FXGLAdapter mAdapter = new FXGLAdapter(getDatas(mOrderCount, mMDUserCount), ActivityFXGL.this, R.layout.wj_itm_fxgl);
+                    mGrid.setAdapter(mAdapter);
                 }
 
             } catch (JSONException e) {
@@ -358,4 +364,69 @@ public class ActivityFXGL extends BaseActivity {
             }
         }
     }
+
+
+    class FXGLAdapter extends CommonAdapter {
+
+        List<model> list;
+        Context context;
+        int layoutId;
+
+        public FXGLAdapter(List<model> list, Context context, int layoutId) {
+            super(list, context, layoutId);
+            this.list = list;
+            this.context = context;
+            this.layoutId = layoutId;
+        }
+
+        @Override
+        public void convert(ViewHolderUtils holder, Object o, int position) {
+
+            ImageView imageView = (ImageView) holder.getView(R.id.image);
+            BadgeView m = new BadgeView(context);
+            String number = list.get(position).getNumber();
+            if (number.equals("0")) {
+                m.setVisibility(View.GONE);
+            } else {
+                m.setVisibility(View.VISIBLE);
+            }
+            m.setText(number);
+            m.setTargetView(imageView);
+
+            holder.setText(R.id.tv_name, list.get(position).getName());
+            holder.setImageResource(R.id.image, list.get(position).getImg());
+        }
+    }
+
+    class model {
+        private String name;
+        private int img;
+        private String number;
+
+        public String getName() {
+            return name;
+        }
+
+        public void setName(String name) {
+            this.name = name;
+        }
+
+        public int getImg() {
+            return img;
+        }
+
+        public void setImg(int img) {
+            this.img = img;
+        }
+
+        public String getNumber() {
+            return number;
+        }
+
+        public void setNumber(String number) {
+            this.number = number;
+        }
+    }
+
+
 }

@@ -22,11 +22,8 @@ public class CustomerApplication extends MultiDexApplication {
     @Override
     public void onCreate() {
         super.onCreate();
-        Config.DEBUG = true;
+//        Config.DEBUG = true;
         UMShareAPI.get(this);
         x.Ext.init(this);
-
-          Config.DEBUG = true;
-        // CrashHandler.getInstance().init(this);
     }
 }

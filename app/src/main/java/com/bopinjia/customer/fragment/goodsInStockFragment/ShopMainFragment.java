@@ -135,6 +135,7 @@ public class ShopMainFragment extends LazyFragment {
         });
         //设置样式刷新显示的位置
         mSwipeRefreshLayout.setProgressViewOffset(true, -20, 100);
+        gridview.setFocusable(false);
     }
 
     private void initView(View view) {
@@ -162,6 +163,7 @@ public class ShopMainFragment extends LazyFragment {
         mDatas.clear();
         getGridViewData();
         getProductList(0);
+
     }
 
     private void getSubCategoryNext() {
@@ -190,6 +192,7 @@ public class ShopMainFragment extends LazyFragment {
         //设置适配器
         viewpager.setAdapter(new ViewPagerAdapter(mPagerList));
         _Tabs.setViewPager(viewpager);
+        viewpager.setCurrentItem(0);
         viewpager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             public void onPageSelected(int position) {
                 curIndex = position;

@@ -51,7 +51,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="200dp"
+        android:layout_height="140dp"
         android:orientation="vertical">
 
 
@@ -67,7 +67,7 @@
                 android:layout_marginLeft="5dp"
                 android:layout_weight="1"
                 android:gravity="center_vertical"
-                android:orientation="vertical">
+                android:paddingLeft="40dp">
 
                 <ImageView
                     android:id="@+id/iv_total_amount"
@@ -79,21 +79,26 @@
                     android:id="@+id/txt_total_amount"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_margin="2dp"
+                    android:layout_alignTop="@+id/iv_total_amount"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_toEndOf="@+id/iv_total_amount"
                     android:layout_toRightOf="@+id/iv_total_amount"
                     android:text="累计收益(元)"
                     android:textColor="@color/bg_666666"
-                    android:textSize="@dimen/txt_size_12" />
+                    android:textSize="@dimen/txt_size_14" />
 
                 <TextView
                     android:id="@+id/tv_total_amount"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/txt_total_amount"
+                    android:layout_marginLeft="5dp"
+                    android:layout_toEndOf="@+id/iv_total_amount"
                     android:layout_toRightOf="@+id/iv_total_amount"
                     android:text="16000"
                     android:textColor="@color/main_color"
-                    android:textSize="@dimen/txt_size_10" />
+                    android:textSize="@dimen/txt_size_12" />
             </RelativeLayout>
 
             <View
@@ -101,35 +106,45 @@
                 android:layout_height="match_parent"
                 android:background="@color/bg_bgbg" />
 
-            <LinearLayout
+            <RelativeLayout
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_marginLeft="5dp"
                 android:layout_weight="1"
-                android:gravity="center"
-                android:orientation="vertical">
+                android:gravity="center_vertical"
+                android:paddingLeft="40dp">
 
                 <ImageView
+                    android:id="@+id/iv_accumulated_income"
                     android:layout_width="45dp"
                     android:layout_height="45dp"
                     android:src="@drawable/ic_accumulated_income" />
 
                 <TextView
+                    android:id="@+id/txt_accumulated_income"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_margin="2dp"
+                    android:layout_alignTop="@+id/iv_accumulated_income"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_toEndOf="@+id/iv_accumulated_income"
+                    android:layout_toRightOf="@+id/iv_accumulated_income"
                     android:text="已提现(元)"
                     android:textColor="@color/bg_666666"
-                    android:textSize="@dimen/txt_size_12" />
+                    android:textSize="@dimen/txt_size_14" />
 
                 <TextView
                     android:id="@+id/tv_reflect"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_below="@+id/txt_accumulated_income"
+                    android:layout_marginLeft="5dp"
+                    android:layout_toEndOf="@+id/iv_accumulated_income"
+                    android:layout_toRightOf="@+id/iv_accumulated_income"
                     android:text="16000"
                     android:textColor="@color/main_color"
-                    android:textSize="@dimen/txt_size_10" />
-            </LinearLayout>
+                    android:textSize="@dimen/txt_size_12" />
+            </RelativeLayout>
 
         </LinearLayout>
 
@@ -144,77 +159,98 @@
             android:layout_weight="1">
 
 
-            <LinearLayout
+            <RelativeLayout
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_marginLeft="5dp"
                 android:layout_weight="1"
-                android:gravity="center"
-                android:orientation="vertical">
+                android:gravity="center_vertical"
+                android:paddingLeft="40dp">
 
                 <ImageView
+                    android:id="@+id/iv_in_the_deal"
                     android:layout_width="45dp"
                     android:layout_height="45dp"
-                    android:src="@drawable/ic_wallet_price" />
+                    android:src="@drawable/iv_in_the_deal" />
 
                 <TextView
+                    android:id="@+id/txt_in_the_deal"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_margin="2dp"
-                    android:text="累计收益(元)"
+                    android:layout_alignTop="@+id/iv_in_the_deal"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_toEndOf="@+id/iv_in_the_deal"
+                    android:layout_toRightOf="@+id/iv_in_the_deal"
+                    android:text="交易中"
                     android:textColor="@color/bg_666666"
-                    android:textSize="@dimen/txt_size_12" />
+                    android:textSize="@dimen/txt_size_14" />
 
                 <TextView
+                    android:id="@+id/tv_in_the_deal"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_below="@+id/txt_in_the_deal"
+                    android:layout_marginLeft="5dp"
+                    android:layout_toEndOf="@+id/iv_in_the_deal"
+                    android:layout_toRightOf="@+id/iv_in_the_deal"
                     android:text="16000"
                     android:textColor="@color/main_color"
-                    android:textSize="@dimen/txt_size_10" />
-            </LinearLayout>
+                    android:textSize="@dimen/txt_size_12" />
+            </RelativeLayout>
 
             <View
                 android:layout_width="1dp"
                 android:layout_height="match_parent"
                 android:background="@color/bg_bgbg" />
 
-            <LinearLayout
+            <RelativeLayout
                 android:id="@+id/ll_binding_account"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_marginLeft="5dp"
                 android:layout_weight="1"
-                android:gravity="center"
-                android:orientation="vertical">
+                android:gravity="center_vertical"
+                android:paddingLeft="40dp">
 
                 <ImageView
+                    android:id="@+id/iv_account"
                     android:layout_width="45dp"
                     android:layout_height="45dp"
                     android:src="@drawable/ic_cash_account" />
 
                 <TextView
-                    android:id="@+id/textView2"
+                    android:id="@+id/txt_account"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_margin="2dp"
-                    android:text="银行卡"
+                    android:layout_alignTop="@+id/iv_account"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_toEndOf="@+id/iv_account"
+                    android:layout_toRightOf="@+id/iv_account"
+                    android:text="提现账号"
                     android:textColor="@color/bg_666666"
-                    android:textSize="@dimen/txt_size_12" />
+                    android:textSize="@dimen/txt_size_14" />
 
                 <TextView
                     android:id="@+id/tv_account_number"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_below="@+id/txt_account"
+                    android:layout_marginLeft="5dp"
+                    android:layout_toEndOf="@+id/iv_account"
+                    android:layout_toRightOf="@+id/iv_account"
                     android:text="3"
                     android:textColor="@color/main_color"
-                    android:textSize="@dimen/txt_size_10" />
-            </LinearLayout>
+                    android:textSize="@dimen/txt_size_12" />
+            </RelativeLayout>
 
         </LinearLayout>
 
     </LinearLayout>
 
     <TextView
+        android:id="@+id/textView3"
         android:layout_width="match_parent"
         android:layout_height="@dimen/address_height"
         android:background="@color/bg_bgbg"

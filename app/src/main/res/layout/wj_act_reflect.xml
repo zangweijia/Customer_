@@ -12,13 +12,14 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:scrollbars="none" >
+        android:scrollbars="none">
 
         <LinearLayout
+            android:layout_marginTop="20dp"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@color/bg_ffffff"
-            android:orientation="vertical" >
+            android:orientation="vertical">
 
             <ImageView
                 android:layout_width="71dp"
@@ -89,14 +90,6 @@
                 android:layout_height="1dp"
                 android:background="@color/bg_bgline" />
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:gravity="center_vertical"
-                android:paddingLeft="20dp"
-                android:text="提现账号"
-                android:textColor="@color/bg_0000" />
-
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
@@ -106,109 +99,7 @@
                 android:id="@+id/ll_pay"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical" >
-
-                <LinearLayout
-                    android:id="@+id/ll_alipay"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical" >
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="@dimen/address_height"
-                        android:gravity="center_vertical" >
-
-                        <ImageView
-                            android:layout_width="30dp"
-                            android:layout_height="30dp"
-                            android:layout_marginLeft="20dp"
-                            android:src="@drawable/ic_reflect_alipay" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:paddingLeft="10dp"
-                            android:text="账号："
-                            android:textColor="@color/bg_666666"
-                            android:textSize="@dimen/txt_size_12" />
-
-                        <TextView
-                            android:id="@+id/tv_alipay_number"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:paddingLeft="5dp"
-                            android:textColor="@color/bg_666666"
-                            android:textSize="@dimen/txt_size_12" />
-
-                        <RadioButton
-                            android:id="@+id/chk_alipay"
-                            style="@style/CheckboxTheme"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center_vertical"
-                            android:layout_marginRight="5dp"
-                            android:checked="true" />
-                    </LinearLayout>
-
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="0.5dp"
-                        android:layout_marginLeft="20dp"
-                        android:background="@color/bg_bgline" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/ll_wx"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical" >
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="@dimen/address_height"
-                        android:gravity="center_vertical" >
-
-                        <ImageView
-                            android:layout_width="30dp"
-                            android:layout_height="30dp"
-                            android:layout_marginLeft="20dp"
-                            android:src="@drawable/ic_reflect_wx" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:paddingLeft="10dp"
-                            android:text="账号："
-                            android:textColor="@color/bg_666666"
-                            android:textSize="@dimen/txt_size_12" />
-
-                        <TextView
-                            android:id="@+id/tv_wx_number"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:paddingLeft="5dp"
-                            android:textColor="@color/bg_666666"
-                            android:textSize="@dimen/txt_size_12" />
-
-                        <RadioButton
-                            android:id="@+id/chk_weixinpay"
-                            style="@style/CheckboxTheme"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center_vertical"
-                            android:layout_marginRight="5dp"
-                            android:checked="false" />
-                    </LinearLayout>
-
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="0.5dp"
-                        android:layout_marginLeft="20dp"
-                        android:background="@color/bg_bgline" />
-                </LinearLayout>
+                android:orientation="vertical">
 
                 <TextView
                     android:id="@+id/tv_tixian"
@@ -223,31 +114,6 @@
                     android:textSize="@dimen/txt_size_15" />
             </LinearLayout>
 
-            <LinearLayout
-                android:id="@+id/ll_no_account"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:visibility="gone" >
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="100dp"
-                    android:gravity="center"
-                    android:text="暂时没有账号" />
-
-                <TextView
-                    android:id="@+id/tv_bind_account"
-                    android:layout_width="200dp"
-                    android:layout_height="35dp"
-                    android:layout_gravity="center_horizontal"
-                    android:layout_marginTop="15dp"
-                    android:background="@drawable/bg_add_address"
-                    android:gravity="center"
-                    android:text="去绑定账号"
-                    android:textColor="@android:color/white"
-                    android:textSize="@dimen/txt_size_15" />
-            </LinearLayout>
         </LinearLayout>
     </ScrollView>
 

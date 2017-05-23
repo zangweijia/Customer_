@@ -1,4 +1,4 @@
-package com.bopinjia.customer.activityhome;
+package com.bopinjia.customer.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -14,9 +14,6 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.bopinjia.customer.R;
-import com.bopinjia.customer.activity.ActivityProductDetailsNew;
-import com.bopinjia.customer.activity.ActivityThreeClassification;
-import com.bopinjia.customer.activity.BaseActivity;
 import com.bopinjia.customer.adapter.AdapterBottomProductList;
 import com.bopinjia.customer.adapter.AdapterBottomProductList.AddCartOnclick;
 import com.bopinjia.customer.adapter.AdapterHomeCategoryGrid;

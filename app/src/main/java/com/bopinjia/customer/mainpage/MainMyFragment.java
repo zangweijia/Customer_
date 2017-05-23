@@ -84,6 +84,7 @@ public class MainMyFragment extends Fragment {
     private String name;
     private ImageView mIV;
 
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         return x.view().inject(this, inflater, container);
@@ -218,6 +219,7 @@ public class MainMyFragment extends Fragment {
                 getActivity());
 
     }
+
 
     /**
      * 获取用户信息 回调
@@ -506,7 +508,7 @@ public class MainMyFragment extends Fragment {
                     ((TextView) getActivity().findViewById(R.id.tv_shop_name)).setText(name);
                     // 我的钱包
                     mMyMoney.setText(" ¥ " + Data.getString("MDGDSM_ToMyMoney"));
-                    tv_comission_money .setText("金牌佣金的收入：¥ "+Data.getString("MDGDSM_GoldCumulativeMoney"));
+                    tv_comission_money.setText("金牌佣金的收入：¥ " + Data.getString("MDGDSM_GoldCumulativeMoney"));
                 }
 
             } catch (JSONException e) {
@@ -746,5 +748,6 @@ public class MainMyFragment extends Fragment {
         } else {
         }
     }
+
 
 }

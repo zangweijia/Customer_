@@ -504,7 +504,7 @@
             android:launchMode="singleTask"
             android:screenOrientation="portrait"></activity>
         <activity
-            android:name="com.bopinjia.customer.activityhome.ActivityPersonalCare"
+            android:name="com.bopinjia.customer.activity.ActivityPersonalCare"
             android:launchMode="singleTask"
             android:screenOrientation="portrait"></activity>
 

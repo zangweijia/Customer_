@@ -1,26 +1,31 @@
+<?xml version="1.0"?>
+
+
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@android:color/white"
-    android:orientation="vertical" >
+    android:orientation="vertical">
 
     <View
+        android:id="@+id/view2"
         android:layout_width="match_parent"
         android:layout_height="0.5dp"
         android:layout_alignTop="@+id/ll"
-        android:background="@color/bg_bgline"
-        android:id="@+id/view2" />
-    
+        android:background="@color/bg_bgline" />
+
+
+    -
+
     <RadioGroup
-        android:paddingBottom="5dp"
-        android:paddingTop="5dp"
         android:id="@+id/ll"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_alignParentBottom="true"
         android:orientation="horizontal"
-         >
+        android:paddingBottom="5dp"
+        android:paddingTop="5dp">
 
         <RadioButton
             android:id="@+id/_tab_zhiyou"
@@ -45,25 +50,27 @@
             style="@style/_bottom_tab"
             android:drawableTop="@drawable/footbar_my"
             android:text="我的 " />
+
     </RadioGroup>
+
 
     <FrameLayout
         android:id="@+id/content"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@android:color/white"
-        android:layout_below="@+id/title"
         android:layout_alignBottom="@+id/view2"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true">
-    </FrameLayout>
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/title"
+        android:background="@android:color/white" />
+
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_alignParentBottom="true"
         android:background="#00000000"
-        android:orientation="horizontal" >
+        android:orientation="horizontal">
 
         <TextView
             android:layout_width="0dp"
@@ -77,7 +84,6 @@
             android:layout_weight="0.8"
             android:visibility="invisible" />
 
-
         <TextView
             android:id="@+id/tv_cart"
             android:layout_width="0dp"
@@ -89,7 +95,9 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:visibility="invisible" />
+
     </LinearLayout>
+
 
     <LinearLayout
         android:id="@+id/title"
@@ -98,8 +106,7 @@
         android:gravity="center"
         android:paddingLeft="15dp"
         android:paddingRight="15dp"
-        android:visibility="gone"
-        >
+        android:visibility="gone">
 
         <ImageView
             android:id="@+id/_xianhuo_classify"
@@ -107,6 +114,7 @@
             android:layout_height="25dp"
             android:layout_marginRight="8dp"
             android:src="@drawable/byn" />
+
 
         <LinearLayout
             android:id="@+id/_xianhuo_search"
@@ -124,6 +132,7 @@
                 android:drawablePadding="3dp"
                 android:text="输入商品、商家的名称"
                 android:textColor="@color/bg_666666" />
+
         </LinearLayout>
 
         <ImageView
@@ -132,6 +141,7 @@
             android:layout_height="25dp"
             android:layout_marginLeft="8dp"
             android:background="@drawable/ic_scan" />
+
     </LinearLayout>
 
 </RelativeLayout>

@@ -1,6 +1,7 @@
 package com.bopinjia.customer.fragment.goodsInStockFragment;
 
 
+import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -9,10 +10,12 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.bopinjia.customer.R;
+import com.bopinjia.customer.activity.ActivityProductDetailsNew;
 import com.bopinjia.customer.activity.BaseActivity;
 import com.bopinjia.customer.adapter.AdapterProductGridViewClassSub;
 import com.bopinjia.customer.bean.ProductGridviewClassSubBean;
@@ -120,7 +123,20 @@ public class ShopAllProducts extends LazyFragment implements View.OnClickListene
                 }
             }
         });
+        mListView.setOnItemClickListener(clickListener);
+        mGridView.setOnItemClickListener(clickListener);
+
     }
+    AdapterView.OnItemClickListener clickListener =new AdapterView.OnItemClickListener() {
+        @Override
+        public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+            Intent intent= new Intent();
+            intent.putExtra("IsFreeShipping", "1");
+            intent.putExtra("ProductSKUId", mList.get(i).getId());
+            intent.setClass(getActivity(), ActivityProductDetailsNew.class);
+            startActivity(intent);
+        }
+    };
 
     private void getProductList(final int id) {
 

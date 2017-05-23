@@ -19,10 +19,10 @@ import android.widget.TextView;
 
 import com.bopinjia.customer.R;
 import com.bopinjia.customer.activity.ActivityCategory;
+import com.bopinjia.customer.activity.ActivityPersonalCare;
 import com.bopinjia.customer.activity.ActivityProductDetailsNew;
 import com.bopinjia.customer.activity.ActivitySearch;
 import com.bopinjia.customer.activity.BaseActivity;
-import com.bopinjia.customer.activityhome.ActivityPersonalCare;
 import com.bopinjia.customer.adapter.AdapterHomeCategoryGrid;
 import com.bopinjia.customer.adapter.AdapterProductGridViewClassSub;
 import com.bopinjia.customer.adapter.MyImageViewPagerAdapter;
@@ -110,6 +110,7 @@ public class DirectMailPage extends Fragment {
     private List<HomeCategoryBean> lista;
 
     private boolean isLogged;
+    private List<HorizontallistViewBean> list;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -128,6 +129,7 @@ public class DirectMailPage extends Fragment {
         } else {
         }
     }
+
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
@@ -135,6 +137,7 @@ public class DirectMailPage extends Fragment {
         init();
         initScrollviewListener();
     }
+
     /**
      * 初始化数据
      */
@@ -142,18 +145,17 @@ public class DirectMailPage extends Fragment {
 
         IntentFilter filter = new IntentFilter();
         filter.addAction("fxs");
-        BroadCastManager.getInstance().registerReceiver(getActivity(), new  LocalReceiver(), filter);// 注册广播接收者
-
+        BroadCastManager.getInstance().registerReceiver(getActivity(), new LocalReceiver(), filter);// 注册广播接收者
 
         getProductList(0);
         ProductList();
         isLogged = ((BaseActivity) getActivity()).isLogged();
-        List<HorizontallistViewBean> list = new ArrayList<HorizontallistViewBean>();
+        list = new ArrayList<HorizontallistViewBean>();
         for (int i = 0; i < 20; i++) {
             HorizontallistViewBean m = new HorizontallistViewBean();
             m.setImg("http://images.bopinjia.com//ProductMSJ/20161014/image/357X357_201610141148150391.png");
             m.setMarketprice("¥" + "0000");
-            m.setPrice("¥" + "12345");
+            m.setPrice("¥" + i);
             list.add(m);
         }
         setHlist(list);
@@ -187,7 +189,6 @@ public class DirectMailPage extends Fragment {
         });
     }
 
-
     /**
      * 设置横向商品列表
      *
@@ -207,9 +208,29 @@ public class DirectMailPage extends Fragment {
                     .build();
 
             x.image().bind((ImageView) productView.findViewById(R.id.iv), list.get(i).getImg(), imageOptions);
+            productView.setId(i);
+            productView.setTag(list.get(i).getPrice());
+            productView.setOnClickListener(clickListener);
+
             mHList.addView(productView);
         }
     }
+
+    View.OnClickListener clickListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+
+            int id = view.getId();
+            String content = (String) view.getTag();
+            for (int i = 0; i < list.size(); i++) {
+                if (i == id) {
+                    ((BaseActivity)getActivity()).showToast(content);
+                }
+            }
+
+        }
+    };
+
 
     private void getAppMenu() {
         String Ts = MD5.getTimeStamp();
@@ -521,9 +542,7 @@ public class DirectMailPage extends Fragment {
             default:
                 break;
         }
-
     }
-
 
     class LocalReceiver extends BroadcastReceiver {
 
@@ -532,7 +551,5 @@ public class DirectMailPage extends Fragment {
             mList.clear();
             getProductList(0);
         }
-
     }
-
 }
