@@ -268,7 +268,7 @@ public class DirectMailPage extends Fragment {
                     }
 
                     AdapterHomeCategoryGrid adapter = new AdapterHomeCategoryGrid(lista, getActivity(),
-                            R.layout.wj_item_home_category, false);
+                            R.layout.item_home_menu, false);
                     mCategoryGridView.setAdapter(adapter);
                 }
             } catch (JSONException e) {

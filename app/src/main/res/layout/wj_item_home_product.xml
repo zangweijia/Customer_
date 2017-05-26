@@ -108,15 +108,11 @@
                     android:id="@+id/txt_sell_price"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_weight="1.5"
+                    android:layout_weight="0.5"
                     android:gravity="left|center_vertical"
                     android:text="￥188.00"
                     android:textColor="@color/main_color"
                     android:textSize="@dimen/txt_size_15" />
-
-                <View
-                    android:layout_width="3dp"
-                    android:layout_height="match_parent" />
 
                 <TextView
                     android:id="@+id/txt_market_price"
@@ -130,6 +126,7 @@
 
                 <ImageView
                     android:id="@+id/iv_add_cart"
+                    android:visibility="gone"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"

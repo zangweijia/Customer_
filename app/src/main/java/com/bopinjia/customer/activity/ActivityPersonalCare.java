@@ -449,7 +449,7 @@ public class ActivityPersonalCare extends BaseActivity {
                     if (lista.size() == 2) {
                         mCategoryGridView.setNumColumns(2);
                         mCategoryGridView.setAdapter(new AdapterHomeCategoryGrid(lista, ActivityPersonalCare.this,
-                                R.layout.wj_item_home_category_, true));
+                                R.layout.wj_item_home_category_, false));
                         findViewById(R.id.bg_view).setVisibility(View.GONE);
                     } else {
                         mCategoryGridView.setNumColumns(4);

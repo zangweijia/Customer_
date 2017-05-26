@@ -50,6 +50,7 @@ public class TextActivity extends AppCompatActivity {
                 }, 200);
             }
         };
+
         adapter.setOnLoadMoreListener(m);
 
     }

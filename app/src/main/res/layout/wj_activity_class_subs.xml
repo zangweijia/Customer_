@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/bg_ffffff"
-    android:orientation="vertical" >
+    android:orientation="vertical">
 
     <include
         android:id="@+id/include_title"
@@ -14,26 +14,31 @@
         android:layout_width="match_parent"
         android:layout_height="40dp"
         android:layout_marginLeft="3dp"
-        android:orientation="horizontal" >
+        android:orientation="horizontal">
 
-        <com.astuetz.PagerSlidingTabStrip
-            android:id="@+id/tabs"
-            android:layout_width="match_parent"
+        <LinearLayout
+            android:layout_width="0dp"
             android:layout_height="30dp"
-            android:layout_gravity="center_vertical"
             android:layout_marginLeft="3dp"
             android:layout_marginRight="3dp"
-            android:layout_weight="1"
-            android:background="@android:color/transparent"
-            android:fillViewport="false"
-            app:pstsDividerColor="@android:color/transparent"
-            app:pstsIndicatorColor="#ff5400"
-            app:pstsIndicatorHeight="1dp"
-            app:pstsShouldExpand="true"
-            app:pstsTabBackground="@android:color/transparent"
-            app:pstsTabPaddingLeftRight="@dimen/divider_padding2"
-            app:pstsUnderlineHeight="0dp"
-            app:selectedTabTextColor="@color/main_color" />
+            android:layout_weight="1">
+
+            <com.astuetz.PagerSlidingTabStrip
+                android:id="@+id/tabs"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:layout_gravity="center_vertical"
+                android:background="@android:color/transparent"
+                android:fillViewport="false"
+                app:pstsDividerColor="@android:color/transparent"
+                app:pstsIndicatorColor="#ff5400"
+                app:pstsIndicatorHeight="1dp"
+                app:pstsShouldExpand="true"
+                app:pstsTabBackground="@android:color/transparent"
+                app:pstsTabPaddingLeftRight="@dimen/divider_padding2"
+                app:pstsUnderlineHeight="0dp"
+                app:selectedTabTextColor="#ff5400" />
+        </LinearLayout>
 
         <TextView
             android:id="@+id/tv_sort"
