@@ -281,45 +281,53 @@
                             android:textSize="@dimen/txt_size_12" />
                     </LinearLayout>
 
-                    <RelativeLayout
+                    <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content">
 
-                        <TextView
-                            android:id="@+id/tv_endtime"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="5dp"
-                            android:text="有效期：2016.01.02-2017.06.12"
-                            android:textColor="@color/bg_999999"
-                            android:textSize="@dimen/txt_size_12" />
+                        <RelativeLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content">
 
-                        <com.bopinjia.customer.view.TimeTextView
-                            android:id="@+id/timeTextview"
+                            <TextView
+                                android:id="@+id/tv_endtime"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="5dp"
+                                android:text="有效期：2016.01.02-2017.06.12"
+                                android:textColor="@color/bg_999999"
+                                android:textSize="@dimen/txt_size_12" />
+
+                            <com.bopinjia.customer.view.TimeTextView
+                                android:id="@+id/timeTextview"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:visibility="gone" />
+                        </RelativeLayout>
+
+                        <View
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1" />
+
+                        <TextView
+                            android:id="@+id/tv_xf"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:visibility="gone" />
-                    </RelativeLayout>
+                            android:layout_gravity="center"
+                            android:layout_marginRight="10dp"
+                            android:background="@drawable/bg_5400_5"
+                            android:paddingBottom="5dp"
+                            android:paddingLeft="8dp"
+                            android:paddingRight="8dp"
+                            android:paddingTop="5dp"
+                            android:text="续费"
+                            android:textColor="@color/bg_ffffff" />
+                    </LinearLayout>
+
                 </LinearLayout>
 
-                <View
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1" />
 
-                <TextView
-                    android:id="@+id/tv_xf"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginRight="10dp"
-                    android:background="@drawable/bg_5400_5"
-                    android:paddingBottom="5dp"
-                    android:paddingLeft="8dp"
-                    android:paddingRight="8dp"
-                    android:paddingTop="5dp"
-                    android:text="续费"
-                    android:textColor="@color/bg_ffffff" />
             </LinearLayout>
 
             <View

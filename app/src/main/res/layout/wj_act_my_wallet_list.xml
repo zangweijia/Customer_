@@ -2,27 +2,38 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/bg_ffffff" >
+    android:background="@color/bg_ffffff">
 
     <include
         android:id="@+id/include_title"
         layout="@layout/wj_include_title" />
 
-    <com.andview.refreshview.XRefreshView
-        android:id="@+id/custom_view"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/include_title" >
+        android:layout_below="@+id/include_title"
+        android:orientation="vertical">
 
-        <ListView
-            android:id="@+id/lv_wallet_list"
+        <com.andview.refreshview.XRefreshView
+            android:id="@+id/custom_view"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:divider="@color/bg_bgbg"
-            android:dividerHeight="1dp"
-            android:scrollbars="none" >
-        </ListView>
-    </com.andview.refreshview.XRefreshView>
+            android:layout_height="match_parent">
+
+            <ListView
+                android:id="@+id/lv_wallet_list"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:divider="@color/bg_bgbg"
+                android:dividerHeight="1dp"
+                android:scrollbars="none"></ListView>
+        </com.andview.refreshview.XRefreshView>
+
+        <include
+            android:id="@+id/linearlayout_no_info"
+            layout="@layout/include_no_info"
+            android:visibility="gone" />
+
+    </LinearLayout>
 
     <ImageView
         android:id="@+id/iv_date"

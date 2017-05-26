@@ -6,50 +6,29 @@
     android:orientation="horizontal" >
 
     <LinearLayout
-        android:layout_width="70dp"
-        android:layout_height="50dp"
-        android:gravity="center"
-        android:orientation="vertical" >
-
-        <TextView
-            android:id="@+id/tv_date_year"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="2017"
-            android:textColor="@color/bg_666666"
-            android:textSize="@dimen/txt_size_11" />
-
-        <TextView
-            android:id="@+id/tv_date_time"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="02/20"
-            android:textColor="@color/bg_666666"
-            android:textSize="@dimen/txt_size_11" />
-    </LinearLayout>
-
-    <LinearLayout
         android:layout_width="0dp"
         android:layout_height="50dp"
         android:layout_weight="1"
+        android:layout_marginLeft="20dp"
         android:gravity="center_vertical"
         android:orientation="vertical" >
 
         <TextView
-            android:id="@+id/tv_type"
+            android:id="@+id/tv_type_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="@dimen/txt_size_12"
+            android:textSize="@dimen/txt_size_15"
             android:text="提现"
             android:textColor="@color/bg_0000" />
 
         <TextView
-            android:id="@+id/tv_account"
+            android:id="@+id/tv_time"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="@dimen/txt_size_12"
+            android:layout_marginTop="3dp"
+            android:textSize="@dimen/txt_size_10"
             android:text="支付宝账户"
-            android:textColor="@color/bg_666666" />
+            android:textColor="@color/bg_999999" />
     </LinearLayout>
 
     <TextView
@@ -59,6 +38,6 @@
         android:layout_marginRight="20dp"
         android:gravity="center_vertical"
         android:text="123.00"
-        android:textColor="@color/main_color" />
+        android:textColor="@color/bg_0000" />
 
 </LinearLayout>

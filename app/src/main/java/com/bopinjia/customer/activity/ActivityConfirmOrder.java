@@ -284,12 +284,13 @@ public class ActivityConfirmOrder extends BaseActivity {
 						((TextView) findViewById(R.id.txt_phone)).setText(addressObj.getString("Mobile"));
 						addressId = addressObj.getString("Id");
 						setAddress(addressObj, "DetailAddress");
+						CheckOut();
 					}
 				}
 			} else if (requestCode == 2) {
 				// 新增联系人地址后 回调
 				GetDefultAddress();
-				// CheckOut();
+				 CheckOut();
 			} else if (requestCode == 3) {
 				// 选择配送方式
 				if (data != null) {

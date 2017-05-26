@@ -123,6 +123,7 @@
         <!-- weixin -->
 
         <LinearLayout
+            android:id="@+id/ll_wx"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/bg_white"
@@ -179,6 +180,7 @@
             android:background="@color/bg_bgline" />
 
         <LinearLayout
+            android:id="@+id/ll_aipay"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/bg_white"

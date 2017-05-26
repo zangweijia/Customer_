@@ -196,13 +196,8 @@ public class ActivityFXGL extends BaseActivity {
         mXUFEI = (TextView) findViewById(R.id.tv_xf);
         tv_hyzx = (TextView) findViewById(R.id.tv_hyzx);
 
-        // ScrollView
         sv_container = (ScrollView) findViewById(R.id.scrollview);
-        // gridView
         mGrid = (NoScrollGridView) findViewById(R.id.grid);
-
-//        SimpleAdapter mAdapter = new SimpleAdapter(this, getData(), R.layout.wj_itm_fxgl,
-//                new String[]{"image", "name"}, new int[]{R.id.image, R.id.tv_name});
 
         mGrid.post(new Runnable() {
             public void run() {

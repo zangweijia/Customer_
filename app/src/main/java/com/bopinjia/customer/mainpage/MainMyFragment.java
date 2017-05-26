@@ -238,8 +238,6 @@ public class MainMyFragment extends Fragment {
             // 用户昵称
             name = mLogBean.getData().getNickName();
             ((TextView) getActivity().findViewById(R.id.my_tv_name)).setText(name);
-            // 店铺名称
-            ((TextView) getActivity().findViewById(R.id.tv_shop_name)).setText(name);
 
             // 性别
             String sex = mLogBean.getData().getSex();
@@ -509,6 +507,7 @@ public class MainMyFragment extends Fragment {
                     // 我的钱包
                     mMyMoney.setText(" ¥ " + Data.getString("MDGDSM_ToMyMoney"));
                     tv_comission_money.setText("金牌佣金的收入：¥ " + Data.getString("MDGDSM_GoldCumulativeMoney"));
+
                 }
 
             } catch (JSONException e) {

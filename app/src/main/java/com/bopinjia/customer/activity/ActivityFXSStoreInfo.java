@@ -1,20 +1,19 @@
 package com.bopinjia.customer.activity;
 
-import java.io.File;
-import java.io.InputStreamReader;
-import java.util.Comparator;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-import java.util.TreeMap;
-
-import org.json.JSONException;
-import org.json.JSONObject;
-import org.xutils.x;
-import org.xutils.common.Callback;
-import org.xutils.http.RequestParams;
+import android.app.DialogFragment;
+import android.graphics.Bitmap;
+import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.view.KeyEvent;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemSelectedListener;
+import android.widget.ArrayAdapter;
+import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.Spinner;
+import android.widget.TextView;
 
 import com.bopinjia.customer.R;
 import com.bopinjia.customer.constants.Constants;
@@ -26,20 +25,21 @@ import com.bopinjia.customer.util.MD5;
 import com.bopinjia.customer.util.NetUtils;
 import com.bopinjia.customer.util.StringUtils;
 
-import android.app.DialogFragment;
-import android.graphics.Bitmap;
-import android.os.Bundle;
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.view.KeyEvent;
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.EditText;
-import android.widget.ImageView;
-import android.widget.Spinner;
-import android.widget.TextView;
-import android.widget.AdapterView.OnItemSelectedListener;
+import org.json.JSONException;
+import org.json.JSONObject;
+import org.xutils.common.Callback;
+import org.xutils.http.RequestParams;
+import org.xutils.x;
+
+import java.io.File;
+import java.io.InputStreamReader;
+import java.util.Comparator;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import java.util.TreeMap;
 
 public class ActivityFXSStoreInfo extends BaseActivity implements IOnSelectModeDismissListner {
 
@@ -157,7 +157,6 @@ public class ActivityFXSStoreInfo extends BaseActivity implements IOnSelectModeD
 				showToast("亲，请输入11位手机号码！");
 				break;
 			}
-
 			Save();
 			break;
 		case R.id.iv_change_head:

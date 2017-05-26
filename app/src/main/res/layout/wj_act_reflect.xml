@@ -112,6 +112,18 @@
                     android:text="申请提现"
                     android:textColor="@android:color/white"
                     android:textSize="@dimen/txt_size_15" />
+
+
+                <TextView
+                    android:id="@+id/tv_tixian_interduce"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_margin="10dp"
+                    android:padding="5dp"
+                    android:text="提现说明"
+                    android:textColor="@color/main_color"
+                    android:textSize="@dimen/txt_size_15" />
             </LinearLayout>
 
         </LinearLayout>

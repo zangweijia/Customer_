@@ -51,30 +51,21 @@
             <View
                 android:layout_width="match_parent"
                 android:layout_height="5dp"
-                android:background="@color/bg_bgline" />
-
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:scaleType="fitXY"
-                android:src="@drawable/main_hd" />
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="5dp"
-                android:background="@color/bg_bgline" />
+                android:background="@color/bg_bgline"
+                android:visibility="gone" />
 
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="175dp"
-                android:background="@color/bg_ffffff" >
+                android:background="@color/bg_ffffff"
+                android:visibility="gone">
 
                 <LinearLayout
                     android:id="@+id/ll_head"
                     android:layout_width="match_parent"
                     android:layout_height="31dp"
                     android:gravity="center_vertical"
-                    android:orientation="horizontal" >
+                    android:orientation="horizontal">
 
                     <ImageView
                         android:layout_width="wrap_content"
@@ -110,14 +101,13 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_below="@+id/ll_head"
-                    android:scrollbars="none" >
+                    android:scrollbars="none">
 
                     <LinearLayout
                         android:id="@+id/ll_hlist"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:orientation="horizontal" >
-                    </LinearLayout>
+                        android:orientation="horizontal"></LinearLayout>
                 </HorizontalScrollView>
             </RelativeLayout>
 
@@ -126,7 +116,7 @@
                 android:layout_height="40dp"
                 android:background="#ebebeb"
                 android:gravity="center"
-                android:text="精 品 热 卖"
+                android:text="- 精 品 热 卖 -"
                 android:textColor="#ff5400"
                 android:textSize="@dimen/txt_size_14" />
 

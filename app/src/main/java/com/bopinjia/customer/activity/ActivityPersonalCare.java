@@ -4,11 +4,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
 import android.view.View;
-import android.view.ViewGroup.LayoutParams;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ImageView;
-import android.widget.ImageView.ScaleType;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -30,7 +28,6 @@ import com.bopinjia.customer.view.MyScrollView;
 import com.bopinjia.customer.view.MyScrollView.OnScrollToBottomListener;
 import com.bopinjia.customer.view.NoScrollGridView;
 import com.bopinjia.customer.view.NoScrollListview;
-import com.bopinjia.customer.view.XCRoundRectImageView;
 import com.viewpagerindicator.CirclePageIndicator;
 
 import org.json.JSONArray;
@@ -120,22 +117,7 @@ public class ActivityPersonalCare extends BaseActivity {
         View mTiTle = findViewById(R.id.include_title);
         TextView mTiTleName = (TextView) mTiTle.findViewById(R.id.txt_page_title);
         mTiTleName.setText(getIntent().getStringExtra("titlename"));
-        if (code.equals("001")) {
-            // 添加个护活动
-            addPersonCare();
-        } else if (code.equals("003")) {
-            // 添加母婴
-            addBabyToys();
-        } else if (code.equals("004")) {
-            // 添加食品饮料
-            FoodProductList();
-        } else if (code.equals("002")) {
-            //家居用品
-            FoodProductList();
-        } else if (code.equals("005")) {
-            //营养保健
-            addHealthCare();
-        }
+        getCategory("8");
 
         // 获取底部商品列表
         getProductList(0, "0");
@@ -173,137 +155,6 @@ public class ActivityPersonalCare extends BaseActivity {
 
     }
 
-    /**
-     * 添加 个护美妆 活动布局
-     */
-    private void addPersonCare() {
-        LinearLayout productView = new LinearLayout(this);
-        View.inflate(this, R.layout.wj_category_personal_care, productView);
-        mSpecialLayout.addView(productView);
-        getCategory("8");
-
-    }
-
-    /**
-     * 添加 营养保健 活动布局
-     */
-    private void addHealthCare() {
-        LinearLayout productView = new LinearLayout(this);
-        View.inflate(this, R.layout.wj_category_health_care_, productView);
-        mSpecialLayout.addView(productView);
-        getCategory("8");
-
-    }
-
-    /**
-     * 添加母婴玩具 活动布局
-     */
-    private void addBabyToys() {
-        LinearLayout productView = new LinearLayout(this);
-        View.inflate(this, R.layout.wj_category_baby_toys_, productView);
-        mSpecialLayout.addView(productView);
-        getCategory("8");
-
-    }
-
-    /**
-     * 添加进口美食 活动布局
-     */
-    private void addImportedFood() {
-        LinearLayout productView = new LinearLayout(this);
-        View.inflate(this, R.layout.wj_category_imported_food, productView);
-        ViewPager vp = (ViewPager) productView.findViewById(R.id.view_pager);
-        mViewPagerContainer = (RelativeLayout) productView.findViewById(R.id.gallery_viewpager_layout);
-
-        pagerWidth = (int) (getResources().getDisplayMetrics().widthPixels * 3.0f / 6.0f);
-
-        List<View> images = new ArrayList<View>();
-        for (int i = 0; i < 5; i++) {
-            String pic = piclists.get(0).getImg();
-            XCRoundRectImageView imageView = new XCRoundRectImageView(ActivityPersonalCare.this);
-            LayoutParams lp = imageView.getLayoutParams();
-            if (lp == null) {
-                lp = new LayoutParams(pagerWidth, LayoutParams.MATCH_PARENT);
-            } else {
-                lp.width = pagerWidth;
-                lp.height = LayoutParams.MATCH_PARENT;
-            }
-            imageView.setScaleType(ScaleType.FIT_XY);
-
-            imageView.setLayoutParams(lp);
-
-            setImageFromUrl(pic, imageView);
-            images.add(imageView);
-
-        }
-
-        vp.setAdapter(new MyImageViewPagerAdapter(ActivityPersonalCare.this, images, piclists));
-        vp.setOffscreenPageLimit(3);
-        vp.setPageMargin(getResources().getDimensionPixelSize(R.dimen.base_padding));
-        vp.setCurrentItem(1);
-        vp.addOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() {
-            @Override
-            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-                super.onPageScrolled(position, positionOffset, positionOffsetPixels);
-                if (mViewPagerContainer != null) {
-                    mViewPagerContainer.invalidate(); // 更新超出区域页面，否则会出现页面缓存，导致页面效果不佳
-                }
-            }
-        });
-
-        mSpecialLayout.addView(productView);
-        getCategory("8");
-
-    }
-
-    /**
-     * 添加家居用品 活动布局
-     */
-    private void addHouseWear() {
-        LinearLayout productView = new LinearLayout(this);
-        View.inflate(this, R.layout.wj_category_imported_food, productView);
-        ViewPager vp = (ViewPager) productView.findViewById(R.id.view_pager);
-        mViewPagerContainer = (RelativeLayout) productView.findViewById(R.id.gallery_viewpager_layout);
-
-        pagerWidth = (int) (getResources().getDisplayMetrics().widthPixels * 3.0f / 6.0f);
-
-        List<View> images = new ArrayList<View>();
-        for (int i = 0; i < 1; i++) {
-            String pic = piclists.get(0).getImg();
-            XCRoundRectImageView imageView = new XCRoundRectImageView(ActivityPersonalCare.this);
-            LayoutParams lp = imageView.getLayoutParams();
-            if (lp == null) {
-                lp = new LayoutParams(pagerWidth, LayoutParams.MATCH_PARENT);
-            } else {
-                lp.width = pagerWidth;
-                lp.height = LayoutParams.MATCH_PARENT;
-            }
-            imageView.setScaleType(ScaleType.FIT_XY);
-
-            imageView.setLayoutParams(lp);
-
-            setImageFromUrl(pic, imageView);
-            images.add(imageView);
-
-        }
-
-        vp.setAdapter(new MyImageViewPagerAdapter(ActivityPersonalCare.this, images, piclists));
-        vp.setOffscreenPageLimit(3);
-        vp.setPageMargin(getResources().getDimensionPixelSize(R.dimen.base_padding));
-        vp.setOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() {
-            @Override
-            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-                super.onPageScrolled(position, positionOffset, positionOffsetPixels);
-                if (mViewPagerContainer != null) {
-                    mViewPagerContainer.invalidate(); // 更新超出区域页面，否则会出现页面缓存，导致页面效果不佳
-                }
-            }
-        });
-
-        mSpecialLayout.addView(productView);
-        getCategory("2");
-
-    }
 
     @Event(value = {R.id.btn_return})
     private void getEvent(View v) {
@@ -311,7 +162,6 @@ public class ActivityPersonalCare extends BaseActivity {
             case R.id.btn_return:
                 finish();
                 break;
-
             default:
                 break;
         }
@@ -338,7 +188,7 @@ public class ActivityPersonalCare extends BaseActivity {
                 ImageView imageView = new ImageView(ActivityPersonalCare.this);
                 imageView.setScaleType(ImageView.ScaleType.FIT_XY);
 
-                setImageFromUrl(pic, imageView);
+                setImageURl(imageView, pic);
                 images.add(imageView);
 
             }
@@ -403,6 +253,7 @@ public class ActivityPersonalCare extends BaseActivity {
 
             @Override
             public void onError(Throwable ex, boolean isOnCallback) {
+                showToast(ex.getMessage());
             }
 
             @Override
@@ -565,9 +416,10 @@ public class ActivityPersonalCare extends BaseActivity {
         map.put("Size", size);
         map.put("Key", Constants.WEBAPI_KEY);
         map.put("Ts", Ts);
+        map.put("Edition", "2");
 
         String url = Constants.WEBAPI_ADDRESS + "api/ProductNew/GetHomeAdsClassIndex?MdUserId=" + MuserId + "&Code="
-                + code + "&ZY=" + IsFreeShipping + "&Size=" + size + "&Sign=" + NetUtils.getSign(map) + "&Ts=" + Ts;
+                + code + "&Edition=2" + "&ZY=" + IsFreeShipping + "&Size=" + size + "&Sign=" + NetUtils.getSign(map) + "&Ts=" + Ts;
 
         XutilsHttp.getInstance().get(url, null, new getCategoryList(), this);
     }
@@ -594,9 +446,6 @@ public class ActivityPersonalCare extends BaseActivity {
                         }
                     }
 
-                    JSONArray piclist = jo.getJSONObject("Data").getJSONArray("ProductChannelAD");
-                    setBanner(piclist);
-
                     if (lista.size() == 2) {
                         mCategoryGridView.setNumColumns(2);
                         mCategoryGridView.setAdapter(new AdapterHomeCategoryGrid(lista, ActivityPersonalCare.this,
@@ -619,52 +468,9 @@ public class ActivityPersonalCare extends BaseActivity {
                         }
                     });
 
-                }
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
-        }
-    }
-
-    private void FoodProductList() {
-        String MuserId = getBindingShop();
-        String Ts = MD5.getTimeStamp();
-        Map<String, String> map = new HashMap<String, String>();
-        map.put("SkuId", MuserId);
-        map.put("ZY", IsFreeShipping);
-        map.put("Key", Constants.WEBAPI_KEY);
-        map.put("Ts", Ts);
-
-        String url = Constants.WEBAPI_ADDRESS + "api/Product/GetIndexadlist?UserId=" + MuserId + "&ZY=" + IsFreeShipping
-                + "&Sign=" + NetUtils.getSign(map) + "&Ts=" + Ts;
-
-        XutilsHttp.getInstance().get(url, null, new FoodProductListBack(), this);
-
-    }
-
-    class FoodProductListBack implements XCallBack {
-
-        @Override
-        public void onResponse(String result) {
-            try {
-                JSONObject jo = new JSONObject(result);
-                String jsonresult = jo.getString("Result");
-                if (jsonresult.equals("1")) {
-
-                    JSONArray piclist = jo.getJSONObject("Data").getJSONArray("indexChannelAD");
-                    piclists = new ArrayList<ImageViewListBean>();
-                    for (int i = 0; i < piclist.length(); i++) {
-                        ImageViewListBean m = new ImageViewListBean();
-                        m.setImg(piclist.getJSONObject(i).getString("ModuleImg"));
-                        m.setName(piclist.getJSONObject(i).getString("ModuleName"));
-                        m.setUrl(piclist.getJSONObject(i).getString("ModuleURL"));
-                        piclists.add(m);
-                    }
-
-                    if (code.equals("004")) {
-                        addImportedFood();
-                    } else if (code.equals("002")) {
-                        addHouseWear();
+                    JSONArray piclist = jo.getJSONObject("Data").getJSONArray("ProductChannelAD");
+                    if (piclist != null) {
+                        setBanner(piclist);
                     }
 
                 }
@@ -673,5 +479,6 @@ public class ActivityPersonalCare extends BaseActivity {
             }
         }
     }
+
 
 }

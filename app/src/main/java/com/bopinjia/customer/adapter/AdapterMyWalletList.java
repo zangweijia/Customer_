@@ -1,13 +1,13 @@
 package com.bopinjia.customer.adapter;
 
-import java.util.List;
+import android.content.Context;
+import android.widget.TextView;
 
 import com.bopinjia.customer.R;
-import com.bopinjia.customer.bean.MyClientBean;
 import com.bopinjia.customer.bean.MyWalletBean;
 import com.bopinjia.customer.util.ViewHolderUtils;
 
-import android.content.Context;
+import java.util.List;
 
 public class AdapterMyWalletList extends CommonAdapter {
 
@@ -25,25 +25,20 @@ public class AdapterMyWalletList extends CommonAdapter {
 	@Override
 	public void convert(ViewHolderUtils holder, Object t, int position) {
 
-		holder.setText(R.id.tv_date_year, list.get(position).getDatayear());
 
-		holder.setText(R.id.tv_date_time, list.get(position).getDatetime());
 
-		holder.setText(R.id.tv_account, list.get(position).getAccount());
-
-		
-
-		holder.setText(R.id.tv_type, list.get(position).getType());
+		holder.setText(R.id.tv_time, list.get(position).getDatetime());
+		holder.setText(R.id.tv_type_name, list.get(position).getType());
 
 		String typeid = list.get(position).getTypeId();
 
-		if (typeid.equals("0")) {
+		if (typeid.equals("2")) {
 			// 支出
-
 			holder.setText(R.id.tv_price, "-"+list.get(position).getPrice());
 		} else if (typeid.equals("1")) {
 			// 收入
 			holder.setText(R.id.tv_price, "+"+list.get(position).getPrice());
+			((TextView)holder.getView(R.id.tv_price)).setTextColor(context.getResources().getColor(R.color.main_color));
 		}
 
 	}

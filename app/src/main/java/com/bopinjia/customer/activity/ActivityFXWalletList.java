@@ -121,7 +121,6 @@ public class ActivityFXWalletList extends BaseActivity {
 
         outView = (XRefreshView) findViewById(R.id.custom_view);
         outView.setPullLoadEnable(true);
-//		outView.setRefreshViewType(XRefreshViewType.ABSLISTVIEW);
         outView.setXRefreshViewListener(new XRefreshViewListener() {
 
             @Override
@@ -228,24 +227,18 @@ public class ActivityFXWalletList extends BaseActivity {
 
                     JSONArray dataArray = jo.getJSONObject("Data").getJSONArray("Records");
                     if (dataArray != null && dataArray.length() > 0) {
+
+                        outView.setVisibility(View.VISIBLE);
+                        findViewById(R.id.linearlayout_no_info).setVisibility(View.GONE);
                         List<MyWalletBean> mlist = new ArrayList<MyWalletBean>();
 
                         for (int i = 0; i < dataArray.length(); i++) {
                             JSONObject data = dataArray.getJSONObject(i);
                             MyWalletBean mb = new MyWalletBean();
-
-                            mb.setAccount(
-                                    data.getString("UserAccountTypeId") + "(" + data.getString("UserAccountNum") + ")");
-
-                            mb.setDatayear(data.getString("UserBill_Creatime_Y"));
-
-                            mb.setDatetime(data.getString("UserBill_Creatime_M"));
-
+                            mb.setDatetime(data.getString("UserBill_Creatime"));
                             mb.setPrice(data.getString("UserBill_Amount"));
-
                             mb.setType(data.getString("UserBill_TypeName"));
-
-                            mb.setTypeId(data.getString("UserBill_TypeState"));
+                            mb.setTypeId(data.getString("UserBill_PState"));
                             mlist.add(mb);
 
                         }
@@ -263,7 +256,8 @@ public class ActivityFXWalletList extends BaseActivity {
 
                     }
                 } else if (jsonresult.equals("2")) {
-                    showToast("没有数据信息");
+                    outView.setVisibility(View.GONE);
+                    findViewById(R.id.linearlayout_no_info).setVisibility(View.VISIBLE);
                 }
             } catch (JSONException e) {
                 e.printStackTrace();

@@ -3,19 +3,17 @@ apply plugin: 'com.android.application'
 
 android {
     signingConfigs {
-        config {
-            keyAlias 'bopinjia'
-            keyPassword 'bopinjia2016'
-            storeFile file('G:/01-android初始文档/key/bopinjia.keystore')
-            storePassword 'bopinjia2016'
-            // v1SigningEnabled false
-            v2SigningEnabled false
-        }
         debug {
             keyAlias 'androiddebugkey'
             keyPassword 'android'
             storeFile file('D:/bopinjia.keystore')
             storePassword 'android'
+        }
+        Customer {
+            keyAlias 'bopinjia'
+            keyPassword 'bopinjia2016'
+            storeFile file('G:/01-android初始文档/key/bopinjia.keystore')
+            storePassword 'bopinjia2016'
         }
     }
     compileSdkVersion 25
@@ -37,10 +35,10 @@ android {
             minifyEnabled false
             multiDexEnabled true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-            signingConfig signingConfigs.config
+            signingConfig signingConfigs.Customer
         }
         debug {
-            signingConfig signingConfigs.debug
+            signingConfig signingConfigs.Customer
         }
     }
     lintOptions {

@@ -4,7 +4,6 @@ import android.content.Context;
 import android.os.Handler;
 import android.os.Looper;
 import android.widget.ImageView;
-import android.widget.Toast;
 
 import com.bopinjia.customer.R;
 import com.bopinjia.customer.view.CustomProgressDialog;
@@ -80,7 +79,6 @@ public class XutilsHttp {
 
 			@Override
 			public void onError(Throwable ex, boolean isOnCallback) {
-				Toast.makeText(context, "网络请求失败", Toast.LENGTH_SHORT).show();
 				dialog.dismiss();
 			}
 
@@ -125,7 +123,6 @@ public class XutilsHttp {
 
 			@Override
 			public void onError(Throwable ex, boolean isOnCallback) {
-				Toast.makeText(context, "网络请求失败", Toast.LENGTH_SHORT).show();
 				dialog.dismiss();
 			}
 
@@ -169,7 +166,6 @@ public class XutilsHttp {
 
 			@Override
 			public void onError(Throwable ex, boolean isOnCallback) {
-				Toast.makeText(context, "网络请求失败", Toast.LENGTH_SHORT).show();
 				dialog.dismiss();
 			}
 
@@ -213,7 +209,6 @@ public class XutilsHttp {
 
 			@Override
 			public void onError(Throwable ex, boolean isOnCallback) {
-				Toast.makeText(context, "网络请求失败", Toast.LENGTH_SHORT).show();
 				dialog.dismiss();
 			}
 
@@ -257,7 +252,6 @@ public class XutilsHttp {
 
 			@Override
 			public void onError(Throwable ex, boolean isOnCallback) {
-				Toast.makeText(context, "网络请求失败", Toast.LENGTH_SHORT).show();
 				dialog.dismiss();
 			}
 
@@ -313,7 +307,6 @@ public class XutilsHttp {
 
 			@Override
 			public void onError(Throwable ex, boolean isOnCallback) {
-				Toast.makeText(context, "网络请求失败", Toast.LENGTH_SHORT).show();
 				dialog.dismiss();
 			}
 

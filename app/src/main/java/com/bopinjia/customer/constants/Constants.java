@@ -120,9 +120,6 @@ public class Constants {
     // -------------------↑此分割线以上的配置信息，勿动！----------------------//
 
     // -------------------↓下列配置信息，如有需要请修改 ----------------------//
-    /** WebService地址 */
-    //public static final String WEBSERVICE_ADDRESS = "service.bopinjia.com";
-    // public static final String WEBSERVICE_ADDRESS = "192.168.2.120:8012";
 
     /**
      * WebAPI 地址

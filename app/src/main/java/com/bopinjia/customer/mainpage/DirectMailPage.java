@@ -150,15 +150,15 @@ public class DirectMailPage extends Fragment {
         getProductList(0);
         ProductList();
         isLogged = ((BaseActivity) getActivity()).isLogged();
-        list = new ArrayList<HorizontallistViewBean>();
-        for (int i = 0; i < 20; i++) {
-            HorizontallistViewBean m = new HorizontallistViewBean();
-            m.setImg("http://images.bopinjia.com//ProductMSJ/20161014/image/357X357_201610141148150391.png");
-            m.setMarketprice("¥" + "0000");
-            m.setPrice("¥" + i);
-            list.add(m);
-        }
-        setHlist(list);
+//        list = new ArrayList<HorizontallistViewBean>();
+//        for (int i = 0; i < 20; i++) {
+//            HorizontallistViewBean m = new HorizontallistViewBean();
+//            m.setImg("http://images.bopinjia.com//ProductMSJ/20161014/image/357X357_201610141148150391.png");
+//            m.setMarketprice("¥" + "0000");
+//            m.setPrice("¥" + i);
+//            list.add(m);
+//        }
+//        setHlist(list);
         getAppMenu();
 
         mCategoryGridView.setOnItemClickListener(new OnItemClickListener() {
@@ -224,7 +224,7 @@ public class DirectMailPage extends Fragment {
             String content = (String) view.getTag();
             for (int i = 0; i < list.size(); i++) {
                 if (i == id) {
-                    ((BaseActivity)getActivity()).showToast(content);
+                    ((BaseActivity) getActivity()).showToast(content);
                 }
             }
 
@@ -287,10 +287,11 @@ public class DirectMailPage extends Fragment {
         Map<String, String> map = new HashMap<String, String>();
         map.put("SkuId", MuserId);
         map.put("ZY", "1");
+        map.put("Edition","2");
         map.put("Key", Constants.WEBAPI_KEY);
         map.put("Ts", Ts);
 
-        String url = Constants.WEBAPI_ADDRESS + "api/Product/GetIndexadlist?UserId=" + MuserId + "&ZY=" + "1" + "&Sign="
+        String url = Constants.WEBAPI_ADDRESS + "api/Product/GetIndexadlist?UserId=" + MuserId + "&ZY=" + "1" +"&Edition=2"+ "&Sign="
                 + NetUtils.getSign(map) + "&Ts=" + Ts;
 
         XutilsHttp.getInstance().get(url, null, new ProductListCallBack(), getActivity());
@@ -326,7 +327,7 @@ public class DirectMailPage extends Fragment {
                         ImageView imageView = new ImageView(getActivity());
                         imageView.setScaleType(ImageView.ScaleType.FIT_XY);
 
-                        ((BaseActivity) getActivity()).setImageFromUrl(pic, imageView);
+                        ((BaseActivity) getActivity()).setImageURl(imageView, pic);
                         images.add(imageView);
 
                     }

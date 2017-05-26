@@ -47,12 +47,11 @@ public class AdapterCommissionProductList extends CommonAdapter {
 
 
         if (list.get(position).getGold_comission().equals("0")) {
-
         } else {
             // 金牌佣金
-            holder.setText(R.id.tv_gold_commission, df.format(list.get(position).getGold_comission()));
+            holder.setText(R.id.tv_gold_commission, df.format(new BigDecimal(list.get(position).getGold_comission()).doubleValue()));
         }
-
+        //当分销商等级为3 时隐藏金牌佣金
         if (list.get(position).getLevel().equals("3")) {
             holder.getView(R.id.tv_gold_commission).setVisibility(View.INVISIBLE);
         } else if (list.get(position).getLevel().equals("10")) {

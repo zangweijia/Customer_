@@ -80,5 +80,6 @@
     <color name="add_cart">	#A9A9A9</color>
     <color name="main_color">#FF5400</color>
     <color name="main_color1">#FF5401</color>
+    <color name="bg_tiyan">#ffede4</color>
 
 </resources>

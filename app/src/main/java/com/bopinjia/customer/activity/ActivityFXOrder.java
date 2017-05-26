@@ -434,7 +434,7 @@ public class ActivityFXOrder extends BaseActivity {
 		// 设置佣金
 		public void setCommissionfee(String shipfee) {
 
-			String ss = "佣金：" + shipfee;
+			String ss = "佣金：¥" + shipfee;
 			SpannableStringBuilder builder = new SpannableStringBuilder(ss);
 			// ForegroundColorSpan 为文字前景色，BackgroundColorSpan为文字背景色
 
@@ -472,7 +472,7 @@ public class ActivityFXOrder extends BaseActivity {
 						((TextView) productView.findViewById(R.id.tv_yj)).setVisibility(View.VISIBLE);
 						// 佣金
 						((TextView) productView.findViewById(R.id.tv_commission_price))
-								.setText(product.getString("GDSUserBrokerage"));
+								.setText("¥"+product.getString("GDSUserBrokerage"));
 					}
 
 					// 商品数量

@@ -25,17 +25,12 @@ import java.util.TreeMap;
 
 public class ActivityFXReflect extends BaseActivity {
 
-
-
     private TextView mTiTleName, mTiTleReflect;
-
-
     /**
      * 可提现余额
      */
     @ViewInject(R.id.tv_reflect_account)
     private TextView mReflectAccount;
-
     /**
      * 余额
      */
@@ -73,7 +68,7 @@ public class ActivityFXReflect extends BaseActivity {
     }
 
     @Event(value = {R.id.btn_return, R.id.btn_edit, R.id.chk_alipay,
-            R.id.chk_weixinpay, R.id.tv_tixian})
+            R.id.chk_weixinpay, R.id.tv_tixian,R.id.tv_tixian_interduce})
     private void getEvent(View v) {
         switch (v.getId()) {
             case R.id.btn_return:
@@ -93,7 +88,11 @@ public class ActivityFXReflect extends BaseActivity {
                     showToast("提现金额不能低于10元");
                 }
                 break;
-
+            case R.id.tv_tixian_interduce:
+                Intent i= new Intent();
+                i.putExtra("newsId", "11");
+                forward(ActivityCustomerNews.class, i);
+                break;
             default:
                 break;
         }

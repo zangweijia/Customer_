@@ -8,22 +8,22 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bopinjia.customer.R;
+import com.bopinjia.customer.alipay.AlipayResult;
+import com.bopinjia.customer.constants.Constants;
+import com.bopinjia.customer.util.MD5;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+import org.xutils.common.Callback;
+import org.xutils.http.RequestParams;
+import org.xutils.x;
+
 import java.util.Comparator;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
 import java.util.TreeMap;
-
-import org.json.JSONException;
-import org.json.JSONObject;
-import org.xutils.x;
-import org.xutils.common.Callback;
-import org.xutils.http.RequestParams;
-
-import com.bopinjia.customer.R;
-import com.bopinjia.customer.alipay.AlipayResult;
-import com.bopinjia.customer.constants.Constants;
-import com.bopinjia.customer.util.MD5;
 
 public class ActivityAlipayResult extends BaseActivity {
 
@@ -75,7 +75,6 @@ public class ActivityAlipayResult extends BaseActivity {
 				new Handler().postDelayed(new Runnable() {
 					@Override
 					public void run() {
-
 						forward(ActivityFXKTSuccess.class);
 						ActivityFXDisPay.instance.finish();
 						finish();

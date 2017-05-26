@@ -48,16 +48,15 @@ public class GoodsInStock extends Fragment implements View.OnClickListener {
 
     @ViewInject(R.id.iv_shop_head)
     private ImageView mShopHead;
+
     @ViewInject(R.id.iv_bg_shop_info)
     private ImageView mBgShop;
-
 
     @ViewInject(R.id.tv_shop_name)
     private TextView mShopName;
 
     @ViewInject(R.id.tv_intorduce)
     private TextView mIntorduce;
-
 
     @ViewInject(R.id.tabs_main)
     private PagerSlidingTabStrip mTabs;

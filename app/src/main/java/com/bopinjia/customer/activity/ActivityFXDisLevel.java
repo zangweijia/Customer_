@@ -1,16 +1,12 @@
 package com.bopinjia.customer.activity;
 
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-import java.util.TreeMap;
-
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import android.widget.ImageView;
 
 import com.bopinjia.customer.R;
 import com.bopinjia.customer.adapter.AdapterCommissionProductList;
@@ -23,14 +19,19 @@ import com.bopinjia.customer.net.XutilsHttp.XCallBack;
 import com.bopinjia.customer.util.MD5;
 import com.bopinjia.customer.view.NoScrollListview;
 
-import android.content.Intent;
-import android.os.Bundle;
-import android.util.DisplayMetrics;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.webkit.WebView;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+import org.xutils.image.ImageOptions;
+import org.xutils.x;
+
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import java.util.TreeMap;
 
 public class ActivityFXDisLevel extends BaseActivity {
 
@@ -42,7 +43,7 @@ public class ActivityFXDisLevel extends BaseActivity {
 
 	private String fxslevel;
 
-	private WebView mContent;
+	private ImageView mContent;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -50,7 +51,7 @@ public class ActivityFXDisLevel extends BaseActivity {
 		setContentView(R.layout.wj_activity_distribution_pay);
 
 		instance = this;
-
+		mContent = (ImageView) findViewById(R.id.webView);
 		type = getIntent().getStringExtra("type");
 		if (type.equals("1")) {
 			// 申请开通
@@ -220,17 +221,14 @@ public class ActivityFXDisLevel extends BaseActivity {
 
 					JSONObject data = jo.getJSONObject("Data");
 
-					// 消息详细控件的格式化
-					DisplayMetrics dm = new DisplayMetrics();
-					getWindowManager().getDefaultDisplay().getMetrics(dm);
-					mContent = (WebView) findViewById(R.id.webView);
-					mContent.clearCache(true);
-					mContent.setInitialScale(100 * (dm.widthPixels - 40) / 480);
-					mContent.setVerticalScrollBarEnabled(false);
 
-					String contentText = data.getString("NewsContent");
-					mContent.loadData(contentText, "text/html; charset=UTF-8", null);
+					String contentText = data.getString("NewsPic");
 
+					ImageOptions imageOptions = new ImageOptions.Builder().setImageScaleType(ImageView.ScaleType.CENTER_CROP)
+							.setFailureDrawableId(R.drawable.ic_default_image)// 加载失败后默认显示图片
+							.build();
+
+					x.image().bind(mContent, contentText, imageOptions);
 				}
 
 			} catch (JSONException e) {
@@ -271,7 +269,6 @@ public class ActivityFXDisLevel extends BaseActivity {
 
 		String url = Constants.WEBAPI_ADDRESS + "api/Commission/List?UserId=" + getBindingShop() + "&StateId=1"
 				+ "&PageIndex=" + "1" + "&PageSize=" + "100" + "&Sign="
-
 				+ Sign + "&Ts=" + Ts;
 		XutilsHttp.getInstance().get(url, null, new getCommissiomProductListCallBack(),this);
 	}

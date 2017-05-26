@@ -1,40 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"    android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/bg_ffffff"
-    android:orientation="vertical" >
+    android:orientation="vertical">
 
     <com.bopinjia.customer.view.SlideDetailsLayout
         android:id="@+id/sv_switch"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" >
+        android:layout_height="match_parent">
 
         <com.bopinjia.customer.view.ScrollViewExtend
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:scrollbars="none" >
+            android:scrollbars="none">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="vertical" >
+                android:orientation="vertical">
 
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="400dp"
-                    android:padding="10dp" >
+                    android:padding="10dp">
 
                     <com.bopinjia.customer.view.MyViewPager
                         android:id="@+id/_pager"
                         android:layout_width="fill_parent"
-                        android:layout_height="match_parent" />
+                        android:layout_height="match_parent"
+                        android:layout_marginBottom="10dp"
+                        android:layout_marginTop="10dp" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_alignParentBottom="true"
-                        android:layout_marginBottom="20dp" >
+                        android:layout_marginBottom="20dp">
 
                         <com.viewpagerindicator.CirclePageIndicator
                             android:id="@+id/_indicator"
@@ -65,7 +68,7 @@
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content" >
+                    android:layout_height="wrap_content">
 
                     <com.bopinjia.customer.view.NoScrollGridView
                         android:id="@+id/grid"

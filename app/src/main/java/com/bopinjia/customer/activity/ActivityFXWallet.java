@@ -3,7 +3,6 @@ package com.bopinjia.customer.activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -37,8 +36,6 @@ public class ActivityFXWallet extends BaseActivity {
     private ListView mWallet;
     private TextView mWalletList;
 
-    @ViewInject(R.id.ll_binding_account)
-    private LinearLayout mBindingAccount;
 
     /**
      * 余额
@@ -50,11 +47,6 @@ public class ActivityFXWallet extends BaseActivity {
      */
     @ViewInject(R.id.tv_total_amount)
     private TextView mTotalAmount;
-    /**
-     * 账号数量
-     */
-    @ViewInject(R.id.tv_account_number)
-    private TextView mAccountNumber;
 
     /**
      * 已提现
@@ -103,16 +95,14 @@ public class ActivityFXWallet extends BaseActivity {
 
     }
 
-    @Event(value = {R.id.btn_edit, R.id.ll_binding_account, R.id.btn_return, R.id.tv_tixian})
+    @Event(value = {R.id.btn_edit, R.id.btn_return, R.id.tv_tixian})
     private void getEvent(View v) {
 
         switch (v.getId()) {
             case R.id.btn_edit:
                 forward(ActivityFXWalletList.class);
                 break;
-            case R.id.ll_binding_account:
-                forward(ActivityFXBindCashAccount.class);
-                break;
+
             case R.id.btn_return:
                 finish();
                 break;
@@ -166,7 +156,6 @@ public class ActivityFXWallet extends BaseActivity {
                     mTomyInmoney.setText(MDGDSM_ToMyInMoney);
                     // 银行卡数量
                     String MDGDSM_ToMyUserAccount = Data.getString("MDGDSM_ToMyUserAccount");
-                    mAccountNumber.setText(MDGDSM_ToMyUserAccount);
                     //正在交易中
                     String mInthedealtext = Data.getString("MDGDSM_CashInMoney");
                     mInthedeal.setText(mInthedealtext);
@@ -211,24 +200,19 @@ public class ActivityFXWallet extends BaseActivity {
                 if (jsonresult.equals("1")) {
                     JSONArray dataArray = jo.getJSONObject("Data").getJSONArray("Records");
                     if (dataArray != null && dataArray.length() > 0) {
+
+                        mWallet.setVisibility(View.VISIBLE);
+                        findViewById(R.id.linearlayout_no_info).setVisibility(View.GONE);
+
                         List<MyWalletBean> mlist = new ArrayList<MyWalletBean>();
 
                         for (int i = 0; i < dataArray.length(); i++) {
                             JSONObject data = dataArray.getJSONObject(i);
                             MyWalletBean mb = new MyWalletBean();
-
-                            mb.setAccount(
-                                    data.getString("UserAccountTypeId") + "(" + data.getString("UserAccountNum") + ")");
-
-                            mb.setDatayear(data.getString("UserBill_Creatime_Y"));
-
-                            mb.setDatetime(data.getString("UserBill_Creatime_M"));
-
+                            mb.setDatetime(data.getString("UserBill_Creatime"));
                             mb.setPrice(data.getString("UserBill_Amount"));
-
                             mb.setType(data.getString("UserBill_TypeName"));
-
-                            mb.setTypeId(data.getString("UserBill_TypeState"));
+                            mb.setTypeId(data.getString("UserBill_PState"));
                             mlist.add(mb);
 
                         }
@@ -239,7 +223,8 @@ public class ActivityFXWallet extends BaseActivity {
 
                     }
                 } else {
-
+                    mWallet.setVisibility(View.GONE);
+                    findViewById(R.id.linearlayout_no_info).setVisibility(View.VISIBLE);
                 }
             } catch (JSONException e) {
                 e.printStackTrace();

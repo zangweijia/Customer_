@@ -258,7 +258,12 @@ public class ActivityProductDetailsNew extends BaseActivity {
 
                     skuname = sku.getString("SkuName");
                     skupic = sku.getString("SkuThumbnail");
-                    skuprice = sku.getString("ScanPrice");
+
+                    if ((sku.getString("ScanPrice").substring(skuprice.length() - 2, skuprice.length())).equals("00")) {
+                        skuprice = sku.getString("ScanPrice").substring(0, skuprice.length() - 3);
+                    } else {
+                        skuprice = sku.getString("ScanPrice");
+                    }
 
                     String RealStock = sku.getString("RealStock");
                     if (RealStock.equals("0")) {
@@ -317,7 +322,6 @@ public class ActivityProductDetailsNew extends BaseActivity {
     /**
      * 更新购物车
      *
-     * @param Quantity
      * @param SkuId
      * @param ProductType
      */
@@ -567,7 +571,8 @@ public class ActivityProductDetailsNew extends BaseActivity {
      */
     public void Share() {
         ShareAction s = new ShareAction(this)
-                .setDisplayList(SHARE_MEDIA.QQ, SHARE_MEDIA.WEIXIN, SHARE_MEDIA.WEIXIN_CIRCLE)
+                .setDisplayList(SHARE_MEDIA.WEIXIN, SHARE_MEDIA.WEIXIN_CIRCLE)
+//                .setDisplayList(SHARE_MEDIA.QQ, SHARE_MEDIA.WEIXIN, SHARE_MEDIA.WEIXIN_CIRCLE)
                 .setShareboardclickCallback(shareBoardlistener);
         s.open();
     }
@@ -585,7 +590,7 @@ public class ActivityProductDetailsNew extends BaseActivity {
                 web.setThumb(img); // 缩略图
                 if (isLogged()) {
                     if (isFXS) {
-                        web.setTitle("我在舶品家开店了，海外正品，仅售" + skuprice + "元，还不快来捧场！");// 标题
+                        web.setTitle("我在舶品家开店啦!海外正品，仅售" + skuprice + "元，还不快来捧场！");// 标题
                         web.setDescription("【" + shopname + "的店铺码:" + mFXSnumber + "】 " + skuname);// 描述
                     } else {
                         web.setTitle(skuname);// 标题
@@ -604,7 +609,7 @@ public class ActivityProductDetailsNew extends BaseActivity {
                 web.setThumb(img); // 缩略图
                 if (isLogged()) {
                     if (isFXS) {
-                        web.setTitle("我在舶品家开店了，海外正品，仅售" + skuprice + "元，还不快来捧场！");// 标题
+                        web.setTitle("我在舶品家开店啦!海外正品，仅售" + skuprice + "元，还不快来捧场！");// 标题
                         web.setDescription("【" + shopname + "的店铺码:" + mFXSnumber + "】 " + skuname);// 描述
                     } else {
                         web.setTitle(skuname);// 标题
@@ -622,7 +627,7 @@ public class ActivityProductDetailsNew extends BaseActivity {
                 web.setThumb(img); // 缩略图
                 if (isLogged()) {
                     if (isFXS) {
-                        web.setTitle("我在舶品家开店了，海外正品，仅售" + skuprice + "元，还不快来捧场！");// 标题
+                        web.setTitle("我在舶品家开店啦!海外正品，仅售" + skuprice + "元，还不快来捧场！");// 标题
                     } else {
                         web.setTitle(skuname);// 标题
                     }
@@ -699,7 +704,6 @@ public class ActivityProductDetailsNew extends BaseActivity {
                         // 一般用户 可申请分销商
                         isFXS = false;
                     }
-
                 }
 
             } catch (JSONException e) {
@@ -751,8 +755,6 @@ public class ActivityProductDetailsNew extends BaseActivity {
         }
 
     }
-
-    // e3e5e9
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         if (keyCode == KeyEvent.KEYCODE_BACK) {
             if (isShare) {

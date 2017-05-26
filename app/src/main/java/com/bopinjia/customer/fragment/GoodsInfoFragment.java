@@ -1,16 +1,16 @@
 package com.bopinjia.customer.fragment;
 
-import java.io.UnsupportedEncodingException;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.content.Intent;
+import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.astuetz.PagerSlidingTabStrip;
 import com.bopinjia.customer.R;
@@ -34,20 +34,17 @@ import com.bopinjia.customer.view.SlideDetailsLayout;
 import com.bopinjia.customer.view.SlideDetailsLayout.Status;
 import com.viewpagerindicator.CirclePageIndicator;
 
-import android.content.Intent;
-import android.os.Bundle;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentStatePagerAdapter;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.webkit.WebView;
-import android.widget.AdapterView;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import android.widget.AdapterView.OnItemClickListener;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.UnsupportedEncodingException;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class GoodsInfoFragment extends Fragment
 		implements SlideDetailsLayout.OnSlideDetailsListener, OnSingleTouchListener {
@@ -210,6 +207,20 @@ public class GoodsInfoFragment extends Fragment
 					JSONObject data = jo.getJSONObject("Data");
 					JSONObject sku = data.getJSONObject("sku");
 
+
+					JSONArray piclist = data.getJSONArray("picture");
+					List<View> images = new ArrayList<View>();
+					for (int i = 0; i < piclist.length(); i++) {
+						JSONObject j = piclist.getJSONObject(i);
+						ImageView imageView = new ImageView(getActivity());
+						imageView.setScaleType(ImageView.ScaleType.FIT_XY);
+						((BaseActivity) getActivity()).setImageURl(imageView,j.getString("PictureUrl"));
+						images.add(imageView);
+					}
+					mPager.setAdapter(new ImageViewPagerAdapter(images));
+					mIndicator.setViewPager(mPager);
+
+
 					txt_product_name.setText("              " + sku.getString("SkuName"));
 					// txt_price.setText("¥" + sku.getString("ScanPrice"));
 
@@ -267,18 +278,7 @@ public class GoodsInfoFragment extends Fragment
 					mDetail.getSettings().setDisplayZoomControls(false);  
 					mDetail.loadData(sku.getString("SkuDesc"), "text/html; charset=UTF-8", null);
 
-					JSONArray piclist = data.getJSONArray("picture");
-					List<View> images = new ArrayList<View>();
-					for (int i = 0; i < piclist.length(); i++) {
-						JSONObject j = piclist.getJSONObject(i);
-						ImageView imageView = new ImageView(getActivity());
-						imageView.setScaleType(ImageView.ScaleType.FIT_XY);
 
-						((BaseActivity) getActivity()).setImageFromUrl(j.getString("PictureUrl"), imageView);
-						images.add(imageView);
-					}
-					mPager.setAdapter(new ImageViewPagerAdapter(images));
-					mIndicator.setViewPager(mPager);
 					getIsDistribution();
 				}
 			} catch (JSONException e) {
@@ -395,16 +395,15 @@ public class GoodsInfoFragment extends Fragment
 	 * 判断是否为经销商
 	 */
 	private void getIsDistribution() {
-		String s = ((BaseActivity) getActivity()).getLoginUserId();
 		String Ts = MD5.getTimeStamp();
 		Map<String, String> map = new HashMap<String, String>();
-		map.put("UserId", s);
+		map.put("UserId", userid);
 		map.put("MDUserId", ((BaseActivity) getActivity()).getBindingShop());
 
 		map.put("Key", Constants.WEBAPI_KEY);
 		map.put("Ts", Ts);
 
-		String url = Constants.WEBAPI_ADDRESS + "api/GDSUser/GDSExists?UserId=" + s + "&MDUserId="
+		String url = Constants.WEBAPI_ADDRESS + "api/GDSUser/GDSExists?UserId=" + userid + "&MDUserId="
 				+ ((BaseActivity) getActivity()).getBindingShop() + "&Sign=" + NetUtils.getSign(map) + "&Ts=" + Ts;
 
 		XutilsHttp.getInstance().get(url, null, new IsDistributionCallBack(), getActivity());
