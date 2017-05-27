@@ -43,6 +43,8 @@ import com.google.gson.Gson;
 
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.xutils.common.Callback;
+import org.xutils.http.RequestParams;
 import org.xutils.image.ImageOptions;
 import org.xutils.view.annotation.ContentView;
 import org.xutils.view.annotation.Event;
@@ -173,7 +175,7 @@ public class MainMyFragment extends Fragment {
         getActivity().findViewById(R.id.all).setEnabled(false);
         // 获取订单各状态的件数
         GetCustomerOrderTotal();
-        getIsDistribution();
+       getIsDistribution();
     }
 
     /**
@@ -361,92 +363,94 @@ public class MainMyFragment extends Fragment {
 
         String url = Constants.WEBAPI_ADDRESS + "api/GDSUser/GDSExists?UserId=" + s + "&MDUserId="
                 + ((BaseActivity) getActivity()).getBindingShop() + "&Sign=" + NetUtils.getSign(map) + "&Ts=" + Ts;
+        RequestParams params = new RequestParams(url);
+        x.http().get(params, new Callback.CommonCallback<String>() {
 
-        XutilsHttp.getInstance().get(url, null, new IsDistributionCallBack(), getActivity());
+            @Override
+
+            public void onSuccess(String result) {
+                try {
+                    JSONObject jo = new JSONObject(result);
+                    String jsonresult = jo.getString("Result");
+                    if (jsonresult.equals("1")) {
+                        String Data = jo.getString("Data");
+
+                        if (Data.equals("0")) {
+                            // 一般客户
+                            distribution = "0";
+                            getActivity().findViewById(R.id.customer).setVisibility(View.VISIBLE);
+                            getActivity().findViewById(R.id.distribution).setVisibility(View.GONE);
+                            // 钱包隐藏
+                            getActivity().findViewById(R.id.my_money).setVisibility(View.GONE);
+                            // 分销管理
+                            getActivity().findViewById(R.id.my_fxgl).setVisibility(View.GONE);
+                            ((BaseActivity) getActivity()).putSharedPreferences(Constants.ISFXS, "0");
+                            isFxs = "0";
+
+                            mIV.setVisibility(View.GONE);
+
+                        } else if (Data.equals("1")) {
+                            // 分销商
+                            distribution = "1";
+                            getActivity().findViewById(R.id.customer).setVisibility(View.GONE);
+                            getActivity().findViewById(R.id.distribution).setVisibility(View.VISIBLE);
+
+                            getActivity().findViewById(R.id.my_money).setVisibility(View.VISIBLE);
+                            // 分销管理
+                            getActivity().findViewById(R.id.my_fxgl).setVisibility(View.VISIBLE);
+
+                            ((BaseActivity) getActivity()).putSharedPreferences(Constants.ISFXS, "1");
+                            isFxs = "1";
+
+                            mIV.setVisibility(View.VISIBLE);
+                            mIV.setImageResource(R.drawable.ic_my_fxgl);
+
+                            getDistributionInfo();
+
+                        } else if (Data.equals("2")) {
+                            // 一般用户 可申请分销商
+                            distribution = "2";
+                            getActivity().findViewById(R.id.customer).setVisibility(View.VISIBLE);
+                            getActivity().findViewById(R.id.distribution).setVisibility(View.GONE);
+
+                            getActivity().findViewById(R.id.my_money).setVisibility(View.GONE);
+                            // 分销管理
+                            getActivity().findViewById(R.id.my_fxgl).setVisibility(View.GONE);
+                            mIV.setVisibility(View.VISIBLE);
+                            mIV.setImageResource(R.drawable.ic_my_fxsq);
+                            ((BaseActivity) getActivity()).putSharedPreferences(Constants.ISFXS, "0");
+                            isFxs = "0";
+                        }
+
+                        if (((BaseActivity) getActivity()).getBopinjiaSharedPreference(Constants.ISFXS).equals(isFxs)) {
+                            Intent intent = new Intent();
+                            intent.setAction("fxs");
+                            BroadCastManager.getInstance().sendBroadCast(getActivity(), intent);
+                        }
+                    }
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+
+            @Override
+            public void onError(Throwable ex, boolean isOnCallback) {
+                ((BaseActivity)getActivity()).showToast(ex.getMessage());
+            }
+
+            @Override
+            public void onCancelled(Callback.CancelledException cex) {
+            }
+
+            @Override
+            public void onFinished() {
+            }
+        });
 
     }
 
     private String isFxs;
-
-    /**
-     * 判断是否为经销商回调
-     *
-     * @author ZWJ
-     */
-    class IsDistributionCallBack implements XCallBack {
-
-        @Override
-        public void onResponse(String result) {
-            try {
-                JSONObject jo = new JSONObject(result);
-                String jsonresult = jo.getString("Result");
-                if (jsonresult.equals("1")) {
-                    String Data = jo.getString("Data");
-
-                    if (Data.equals("0")) {
-                        // 一般客户
-                        distribution = "0";
-                        getActivity().findViewById(R.id.customer).setVisibility(View.VISIBLE);
-                        getActivity().findViewById(R.id.distribution).setVisibility(View.GONE);
-                        // 钱包隐藏
-                        getActivity().findViewById(R.id.my_money).setVisibility(View.GONE);
-                        // 分销管理
-                        getActivity().findViewById(R.id.my_fxgl).setVisibility(View.GONE);
-                        ((BaseActivity) getActivity()).putSharedPreferences(Constants.ISFXS, "0");
-                        isFxs = "0";
-
-                        mIV.setVisibility(View.GONE);
-
-                    } else if (Data.equals("1")) {
-                        // 分销商
-                        distribution = "1";
-                        getActivity().findViewById(R.id.customer).setVisibility(View.GONE);
-                        getActivity().findViewById(R.id.distribution).setVisibility(View.VISIBLE);
-
-                        getActivity().findViewById(R.id.my_money).setVisibility(View.VISIBLE);
-                        // 分销管理
-                        getActivity().findViewById(R.id.my_fxgl).setVisibility(View.VISIBLE);
-
-                        ((BaseActivity) getActivity()).putSharedPreferences(Constants.ISFXS, "1");
-                        isFxs = "1";
-
-                        mIV.setVisibility(View.VISIBLE);
-                        mIV.setImageResource(R.drawable.ic_my_fxgl);
-
-                        getDistributionInfo();
-
-                    } else if (Data.equals("2")) {
-                        // 一般用户 可申请分销商
-                        distribution = "2";
-                        getActivity().findViewById(R.id.customer).setVisibility(View.VISIBLE);
-                        getActivity().findViewById(R.id.distribution).setVisibility(View.GONE);
-
-                        getActivity().findViewById(R.id.my_money).setVisibility(View.GONE);
-                        // 分销管理
-                        getActivity().findViewById(R.id.my_fxgl).setVisibility(View.GONE);
-                        mIV.setVisibility(View.VISIBLE);
-                        mIV.setImageResource(R.drawable.ic_my_fxsq);
-                        ((BaseActivity) getActivity()).putSharedPreferences(Constants.ISFXS, "0");
-                        isFxs = "0";
-                    }
-
-
-                    if (((BaseActivity) getActivity()).getBopinjiaSharedPreference(Constants.ISFXS).equals(isFxs)) {
-                        Intent intent = new Intent();
-                        intent.setAction("fxs");
-                        BroadCastManager.getInstance().sendBroadCast(getActivity(), intent);
-                    }
-
-
-                }
-
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
-
-        }
-
-    }
 
     /**
      * 获取分销商信息
@@ -462,60 +466,67 @@ public class MainMyFragment extends Fragment {
         String url = Constants.WEBAPI_ADDRESS + "api/GDSUser/GetGDSUserInfo?UserId=" + s + "&Sign="
                 + NetUtils.getSign(map) + "&Ts=" + Ts;
 
-        XutilsHttp.getInstance().get(url, null, new DistributionInfoCallBack(), getActivity());
-    }
+        RequestParams params = new RequestParams(url);
+        x.http().get(params, new Callback.CommonCallback<String>() {
+            @Override
+            public void onSuccess(String result) {
+                try {
+                    JSONObject jo = new JSONObject(result);
+                    String jsonresult = jo.getString("Result");
+                    if (jsonresult.equals("1")) {
+                        JSONObject Data = jo.getJSONObject("Data");
+                        // 分销商绑定的店铺
+                        String MDGDSR_MDUserID = Data.getString("MDGDSR_MDUserID");
+                        // 把分销商绑定的门店 保存。
+                        ((BaseActivity) getActivity()).putSharedPreferences(Constants.FXSMD, MDGDSR_MDUserID);
 
-    /**
-     * 获取分销商信息回调
-     */
-    class DistributionInfoCallBack implements XCallBack {
+                        ((BaseActivity) getActivity()).putSharedPreferences(Constants.KEY_FXS_LEVEL,
+                                Data.getString("GDSType_Level"));
 
-        @Override
-        public void onResponse(String result) {
-            try {
-                JSONObject jo = new JSONObject(result);
-                String jsonresult = jo.getString("Result");
-                if (jsonresult.equals("1")) {
-                    JSONObject Data = jo.getJSONObject("Data");
-                    // 分销商绑定的店铺
-                    String MDGDSR_MDUserID = Data.getString("MDGDSR_MDUserID");
-                    // 把分销商绑定的门店 保存。
-                    ((BaseActivity) getActivity()).putSharedPreferences(Constants.FXSMD, MDGDSR_MDUserID);
+                        ((BaseActivity) getActivity()).putSharedPreferences(Constants.FXSSHOPNAME,
+                                Data.getString("MDGDSM_ShopName"));
+                        String mDisTypeName = Data.getString("GDSType_Name");
+                        // 会员等级
+                        ((TextView) getActivity().findViewById(R.id.tv_dis_type_name)).setText(Data.getString("GDSType_Name"));
+                        // 分销商等级图标
+                        ((BaseActivity) getActivity()).setImageURl(R.id.iv_type, Data.getString("GDSType_Img"));
 
-                    ((BaseActivity) getActivity()).putSharedPreferences(Constants.KEY_FXS_LEVEL,
-                            Data.getString("GDSType_Level"));
+                        // 会员头像
+                        ((BaseActivity) getActivity()).ImageFromUrl(headPortrait, R.id.dis_iv);
+                        // 分销会员编号
+                        ((TextView) getActivity().findViewById(R.id.tv_fxhybh))
+                                .setText("分销会员编号：" + Data.getString("MDGDSM_Number"));
+                        // 保存分销商号码
+                        ((BaseActivity) getActivity()).putSharedPreferences(Constants.KEY_FXS_NUMBER,
+                                Data.getString("MDGDSM_Number"));
 
-                    ((BaseActivity) getActivity()).putSharedPreferences(Constants.FXSSHOPNAME,
-                            Data.getString("MDGDSM_ShopName"));
-                    String mDisTypeName = Data.getString("GDSType_Name");
-                    // 会员等级
-                    ((TextView) getActivity().findViewById(R.id.tv_dis_type_name)).setText(Data.getString("GDSType_Name"));
-                    // 分销商等级图标
-                    ((BaseActivity) getActivity()).setImageURl(R.id.iv_type, Data.getString("GDSType_Img"));
+                        // 店铺名称
+                        ((TextView) getActivity().findViewById(R.id.tv_shop_name)).setText(name);
+                        // 我的钱包
+                        mMyMoney.setText(" ¥ " + Data.getString("MDGDSM_ToMyMoney"));
+                        tv_comission_money.setText("金牌佣金的收入：¥ " + Data.getString("MDGDSM_GoldCumulativeMoney"));
 
-                    // 会员头像
-                    ((BaseActivity) getActivity()).ImageFromUrl(headPortrait, R.id.dis_iv);
-                    // 分销会员编号
-                    ((TextView) getActivity().findViewById(R.id.tv_fxhybh))
-                            .setText("分销会员编号：" + Data.getString("MDGDSM_Number"));
-                    // 保存分销商号码
-                    ((BaseActivity) getActivity()).putSharedPreferences(Constants.KEY_FXS_NUMBER,
-                            Data.getString("MDGDSM_Number"));
+                    }
 
-                    // 店铺名称
-                    ((TextView) getActivity().findViewById(R.id.tv_shop_name)).setText(name);
-                    // 我的钱包
-                    mMyMoney.setText(" ¥ " + Data.getString("MDGDSM_ToMyMoney"));
-                    tv_comission_money.setText("金牌佣金的收入：¥ " + Data.getString("MDGDSM_GoldCumulativeMoney"));
-
+                } catch (JSONException e) {
+                    e.printStackTrace();
                 }
 
-            } catch (JSONException e) {
-                e.printStackTrace();
             }
 
-        }
+            @Override
+            public void onError(Throwable ex, boolean isOnCallback) {
+                ((BaseActivity)getActivity()).showToast(ex.getMessage());
+            }
 
+            @Override
+            public void onCancelled(Callback.CancelledException cex) {
+            }
+
+            @Override
+            public void onFinished() {
+            }
+        });
     }
 
     /**

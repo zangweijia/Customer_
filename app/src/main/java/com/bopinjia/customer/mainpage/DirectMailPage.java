@@ -506,7 +506,10 @@ public class DirectMailPage extends Fragment {
 
         @Override
         public void onReceive(Context context, Intent intent) {
-            mList.clear();
+            if (mList!=null){
+                mList.clear();
+            }
+
             getProductList(0, "10");
         }
     }
