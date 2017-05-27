@@ -258,9 +258,10 @@ public class ActivityProductDetailsNew extends BaseActivity {
 
                     skuname = sku.getString("SkuName");
                     skupic = sku.getString("SkuThumbnail");
-
-                    if ((sku.getString("ScanPrice").substring(skuprice.length() - 2, skuprice.length())).equals("00")) {
-                        skuprice = sku.getString("ScanPrice").substring(0, skuprice.length() - 3);
+                    String strs=sku.getString("ScanPrice");
+                    String str=strs.substring(strs.length() - 2, strs.length());
+                    if (str.equals("00")) {
+                        skuprice = sku.getString("ScanPrice").substring(0, strs.length() - 3);
                     } else {
                         skuprice = sku.getString("ScanPrice");
                     }
@@ -726,7 +727,6 @@ public class ActivityProductDetailsNew extends BaseActivity {
         String Ts = MD5.getTimeStamp();
         Map<String, String> map = new HashMap<String, String>();
         map.put("ProductSKUId", skuid);
-
         map.put("Key", Constants.WEBAPI_KEY);
         map.put("Ts", Ts);
 

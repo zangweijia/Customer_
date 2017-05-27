@@ -82,9 +82,7 @@ public class ActivityHome extends BaseActivity {
         fmap.put(R.id._tab_xianhuo, new GoodsInStock());
         fmap.put(R.id._tab_cart, new MainCartFragment());
         fmap.put(R.id._tab_main, new MainMyFragment());
-
         initView();
-
     }
 
     /**
@@ -99,6 +97,10 @@ public class ActivityHome extends BaseActivity {
     protected void onResume() {
         super.onResume();
         getCartnumber();
+        if (currentRadio ==R.id._tab_xianhuo){
+            mTitle.setVisibility(View.VISIBLE);
+        }
+
     }
 
     public void toZY() {
@@ -291,7 +293,6 @@ public class ActivityHome extends BaseActivity {
             } else {
                 // 商品的情况
                 String shopCd = getBindingShop();
-
                 // 还没有扫描店铺的时候
                 if (StringUtils.isNull(shopCd)) {
                     showToast(getString(R.string.msg_err_no_binding_shop));

@@ -2,23 +2,25 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent" >
+    android:layout_height="match_parent">
+
 
     <com.bopinjia.customer.view.MyScrollView
         android:id="@+id/scrollview"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:scrollbars="none" >
+        android:scrollbars="none">
 
         <LinearLayout
+            android:id="@+id/ll_main_"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical" >
+            android:orientation="vertical">
 
             <RelativeLayout
                 android:id="@+id/rl"
                 android:layout_width="match_parent"
-                android:layout_height="180dp" >
+                android:layout_height="180dp">
 
                 <android.support.v4.view.ViewPager
                     android:id="@+id/_pager"
@@ -45,8 +47,7 @@
                 android:listSelector="@null"
                 android:numColumns="5"
                 android:scrollbars="none"
-                android:verticalSpacing="2dp" >
-            </com.bopinjia.customer.view.NoScrollGridView>
+                android:verticalSpacing="2dp"></com.bopinjia.customer.view.NoScrollGridView>
 
             <View
                 android:layout_width="match_parent"
@@ -123,7 +124,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/bg_bgbg" >
+                android:background="@color/bg_bgbg">
 
                 <com.bopinjia.customer.view.NoScrollGridView
                     android:id="@+id/bottom_gridview"
@@ -134,9 +135,13 @@
                     android:listSelector="@null"
                     android:numColumns="2"
                     android:scrollbars="none"
-                    android:verticalSpacing="2dp" >
-                </com.bopinjia.customer.view.NoScrollGridView>
+                    android:verticalSpacing="2dp"></com.bopinjia.customer.view.NoScrollGridView>
             </LinearLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/bg_bgline" />
 
             <TextView
                 android:id="@+id/tvmore"
@@ -155,7 +160,7 @@
         android:background="@color/main_color1"
         android:gravity="center"
         android:paddingLeft="15dp"
-        android:paddingRight="15dp" >
+        android:paddingRight="15dp">
 
         <ImageView
             android:id="@+id/_zhiyou_classify"
@@ -171,7 +176,7 @@
             android:layout_weight="1"
             android:background="@drawable/bg_search_"
             android:gravity="center"
-            android:orientation="horizontal" >
+            android:orientation="horizontal">
 
             <TextView
                 android:layout_width="wrap_content"

@@ -103,7 +103,7 @@ public class ShopAllProducts extends LazyFragment implements View.OnClickListene
 
     private void init() {
         setcolor(1);
-        getProductList(0);
+        getProductList(0, "20");
     }
 
     @Override
@@ -116,7 +116,7 @@ public class ShopAllProducts extends LazyFragment implements View.OnClickListene
                 if (scrollY == (v.getChildAt(0).getMeasuredHeight() - v.getMeasuredHeight())) {
                     if (PageIndex < Integer.parseInt(mAllPages)) {
                         PageIndex += 1;
-                        getProductList(1);
+                        getProductList(1, "12");
                     } else if (PageIndex >= Integer.parseInt(mAllPages)) {
                         ((BaseActivity) getActivity()).showToast("没有更多了~");
                     }
@@ -127,10 +127,11 @@ public class ShopAllProducts extends LazyFragment implements View.OnClickListene
         mGridView.setOnItemClickListener(clickListener);
 
     }
-    AdapterView.OnItemClickListener clickListener =new AdapterView.OnItemClickListener() {
+
+    AdapterView.OnItemClickListener clickListener = new AdapterView.OnItemClickListener() {
         @Override
         public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-            Intent intent= new Intent();
+            Intent intent = new Intent();
             intent.putExtra("IsFreeShipping", "1");
             intent.putExtra("ProductSKUId", mList.get(i).getId());
             intent.setClass(getActivity(), ActivityProductDetailsNew.class);
@@ -138,7 +139,7 @@ public class ShopAllProducts extends LazyFragment implements View.OnClickListene
         }
     };
 
-    private void getProductList(final int id) {
+    private void getProductList(final int id, String pageSize) {
 
         //  0-全部 1-高销量排序 2-低销量排序 3-高价格排序 4-低价格排序
         String Mid = ((BaseActivity) getActivity()).getBindingShop();
@@ -151,7 +152,7 @@ public class ShopAllProducts extends LazyFragment implements View.OnClickListene
         map.put("MDUserId", Mid);
         map.put("ZY", "0");
         map.put("PageIndex", String.valueOf(PageIndex));
-        map.put("pageSize", "20");
+        map.put("pageSize", pageSize);
         map.put("TypeID", "0");
         map.put("OrderById", OrderById);
         map.put("Key", Constants.WEBAPI_KEY);
@@ -168,7 +169,7 @@ public class ShopAllProducts extends LazyFragment implements View.OnClickListene
 
         String url = Constants.WEBAPI_ADDRESS + "api/ProductNew/ProductListCodeBpw_XhList?MDUserId="
                 + Mid + "&ZY=" + "0" + "&PageIndex=" + String.valueOf(PageIndex) + "&pageSize="
-                + "20" + "&TypeID=" + "0" + "&OrderById=" + OrderById + "&Sign=" + Sign + "&Ts=" + Ts;
+                + pageSize + "&TypeID=" + "0" + "&OrderById=" + OrderById + "&Sign=" + Sign + "&Ts=" + Ts;
 
         RequestParams params = new RequestParams(url);
         x.http().get(params, new Callback.CommonCallback<String>() {
@@ -352,13 +353,13 @@ public class ShopAllProducts extends LazyFragment implements View.OnClickListene
             case R.id.tv_comprehensive:
 
                 OrderById = "0";
-                getProductList(2);
+                getProductList(2, "12");
                 setcolor(1);
 
                 break;
             case R.id.tv_sales:
                 OrderById = "1";
-                getProductList(2);
+                getProductList(2, "20");
                 setcolor(2);
                 setTextViewDrawable(R.id.tv_price, 0);
                 break;
@@ -369,13 +370,13 @@ public class ShopAllProducts extends LazyFragment implements View.OnClickListene
                     // 高销量排序
 
                     OrderById = "3";
-                    getProductList(2);
+                    getProductList(2, "12");
                     pricetype = false;
                     setTextViewDrawable(R.id.tv_price, 2);
                 } else {
                     // 低销量排序
                     OrderById = "4";
-                    getProductList(2);
+                    getProductList(2, "12");
                     pricetype = true;
                     setTextViewDrawable(R.id.tv_price, 1);
                 }

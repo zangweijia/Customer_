@@ -84,6 +84,8 @@ public class GoodsInStock extends Fragment implements View.OnClickListener {
         if (!hidden) {
             // onResume
             getMDInfo();
+            LinearLayout ll= (LinearLayout)getActivity().findViewById(R.id.title);
+            ll.setVisibility(View.VISIBLE);
         } else {
             // onPase
         }

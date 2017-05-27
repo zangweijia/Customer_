@@ -112,7 +112,12 @@ public class MainCartFragment extends Fragment implements OnClickListener {
             // 相当于Fragment的onPause
             if (mCartList != null) {
                 mCartList.clear();
-            } else {
+            }
+            if (list != null) {
+                list.clear();
+            }
+            if (dataList != null) {
+                dataList.clear();
             }
         }
     }
@@ -1182,4 +1187,12 @@ public class MainCartFragment extends Fragment implements OnClickListener {
         });
     }
 
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        list.clear();
+        mCartList.clear();
+        dataList.clear();
+    }
 }

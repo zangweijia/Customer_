@@ -1,7 +1,10 @@
 package com.bopinjia.customer.constants;
 
 import android.support.multidex.MultiDexApplication;
+import android.util.Log;
 
+import com.umeng.message.IUmengRegisterCallback;
+import com.umeng.message.PushAgent;
 import com.umeng.socialize.Config;
 import com.umeng.socialize.PlatformConfig;
 import com.umeng.socialize.UMShareAPI;
@@ -17,13 +20,29 @@ public class CustomerApplication extends MultiDexApplication {
         PlatformConfig.setQQZone("1105245015", "SZJ9qANLph3JghD8");
         Config.isJumptoAppStore = true;
         Config.isNeedAuth = true;
+        //        Config.DEBUG = true;
     }
 
     @Override
     public void onCreate() {
         super.onCreate();
-//        Config.DEBUG = true;
+
         UMShareAPI.get(this);
         x.Ext.init(this);
+
+        PushAgent mPushAgent = PushAgent.getInstance(this);
+        //注册推送服务，每次调用register方法都会回调该接口
+        mPushAgent.register(new IUmengRegisterCallback() {
+
+            @Override
+            public void onSuccess(String deviceToken) {
+                Log.i("deviceToken", deviceToken);
+            }
+
+            @Override
+            public void onFailure(String s, String s1) {
+
+            }
+        });
     }
 }

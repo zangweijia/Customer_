@@ -106,7 +106,7 @@ public class ManagerRecommended extends LazyFragment implements View.OnClickList
 
     private void init() {
         setcolor(1);
-        getProductList(0);
+        getProductList(0, "20");
     }
 
     @Override
@@ -119,7 +119,7 @@ public class ManagerRecommended extends LazyFragment implements View.OnClickList
                 if (scrollY == (v.getChildAt(0).getMeasuredHeight() - v.getMeasuredHeight())) {
                     if (PageIndex < Integer.parseInt(mAllPages)) {
                         PageIndex += 1;
-                        getProductList(1);
+                        getProductList(1, "12");
                     } else if (PageIndex >= Integer.parseInt(mAllPages)) {
                         ((BaseActivity) getActivity()).showToast("没有更多了~");
                     }
@@ -142,7 +142,7 @@ public class ManagerRecommended extends LazyFragment implements View.OnClickList
         }
     };
 
-    private void getProductList(final int id) {
+    private void getProductList(final int id, String pageSize) {
 
         //  0-全部 1-高销量排序 2-低销量排序 3-高价格排序 4-低价格排序
         String Mid = ((BaseActivity) getActivity()).getBindingShop();
@@ -155,7 +155,7 @@ public class ManagerRecommended extends LazyFragment implements View.OnClickList
         map.put("MDUserId", Mid);
         map.put("ZY", "0");
         map.put("PageIndex", String.valueOf(PageIndex));
-        map.put("pageSize", "20");
+        map.put("pageSize", pageSize);
         map.put("TypeID", "1");
         map.put("OrderById", OrderById);
         map.put("Key", Constants.WEBAPI_KEY);
@@ -172,7 +172,7 @@ public class ManagerRecommended extends LazyFragment implements View.OnClickList
 
         String url = Constants.WEBAPI_ADDRESS + "api/ProductNew/ProductListCodeBpw_XhList?MDUserId="
                 + Mid + "&ZY=" + "0" + "&PageIndex=" + String.valueOf(PageIndex) + "&pageSize="
-                + "20" + "&TypeID=" + "1" + "&OrderById=" + OrderById + "&Sign=" + Sign + "&Ts=" + Ts;
+                + pageSize + "&TypeID=" + "1" + "&OrderById=" + OrderById + "&Sign=" + Sign + "&Ts=" + Ts;
 
         RequestParams params = new RequestParams(url);
         x.http().get(params, new Callback.CommonCallback<String>() {
@@ -355,13 +355,13 @@ public class ManagerRecommended extends LazyFragment implements View.OnClickList
             case R.id.tv_comprehensive:
 
                 OrderById = "0";
-                getProductList(2);
+                getProductList(2, "20");
                 setcolor(1);
                 setTextViewDrawable(R.id.tv_price, 0);
                 break;
             case R.id.tv_sales:
                 OrderById = "1";
-                getProductList(2);
+                getProductList(2, "20");
                 setcolor(2);
                 setTextViewDrawable(R.id.tv_price, 0);
                 break;
@@ -372,13 +372,13 @@ public class ManagerRecommended extends LazyFragment implements View.OnClickList
                     // 高销量排序
 
                     OrderById = "3";
-                    getProductList(2);
+                    getProductList(2, "20");
                     pricetype = false;
                     setTextViewDrawable(R.id.tv_price, 2);
                 } else {
                     // 低销量排序
                     OrderById = "4";
-                    getProductList(2);
+                    getProductList(2, "20");
                     pricetype = true;
                     setTextViewDrawable(R.id.tv_price, 1);
                 }

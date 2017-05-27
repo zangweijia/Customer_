@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -39,7 +40,6 @@ import com.bopinjia.customer.util.MD5;
 import com.bopinjia.customer.util.NetUtils;
 import com.bopinjia.customer.view.MyScrollView;
 import com.bopinjia.customer.view.MyScrollView.OnScrollListener;
-import com.bopinjia.customer.view.MyScrollView.OnScrollToBottomListener;
 import com.bopinjia.customer.view.NoScrollGridView;
 import com.viewpagerindicator.CirclePageIndicator;
 
@@ -48,7 +48,6 @@ import org.json.JSONException;
 import org.json.JSONObject;
 import org.xutils.common.Callback;
 import org.xutils.http.RequestParams;
-import org.xutils.image.ImageOptions;
 import org.xutils.view.annotation.ContentView;
 import org.xutils.view.annotation.Event;
 import org.xutils.view.annotation.ViewInject;
@@ -111,6 +110,7 @@ public class DirectMailPage extends Fragment {
 
     private boolean isLogged;
     private List<HorizontallistViewBean> list;
+    private LinearLayout ll;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -147,18 +147,9 @@ public class DirectMailPage extends Fragment {
         filter.addAction("fxs");
         BroadCastManager.getInstance().registerReceiver(getActivity(), new LocalReceiver(), filter);// 注册广播接收者
 
-        getProductList(0);
+        getProductList(0, "10");
         ProductList();
         isLogged = ((BaseActivity) getActivity()).isLogged();
-//        list = new ArrayList<HorizontallistViewBean>();
-//        for (int i = 0; i < 20; i++) {
-//            HorizontallistViewBean m = new HorizontallistViewBean();
-//            m.setImg("http://images.bopinjia.com//ProductMSJ/20161014/image/357X357_201610141148150391.png");
-//            m.setMarketprice("¥" + "0000");
-//            m.setPrice("¥" + i);
-//            list.add(m);
-//        }
-//        setHlist(list);
         getAppMenu();
 
         mCategoryGridView.setOnItemClickListener(new OnItemClickListener() {
@@ -188,48 +179,6 @@ public class DirectMailPage extends Fragment {
             }
         });
     }
-
-    /**
-     * 设置横向商品列表
-     *
-     * @param list
-     */
-    private void setHlist(List<HorizontallistViewBean> list) {
-        for (int i = 0; i < list.size(); i++) {
-            LinearLayout productView = new LinearLayout(getActivity());
-            View.inflate(getActivity(), R.layout.wj_item_miaosha_list, productView);
-
-            ((TextView) productView.findViewById(R.id.txt_sell_price)).setText(list.get(i).getPrice());
-            ((TextView) productView.findViewById(R.id.txt_market_price)).setText(list.get(i).getMarketprice());
-            ((TextView) productView.findViewById(R.id.txt_market_price)).getPaint().setStrikeThruText(true);
-            // 商品缩略图
-            ImageOptions imageOptions = new ImageOptions.Builder().setImageScaleType(ImageView.ScaleType.CENTER_CROP)
-                    .setFailureDrawableId(R.drawable.ic_default_image)// 加载失败后默认显示图片
-                    .build();
-
-            x.image().bind((ImageView) productView.findViewById(R.id.iv), list.get(i).getImg(), imageOptions);
-            productView.setId(i);
-            productView.setTag(list.get(i).getPrice());
-            productView.setOnClickListener(clickListener);
-
-            mHList.addView(productView);
-        }
-    }
-
-    View.OnClickListener clickListener = new View.OnClickListener() {
-        @Override
-        public void onClick(View view) {
-
-            int id = view.getId();
-            String content = (String) view.getTag();
-            for (int i = 0; i < list.size(); i++) {
-                if (i == id) {
-                    ((BaseActivity) getActivity()).showToast(content);
-                }
-            }
-
-        }
-    };
 
 
     private void getAppMenu() {
@@ -287,11 +236,11 @@ public class DirectMailPage extends Fragment {
         Map<String, String> map = new HashMap<String, String>();
         map.put("SkuId", MuserId);
         map.put("ZY", "1");
-        map.put("Edition","2");
+        map.put("Edition", "2");
         map.put("Key", Constants.WEBAPI_KEY);
         map.put("Ts", Ts);
 
-        String url = Constants.WEBAPI_ADDRESS + "api/Product/GetIndexadlist?UserId=" + MuserId + "&ZY=" + "1" +"&Edition=2"+ "&Sign="
+        String url = Constants.WEBAPI_ADDRESS + "api/Product/GetIndexadlist?UserId=" + MuserId + "&ZY=" + "1" + "&Edition=2" + "&Sign="
                 + NetUtils.getSign(map) + "&Ts=" + Ts;
 
         XutilsHttp.getInstance().get(url, null, new ProductListCallBack(), getActivity());
@@ -345,7 +294,7 @@ public class DirectMailPage extends Fragment {
      *
      * @param id
      */
-    private void getProductList(final int id) {
+    private void getProductList(final int id, String pagesize) {
         String Ts = MD5.getTimeStamp();
         Map<String, String> map = new TreeMap<String, String>(new Comparator<String>() {
             public int compare(String obj1, String obj2) {
@@ -356,7 +305,7 @@ public class DirectMailPage extends Fragment {
         map.put("UserId", MuserId);
         map.put("ZY", "1");
         map.put("PageIndex", String.valueOf(PageIndex));
-        map.put("pageSize", "20");
+        map.put("pageSize", pagesize);
         map.put("Key", Constants.WEBAPI_KEY);
         map.put("Ts", Ts);
         StringBuffer stringBuffer = new StringBuffer();
@@ -370,7 +319,7 @@ public class DirectMailPage extends Fragment {
         String Sign = MD5.Md5(stringBuffer.toString());
 
         String url = Constants.WEBAPI_ADDRESS + "api/Product/GetZyNewtodayProductlist?UserId=" + MuserId + "&ZY=" + "1"
-                + "&PageIndex=" + String.valueOf(PageIndex) + "&pageSize=" + "20" + "&Sign=" + Sign + "&Ts=" + Ts;
+                + "&PageIndex=" + String.valueOf(PageIndex) + "&pageSize=" + pagesize + "&Sign=" + Sign + "&Ts=" + Ts;
 
         RequestParams params = new RequestParams(url);
         x.http().get(params, new Callback.CommonCallback<String>() {
@@ -498,22 +447,30 @@ public class DirectMailPage extends Fragment {
 
             }
         });
-        mScrollview.setOnScrollToBottomLintener(new OnScrollToBottomListener() {
+        ll = (LinearLayout) getActivity().findViewById(R.id.ll_main_);
+        mScrollview.setOnTouchListener(new View.OnTouchListener() {
+
+            private int lastY = 0;
 
             @Override
-            public void onScrollBottomListener(boolean isBottom) {
-                if (isBottom) {
-                    if (PageIndex < Integer.parseInt(mAllPages)) {
-                        PageIndex += 1;
-                        getProductList(1);
-                        tvmore.setText("加载更多");
-                    } else if (PageIndex >= Integer.parseInt(mAllPages)) {
-                        tvmore.setText("没有更多了");
+            public boolean onTouch(View v, MotionEvent event) {
+
+                if (event.getAction() == MotionEvent.ACTION_UP) {
+                    lastY = mScrollview.getScrollY();
+                    if (lastY == (ll.getHeight() - mScrollview.getHeight())) {
+                        if (PageIndex < Integer.parseInt(mAllPages)) {
+                            PageIndex += 1;
+                            getProductList(1, "12");
+                            tvmore.setText("上拉加载更多");
+                        } else if (PageIndex >= Integer.parseInt(mAllPages)) {
+                            tvmore.setText("我是有底线的");
+                        }
                     }
                 }
-
+                return false;
             }
         });
+
 
     }
 
@@ -550,7 +507,7 @@ public class DirectMailPage extends Fragment {
         @Override
         public void onReceive(Context context, Intent intent) {
             mList.clear();
-            getProductList(0);
+            getProductList(0, "10");
         }
     }
 }

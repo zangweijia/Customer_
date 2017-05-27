@@ -480,5 +480,4 @@ public class ActivityPersonalCare extends BaseActivity {
         }
     }
 
-
 }
