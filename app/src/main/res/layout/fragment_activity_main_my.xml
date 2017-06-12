@@ -421,7 +421,7 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_vertical"
                         android:layout_marginLeft="43dp"
-                        android:text="￥1523515.2"
+                        android:text="￥0"
                         android:textColor="@color/bg_666666" />
 
                     <TextView
@@ -432,7 +432,7 @@
                         android:layout_marginRight="15dp"
                         android:layout_weight="1"
                         android:gravity="center_vertical|right"
-                        android:text="金牌佣金的收入：￥1523515.2"
+                        android:text="金牌佣金的收入：￥0"
                         android:textColor="@color/main_color" />
 
                 </LinearLayout>

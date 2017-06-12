@@ -8,19 +8,19 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:scrollbars="none" >
+        android:scrollbars="none">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@android:color/white"
-            android:orientation="vertical" >
+            android:orientation="vertical">
 
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="47dp"
                 android:gravity="center"
-                android:paddingLeft="@dimen/back_padding_left" >
+                android:paddingLeft="@dimen/back_padding_left">
 
                 <TextView
                     android:id="@+id/btn_return"
@@ -55,7 +55,7 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp" >
+                android:layout_marginTop="50dp">
 
                 <ImageView
                     android:layout_width="wrap_content"
@@ -69,13 +69,12 @@
                     android:layout_height="wrap_content"
                     android:layout_centerInParent="true"
                     android:gravity="center"
-                    android:text="00001"
+                    android:text=""
                     android:textColor="@color/bg_red"
                     android:textSize="@dimen/txt_size_15" />
             </RelativeLayout>
 
             <TextView
-                android:visibility="gone"
                 android:id="@+id/tv_to_FXGL"
                 android:layout_width="120dp"
                 android:layout_height="40dp"
@@ -85,10 +84,12 @@
                 android:gravity="center"
                 android:text="进入分销管理"
                 android:textColor="@android:color/white"
-                android:textSize="@dimen/txt_size_14" />
+                android:textSize="@dimen/txt_size_14"
+                android:visibility="gone" />
 
             <TextView
                 android:id="@+id/tv_to_DPXX"
+                android:visibility="gone"
                 android:layout_width="120dp"
                 android:layout_height="40dp"
                 android:layout_gravity="center_horizontal"
@@ -99,6 +100,6 @@
                 android:textColor="@android:color/white"
                 android:textSize="@dimen/txt_size_14" />
         </LinearLayout>
-    </ScrollView> 
+    </ScrollView>
 
 </LinearLayout>

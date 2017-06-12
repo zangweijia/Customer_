@@ -2,7 +2,6 @@ package com.bopinjia.customer.net;
 
 import android.content.Context;
 import android.os.Handler;
-import android.os.Looper;
 import android.widget.ImageView;
 
 import com.bopinjia.customer.R;
@@ -22,8 +21,7 @@ public class XutilsHttp {
 	private ImageOptions options;
 
 	private XutilsHttp() {
-		handler = new Handler(Looper.getMainLooper());
-
+//		handler = new Handler(Looper.getMainLooper());
 	}
 
 	/**

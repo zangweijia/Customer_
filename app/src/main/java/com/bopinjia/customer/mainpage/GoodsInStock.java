@@ -84,7 +84,7 @@ public class GoodsInStock extends Fragment implements View.OnClickListener {
         if (!hidden) {
             // onResume
             getMDInfo();
-            LinearLayout ll= (LinearLayout)getActivity().findViewById(R.id.title);
+            LinearLayout ll = (LinearLayout) getActivity().findViewById(R.id.title);
             ll.setVisibility(View.VISIBLE);
         } else {
             // onPase
@@ -157,6 +157,11 @@ public class GoodsInStock extends Fragment implements View.OnClickListener {
         public mAdapter(FragmentManager fm, List<Fragment> fragments) {
             super(fm);
             this.fragments = fragments;
+        }
+
+        @Override
+        public void destroyItem(View arg0, int arg1, Object arg2) {//销毁没有用的page页面======================================
+            ((ViewPager) arg0).removeView((View) arg2);
         }
 
         @Override

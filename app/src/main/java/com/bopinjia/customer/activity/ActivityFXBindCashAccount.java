@@ -97,7 +97,6 @@ public class ActivityFXBindCashAccount extends BaseActivity {
 
     @Override
     public void onClick(View v) {
-        Intent i = new Intent();
         switch (v.getId()) {
             case R.id.btn_return:
                 finish();

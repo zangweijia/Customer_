@@ -1,10 +1,9 @@
 package com.bopinjia.customer.activity;
 
-import java.util.HashMap;
-import java.util.Map;
-
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.KeyEvent;
+import android.widget.TextView;
 
 import com.bopinjia.customer.R;
 import com.bopinjia.customer.constants.Constants;
@@ -13,10 +12,11 @@ import com.bopinjia.customer.net.XutilsHttp.XCallBack;
 import com.bopinjia.customer.util.MD5;
 import com.bopinjia.customer.util.NetUtils;
 
-import android.os.Bundle;
-import android.view.KeyEvent;
-import android.view.View;
-import android.widget.TextView;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class ActivityFXKTSuccess extends BaseActivity {
 
@@ -29,26 +29,23 @@ public class ActivityFXKTSuccess extends BaseActivity {
 
 		mNumber = (TextView) findViewById(R.id.tv_number);
 		getDistributionInfo();
-		// 店铺信息
-		findViewById(R.id.tv_to_DPXX).setOnClickListener(this);
-		// 分销管理
-		findViewById(R.id.tv_to_FXGL).setOnClickListener(this);
-	}
 
-	@Override
-	public void onClick(View v) {
-		switch (v.getId()) {
-		case R.id.tv_to_FXGL:
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    //自动跳转到 店铺信息界面
+                    Thread.sleep(2000);
+                    Intent i =new Intent();
+                    i.putExtra("isFxSuccess","1");
+                    forward(ActivityFXSStoreInfo.class,i);
+                    finish();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+        }).start();
 
-			break;
-		case R.id.tv_to_DPXX:
-			forward(ActivityFXSStoreInfo.class);
-			finish();
-			break;
-
-		default:
-			break;
-		}
 	}
 
 	private void getDistributionInfo() {

@@ -1,5 +1,29 @@
 package com.bopinjia.customer.activity;
 
+import android.app.Dialog;
+import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemSelectedListener;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Spinner;
+import android.widget.TextView;
+import android.widget.ToggleButton;
+
+import com.bopinjia.customer.R;
+import com.bopinjia.customer.constants.Constants;
+import com.bopinjia.customer.net.XutilsHttp;
+import com.bopinjia.customer.net.XutilsHttp.XCallBack;
+import com.bopinjia.customer.util.MD5;
+import com.bopinjia.customer.util.StringUtils;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.io.InputStreamReader;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
@@ -10,30 +34,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.TreeMap;
-
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import com.bopinjia.customer.R;
-import com.bopinjia.customer.constants.Constants;
-import com.bopinjia.customer.net.XutilsHttp;
-import com.bopinjia.customer.net.XutilsHttp.XCallBack;
-import com.bopinjia.customer.util.MD5;
-import com.bopinjia.customer.util.StringUtils;
-
-import android.app.Dialog;
-import android.os.Bundle;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.Spinner;
-import android.widget.TextView;
-import android.widget.ToggleButton;
-import android.widget.AdapterView.OnItemSelectedListener;
 
 public class ActivityAddressDetails extends BaseActivity {
 
@@ -418,26 +418,7 @@ public class ActivityAddressDetails extends BaseActivity {
 	 * @param addressId
 	 */
 	private void deleteAddress(String addressId) {
-		Map<String, String> map = new TreeMap<String, String>(new Comparator<String>() {
-			public int compare(String obj1, String obj2) {
-				return obj1.compareTo(obj2);
-			}
-		});
 		String Ts = MD5.getTimeStamp();
-
-		map.put("AddressId", addressId);
-		map.put("Key", Constants.WEBAPI_KEY);
-		map.put("Ts", Ts);
-		StringBuffer stringBuffer = new StringBuffer();
-		Set<String> keySet = map.keySet();
-		Iterator<String> iter = keySet.iterator();
-		while (iter.hasNext()) {
-			String key = iter.next();
-			stringBuffer.append(key).append("=").append(map.get(key)).append("&");
-		}
-		stringBuffer.deleteCharAt(stringBuffer.length() - 1);
-
-		String Sign = MD5.Md5(stringBuffer.toString());
 		Map<String, String> maps = new HashMap<String, String>();
 		maps.put("AddressId", addressId);
 		maps.put("Key", Constants.WEBAPI_KEY);
@@ -448,8 +429,6 @@ public class ActivityAddressDetails extends BaseActivity {
 
 	/***
 	 * 删除地址回调类
-	 * 
-	 * @param addressId
 	 */
 	class deleteAddressCallBack implements XCallBack {
 
@@ -479,7 +458,6 @@ public class ActivityAddressDetails extends BaseActivity {
 				return obj1.compareTo(obj2);
 			}
 		});
-		String Ts = MD5.getTimeStamp();
 
 		String consigeneeUTF8 = null;
 		String detailAddressUTF8 = null;
@@ -510,7 +488,7 @@ public class ActivityAddressDetails extends BaseActivity {
 		map.put("IDCard", ((EditText) findViewById(R.id.et_idcard)).getText().toString());
 
 		map.put("Key", Constants.WEBAPI_KEY);
-		map.put("Ts", Ts);
+		map.put("Ts", MD5.getTimeStamp());
 		StringBuffer stringBuffer = new StringBuffer();
 		Set<String> keySet = map.keySet();
 		Iterator<String> iter = keySet.iterator();
@@ -536,7 +514,7 @@ public class ActivityAddressDetails extends BaseActivity {
 		maps.put("IDCard", ((EditText) findViewById(R.id.et_idcard)).getText().toString());
 
 		maps.put("Sign", Sign);
-		maps.put("Ts", Ts);
+		maps.put("Ts", MD5.getTimeStamp());
 
 		XutilsHttp.getInstance().post(Constants.WEBAPI_BOPINWANG + "api/Address/BpwAddNew", maps,
 				new AddressAddCallback(),this);

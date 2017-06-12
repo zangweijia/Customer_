@@ -23,7 +23,6 @@ import com.bopinjia.customer.net.XutilsHttp.XCallBack;
 import com.bopinjia.customer.util.MD5;
 import com.bopinjia.customer.util.StringUtils;
 import com.google.gson.Gson;
-import com.umeng.message.PushAgent;
 import com.umeng.socialize.UMAuthListener;
 import com.umeng.socialize.UMShareAPI;
 import com.umeng.socialize.bean.SHARE_MEDIA;
@@ -89,7 +88,6 @@ public class ActivityLogin extends BaseActivity {
     private UMShareAPI mShareAPI;
     private String uid = null;
     private Map<String, String> myData = new HashMap<String, String>();
-    private PushAgent mPushAgent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -97,8 +95,6 @@ public class ActivityLogin extends BaseActivity {
         setContentView(R.layout.wj_activity_login);
         x.view().inject(this);
         instance = this;
-        mPushAgent = PushAgent.getInstance(this);
-        mPushAgent.onAppStart();
         mShareAPI = UMShareAPI.get(ActivityLogin.this);
 
         // UMShareConfig config = new UMShareConfig();

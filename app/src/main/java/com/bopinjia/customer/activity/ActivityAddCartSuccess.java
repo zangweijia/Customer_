@@ -1,17 +1,9 @@
 package com.bopinjia.customer.activity;
 
-import java.util.Comparator;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Set;
-import java.util.TreeMap;
-
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-import org.xutils.x;
-import org.xutils.common.Callback;
-import org.xutils.http.RequestParams;
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.View;
+import android.view.View.OnClickListener;
 
 import com.bopinjia.customer.R;
 import com.bopinjia.customer.constants.Constants;
@@ -22,10 +14,18 @@ import com.bopinjia.customer.util.MD5;
 import com.bopinjia.customer.util.SecurityUtil;
 import com.bopinjia.customer.util.StringUtils;
 
-import android.content.Intent;
-import android.os.Bundle;
-import android.view.View;
-import android.view.View.OnClickListener;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+import org.xutils.common.Callback;
+import org.xutils.http.RequestParams;
+import org.xutils.x;
+
+import java.util.Comparator;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Set;
+import java.util.TreeMap;
 
 /**
  * 扫码加入购物车成功弹出界面
@@ -39,7 +39,6 @@ public class ActivityAddCartSuccess extends BaseActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_activity_add_cart_success);
-
 		findViewById(R.id.btn_jixu).setOnClickListener(new OnClickListener() {
 
 			@Override
@@ -98,8 +97,6 @@ public class ActivityAddCartSuccess extends BaseActivity {
 	
 	/**
 	 * 根据条码搜索商品判断是否有直邮现货
-	 * 
-	 * @param userid
 	 * @param code
 	 */
 	private void search(String shopid, final String code) {

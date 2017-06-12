@@ -492,7 +492,7 @@ public class MainMyFragment extends Fragment {
                         ((BaseActivity) getActivity()).setImageURl(R.id.iv_type, Data.getString("GDSType_Img"));
 
                         // 会员头像
-                        ((BaseActivity) getActivity()).ImageFromUrl(headPortrait, R.id.dis_iv);
+                        ((BaseActivity) getActivity()).ImageFromUrl(Data.getString("MDGDSM_ShopLogo"), R.id.dis_iv);
                         // 分销会员编号
                         ((TextView) getActivity().findViewById(R.id.tv_fxhybh))
                                 .setText("分销会员编号：" + Data.getString("MDGDSM_Number"));

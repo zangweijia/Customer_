@@ -124,8 +124,8 @@ public interface Constants {
     /**
      * WebAPI 地址
      */
-    public String WEBAPI_ADDRESS = "http://api.bopinwang.com/";
-//    public   String WEBAPI_ADDRESS = "http://testapi.bopinwang.com/";
+    //  public String WEBAPI_ADDRESS = "http://api.bopinwang.com/";
+    public String WEBAPI_ADDRESS = "http://testapi.bopinwang.com/";
 
     /**
      * WebAPI 地址

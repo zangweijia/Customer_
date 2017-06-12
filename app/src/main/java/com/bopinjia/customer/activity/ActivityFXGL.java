@@ -162,12 +162,12 @@ public class ActivityFXGL extends BaseActivity {
                 forward(ActivityFXDisPay.class, i);
                 break;
             case R.id.iv_img:
-                forward(ActivityFXSStoreInfo.class);
+                // forward(ActivityFXSStoreInfo.class);
                 break;
             case R.id.tv_hyzx:
             case R.id.tv_shopname:
             case R.id.tv_endtime:
-                forward(ActivityFXSPersonalCenter.class);
+                //forward(ActivityFXSPersonalCenter.class);
                 break;
             case R.id.tv_tixian:
                 Intent ii = new Intent();

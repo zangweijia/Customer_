@@ -1,17 +1,17 @@
 package com.bopinjia.customer.activity;
 
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-import java.util.TreeMap;
-
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
+import android.text.Spannable;
+import android.text.Spanned;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import android.widget.BaseAdapter;
+import android.widget.TextView;
 
 import com.bopinjia.customer.R;
 import com.bopinjia.customer.adapter.CartTuiJianProductAdapter;
@@ -25,18 +25,18 @@ import com.bopinjia.customer.util.NoUnderlineSpan;
 import com.bopinjia.customer.view.NoScrollGridView;
 import com.bopinjia.customer.view.NoScrollListview;
 
-import android.content.Context;
-import android.content.Intent;
-import android.os.Bundle;
-import android.text.Spannable;
-import android.text.Spanned;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.BaseAdapter;
-import android.widget.TextView;
-import android.widget.AdapterView.OnItemClickListener;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import java.util.TreeMap;
 
 public class ActivityOrderStateList extends BaseActivity {
 
@@ -139,7 +139,7 @@ public class ActivityOrderStateList extends BaseActivity {
 
 	}
 
-	static class ViewHolder {
+	  class ViewHolder {
 		public TextView updateTime;
 		public TextView msg;
 		public TextView stateName;
@@ -170,8 +170,6 @@ public class ActivityOrderStateList extends BaseActivity {
 	 * 
 	 * @param orderId
 	 *            订单id
-	 * @param Otype
-	 *            订单类型 直邮现货自营
 	 */
 	private void GetOrderState(String orderId) {
 		String Ts = MD5.getTimeStamp();

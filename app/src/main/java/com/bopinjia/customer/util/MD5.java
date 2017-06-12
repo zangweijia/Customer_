@@ -32,8 +32,6 @@ public class MD5 {
 		}
 		return null;
 	}
-	
-	
 	/**
 	 * 获取时间戳
 	 * @return
@@ -45,8 +43,5 @@ public class MD5 {
 		
 		return time;
     }
-	
-	
-	
-	
+
 }

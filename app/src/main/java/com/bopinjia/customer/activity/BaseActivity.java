@@ -150,10 +150,10 @@ public class BaseActivity extends AppCompatActivity implements OnClickListener {
      */
     public void showToast(String message) {
 
-        // mToast = Toast.makeText(this, message, Toast.LENGTH_SHORT);
-        // mToast.show();
+         mToast = Toast.makeText(this, message, Toast.LENGTH_SHORT);
+         mToast.show();
 
-        ToastUtils.showNOrmalToast(this, message);
+//        ToastUtils.showNOrmalToast(this, message);
     }
 
     /**
@@ -573,10 +573,8 @@ public class BaseActivity extends AppCompatActivity implements OnClickListener {
     @Override
     protected void onDestroy() {
         setContentView(R.layout.null_view);
-        System.gc();
         super.onDestroy();
-        ToastUtils.cancel();
-
+//        ToastUtils.cancel();
     }
 
     @Override

@@ -39,6 +39,23 @@ public class StartActivity extends BaseActivity implements OnUpdateCancelListene
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_start);
 		//initWindow();
+		if (!this.isTaskRoot()) {
+			Intent intent = getIntent();
+			if (intent != null) {
+				String action = intent.getAction();
+				if (intent.hasCategory(Intent.CATEGORY_LAUNCHER) && Intent.ACTION_MAIN.equals(action)) {
+					finish();
+					return;
+				}
+			}
+		}
+
+//        if ((getIntent().getFlags() & Intent.FLAG_ACTIVITY_BROUGHT_TO_FRONT) != 0) {
+//
+//            finish();
+//
+//            return;
+//        }
 
 		new Thread(new Runnable() {
 

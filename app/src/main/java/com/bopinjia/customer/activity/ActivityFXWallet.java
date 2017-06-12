@@ -154,8 +154,6 @@ public class ActivityFXWallet extends BaseActivity {
                     // 已提现金额
                     String MDGDSM_ToMyInMoney = Data.getString("MDGDSM_ToMyInMoney");
                     mTomyInmoney.setText(MDGDSM_ToMyInMoney);
-                    // 银行卡数量
-                    String MDGDSM_ToMyUserAccount = Data.getString("MDGDSM_ToMyUserAccount");
                     //正在交易中
                     String mInthedealtext = Data.getString("MDGDSM_CashInMoney");
                     mInthedeal.setText(mInthedealtext);

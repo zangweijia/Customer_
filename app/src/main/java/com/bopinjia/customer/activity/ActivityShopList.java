@@ -101,6 +101,7 @@ public class ActivityShopList extends BaseActivity implements BDLocationListener
 
     private String photo_path;
     private Bitmap scanBitmap;
+    EditText etCode;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -118,6 +119,19 @@ public class ActivityShopList extends BaseActivity implements BDLocationListener
 
         findViewById(R.id.tv_photo).setOnClickListener(this);
         findViewById(R.id.iv_scan_code).setOnClickListener(this);
+
+        etCode = (EditText) findViewById(R.id.et_code);
+        etCode.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View view, boolean hasFocus) {
+                if (!hasFocus) {
+                    etCode.setHint("我有邀请码");
+                } else {
+                    etCode.setHint("");
+                }
+            }
+        });
+
         // ------------------------------
         mDialog = new Dialog(this, R.style.CustomDialogTheme);
         dialogView = LayoutInflater.from(this).inflate(R.layout.send_tel_dailog, null);

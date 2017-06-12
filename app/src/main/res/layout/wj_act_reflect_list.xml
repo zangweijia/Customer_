@@ -43,7 +43,7 @@
                     android:id="@+id/tv_all_price"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="232323"
+                    android:text="0"
                     android:textColor="@color/main_color"
                     android:textSize="@dimen/txt_size_big" />
 
@@ -73,7 +73,7 @@
                     android:id="@+id/tv_already_present"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="232323"
+                    android:text="0"
                     android:textColor="@color/main_color"
                     android:textSize="@dimen/txt_size_big" />
 

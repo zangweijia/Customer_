@@ -1,27 +1,10 @@
 package com.bopinjia.customer.activity;
 
-import java.io.File;
-import java.util.HashMap;
-import java.util.Map;
-
-import org.json.JSONException;
-import org.json.JSONObject;
-import org.xutils.http.RequestParams;
-
-import com.bopinjia.customer.R;
-import com.bopinjia.customer.constants.Constants;
-import com.bopinjia.customer.fragment.SelectModeFragment;
-import com.bopinjia.customer.fragment.SelectModeFragment.IOnSelectModeDismissListner;
-import com.bopinjia.customer.net.XutilsHttp;
-import com.bopinjia.customer.net.XutilsHttp.XCallBack;
-import com.bopinjia.customer.util.MD5;
-import com.bopinjia.customer.util.NetUtils;
-
 import android.app.AlertDialog;
 import android.app.DialogFragment;
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.os.Handler;
@@ -32,6 +15,22 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.bopinjia.customer.R;
+import com.bopinjia.customer.constants.Constants;
+import com.bopinjia.customer.fragment.SelectModeFragment;
+import com.bopinjia.customer.fragment.SelectModeFragment.IOnSelectModeDismissListner;
+import com.bopinjia.customer.net.XutilsHttp;
+import com.bopinjia.customer.net.XutilsHttp.XCallBack;
+import com.bopinjia.customer.util.MD5;
+import com.bopinjia.customer.util.NetUtils;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.File;
+import java.util.HashMap;
+import java.util.Map;
 
 public class ActivityFXSPersonalCenter extends BaseActivity implements IOnSelectModeDismissListner {
 
@@ -170,7 +169,7 @@ public class ActivityFXSPersonalCenter extends BaseActivity implements IOnSelect
 				JSONObject jo = new JSONObject(result);
 				String jsonresult = jo.getString("Result");
 				if (jsonresult.equals("1")) {
-					Toast.makeText(ActivityFXSPersonalCenter.this, "  保存成功  ", 0).show();
+					Toast.makeText(ActivityFXSPersonalCenter.this, "  保存成功  ", Toast.LENGTH_SHORT).show();
 					finish();
 				}
 			} catch (JSONException e) {
@@ -267,7 +266,6 @@ public class ActivityFXSPersonalCenter extends BaseActivity implements IOnSelect
 
 		String url = Constants.WEBAPI_ADDRESS + "api/GDSUser/GetGDSUserInfo?UserId=" + s + "&Sign="
 				+ NetUtils.getSign(map) + "&Ts=" + Ts;
-		RequestParams params = new RequestParams(url);
 
 		XutilsHttp.getInstance().get(url, null, new getDistributionInfoCallBack(), this);
 	}

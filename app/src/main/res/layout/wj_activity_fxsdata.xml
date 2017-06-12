@@ -240,8 +240,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
                     android:layout_marginTop="7dp"
-                    android:textColor="@color/bg_ffffff"
-                    android:text="距离下一个等级只需40元" />
+                    android:textColor="@color/bg_ffffff" />
 
                 <ImageView
                     android:id="@+id/iv_sj"

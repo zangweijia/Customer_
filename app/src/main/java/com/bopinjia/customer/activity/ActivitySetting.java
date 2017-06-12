@@ -12,12 +12,10 @@ import com.bopinjia.customer.net.XutilsHttp;
 import com.bopinjia.customer.net.XutilsHttp.XCallBack;
 import com.bopinjia.customer.util.MD5;
 import com.bopinjia.customer.util.NetUtils;
-import com.tencent.smtt.sdk.CacheManager;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.File;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -109,13 +107,6 @@ public class ActivitySetting extends BaseActivity {
 			break;
 		case R.id.ll_setting_qingli:
 			// 清理缓存
-			File file = CacheManager.getCacheFileBaseDir();
-			if (file != null && file.exists() && file.isDirectory()) {
-				for (File item : file.listFiles()) {
-					item.delete();
-				}
-				file.delete();
-			}
 			Context context = getApplicationContext();
 			context.deleteDatabase("webview.db");
 			context.deleteDatabase("webviewCache.db");
